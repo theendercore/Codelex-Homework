@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  font-family: "Hind Siliguri";
 }
 
 body {
@@ -14,21 +16,55 @@ body {
   padding-right: 15px;
 }
 
-header {
+.header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header-nav {
-  display: inline-flex;
+.header-nav nav {
+  display: flex;
+  justify-content: space-between;
 }
 
-.product-header {
+.promo-header {
   width: 100%;
+  padding-top: 92px;
   background-color: orange;
 }
 
-.product-main {
+.promo-img img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.promo-main {
   width: 100%;
   background-color: white;
   display: inline-block;
+}
+
+.promo-logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 90px 0 70px 0;
+}
+
+.title {
+  color: #292830;
+  font-size: 64px;
+  line-height: 70px;
+}
+
+.text {
+  color: #BDBDBD;
+}
+
+.segment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
