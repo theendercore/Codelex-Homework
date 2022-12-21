@@ -67,4 +67,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn span a {
+  padding: 10px;
+}
+
+.btn--orange {
+  background-color: orange;
+}
+
+.btn--white {
+  background-color: whitesmoke;
 }/*# sourceMappingURL=style.css.map */
