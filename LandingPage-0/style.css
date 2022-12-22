@@ -16,7 +16,7 @@ body {
   padding-right: 15px;
 }
 
-.header {
+.flex-spaced-center {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +60,7 @@ body {
 }
 
 .text {
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 .segment {
