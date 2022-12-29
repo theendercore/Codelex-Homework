@@ -1,21 +1,63 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="/styles.css">
     <title>Document</title>
 </head>
-<body>
-    <h1>
-        Hello World
-    </h1>
-    <img src="/assets/images/cat.jpeg" alt="" width="300">
 
+<body>
+    <section>
+        <div class="sign-up-screen">
+            <form action="#" class="sign-up-form">
+                <div class="input-fields">
+                    <label class="p-bot-16">
+                        Input Label<br>
+                        <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                    </label>
+                    <label class="p-bot-16">
+                        Input Label<br>
+                        <input type="password" name="password" id="password" placeholder="  ••••••••"
+                            class="input-text-box">
+                    </label>
+                </div>
+
+
+                <div class="checkbox-slider row">
+                    <div class="slider">
+                        <label>
+                            <input type="checkbox" name="subscribe" id="sub-news">
+                        </label>
+                    </div>
+                    <p>Subscribe to News</p>
+                </div>
+
+                <input type="submit" value="Sign in" class="btn--purple fade m-bot-32 m-top-12">
+
+                <a href="#" class="center-align purple-text">Forgot your password?</a>
+
+                <div class="divider-bar m-bot-32 m-top-32"></div>
+
+                <span class="center-align p-bot-16">
+                    <p class="inter-fnt">or continue with</p>
+                </span>
+
+                <div class="row justify">
+                    <a href="#" class="btn--mono fade"><img src="assets/svg/google.svg" alt="google-svg"></a>
+                    <a href="#" class="btn--mono fade"><img src="assets/svg/facebook.svg" alt="facebook-svg"></a>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <script src="/scripts.js"></script>
 </body>
+
 </html>
