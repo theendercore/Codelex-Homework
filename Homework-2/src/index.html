@@ -10,50 +10,163 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="/styles.css">
-    <title>Document</title>
+    <title>Homework-2</title>
 </head>
 
 <body>
-    <section>
-        <div class="sign-up-screen">
-            <form action="#" class="sign-up-form">
-                <div class="input-fields">
-                    <label class="p-bot-16">
-                        Input Label<br>
-                        <input type="text" placeholder="  Placeholder Text" class="input-text-box">
-                    </label>
-                    <label class="p-bot-16">
-                        Input Label<br>
-                        <input type="password" name="password" id="password" placeholder="  ••••••••"
-                            class="input-text-box">
-                    </label>
-                </div>
-
-
-                <div class="checkbox-slider row">
-                    <div class="slider">
-                        <label>
-                            <input type="checkbox" name="subscribe" id="sub-news">
+    <nav class="p-bot-72">
+        <a href="#sign-up" class="btn">Sign up</a>
+        <a href="#contact-us" class="btn">Contact Us</a>
+        <a href="#contact-us-two" class="btn">Contact Us Two</a>
+    </nav>
+    <section id="sign-up" class="p-bot-72">
+        <div class="sign-up-screen fade">
+            <div class="screen-container">
+                <form action="#" class="sign-up-form fade">
+                    <div class="input-fields">
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                        </label>
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="password" name="password" id="password" placeholder="  ••••••••"
+                                class="input-text-box">
                         </label>
                     </div>
-                    <p>Subscribe to News</p>
+
+
+                    <div class="checkbox-slider row">
+                        <div class="slider">
+                            <label>
+                                <input type="checkbox" name="subscribe" id="sub-news">
+                            </label>
+                        </div>
+                        <p>Subscribe to News</p>
+                    </div>
+
+                    <input type="submit" value="Sign in" class="btn --purple --height-16 fade m-bot-32 m-top-12">
+
+                    <a href="#" class="center-align purple-text --hover">Forgot your password?</a>
+
+                    <div class="divider-bar m-bot-32 m-top-32"></div>
+
+                    <span class="center-align p-bot-16">
+                        <p class="inter-fnt">or continue with</p>
+                    </span>
+
+                    <div class="row justify">
+                        <a href="#" class="btn --mono --height-16 --sides-75 fade"><img src="assets/svg/google.svg"
+                                alt="google-svg"></a>
+                        <a href="#" class="btn --mono --height-16 --sides-75 fade"><img src="assets/svg/facebook.svg"
+                                alt="facebook-svg"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-us" class="p-bot-72">
+        <div class="contact-us-screen fade">
+            <div class="screen-container">
+                <div class="m-bot-32 title">
+                    <h3>Contact Us</h3>
                 </div>
+                <form action="#" class="contact-us-form">
+                    <div class="two-colum-grid --colum-gap-16">
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                        </label>
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                        </label>
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                        </label>
+                        <label class="p-bot-16">
+                            Input Label<br>
+                            <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                        </label>
 
-                <input type="submit" value="Sign in" class="btn--purple fade m-bot-32 m-top-12">
+                        <label class="checkbox --orange fade span-colums">
+                            Subscribe to News
+                            <input type="checkbox" name="subscribe" id="sub-news">
+                            <span class="checkmark"></span>
+                        </label>
 
-                <a href="#" class="center-align purple-text">Forgot your password?</a>
 
-                <div class="divider-bar m-bot-32 m-top-32"></div>
+                        <label class="p-bot-16 span-colums">
+                            Message<br>
+                            <textarea rows="2" cols="25" placeholder="  Placeholder Text"
+                                class="input-text-box --h-152 --corner-text"></textarea>
 
-                <span class="center-align p-bot-16">
-                    <p class="inter-fnt">or continue with</p>
-                </span>
+                        </label>
+                    </div>
+                    <input type="submit" value="Submit" class="btn --purple --height-16 --sides-48 --stretch-max fade">
 
-                <div class="row justify">
-                    <a href="#" class="btn--mono fade"><img src="assets/svg/google.svg" alt="google-svg"></a>
-                    <a href="#" class="btn--mono fade"><img src="assets/svg/facebook.svg" alt="facebook-svg"></a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-us-two" class="p-bot-72">
+        <div class="contact-us-two-screen fade">
+            <div class="screen-container">
+                <div class="info-section">
+                    <h4>contact Information</h4>
+                    <p>Here's some additional support text to help set user expectations</p>
+                    <span><img src="assets/svg/phone.svg" alt="phone-svg">
+                        <p>123-456-7890</p>
+                    </span>
+
+                     <span><img src="assets/svg/mail.svg" alt="mail-svg">
+                        <span>support@minerva.com</span>
+                    </span>
                 </div>
-            </form>
+                <div class="fields">
+                    <div class="m-bot-32 title">
+                        <h3>Contact Us</h3>
+                    </div>
+                    <form action="#" class="contact-us-form">
+                        <div class="two-colum-grid --colum-gap-16">
+                            <label class="p-bot-16">
+                                Input Label<br>
+                                <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                            </label>
+                            <label class="p-bot-16">
+                                Input Label<br>
+                                <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                            </label>
+                            <label class="p-bot-16">
+                                Input Label<br>
+                                <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                            </label>
+                            <label class="p-bot-16">
+                                Input Label<br>
+                                <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                            </label>
+
+                            <label class="p-bot-16 span-colums">
+                                Input Label<br>
+                                <input type="text" placeholder="  Placeholder Text" class="input-text-box">
+                            </label>
+
+                            <label class="p-bot-16 span-colums">
+                                Text Area Label<br>
+                                <textarea rows="2" cols="25" placeholder="  Enter Message"
+                                    class="input-text-box --h-152 --corner-text"></textarea>
+
+                            </label>
+                        </div>
+                        <input type="submit" value="Submit"
+                            class="btn --purple --height-16 --sides-48 --stretch-max fade">
+
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 

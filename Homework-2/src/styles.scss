@@ -1,3 +1,8 @@
+:root {
+  --screen-bg: white;
+  --text-bg: #fafafa;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -36,12 +41,10 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 
-
   font-family: "Roboto Condensed";
-  background-color: #fafafa;
+  background-color: var(--text-bg);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -81,8 +84,18 @@ select {
   }
 }
 
+.vh {
+  height: 1vh;
+  display: flex;
+  align-items: center;
+}
+
+.screen-container {
+  padding: 32px;
+}
+
 .sign-up-screen {
-  background-color: #ffffff;
+  background-color: var(--screen-bg);
   width: 428px;
   border-radius: 10px;
   box-shadow: 1.5em 1.5em 3em rgb(198, 198, 198);
@@ -91,12 +104,36 @@ select {
 .sign-up-form {
   display: flex;
   flex-direction: column;
-  padding: 32px;
+}
+
+.contact-us-screen {
+  background-color: var(--screen-bg);
+  width: 665px;
+  border-radius: 10px;
+  box-shadow: 1.5em 1.5em 3em rgb(198, 198, 198);
+}
+.contact-us-form {
+  display: flex;
+  flex-direction: column;
+  & .btn.--purple {
+    align-self: end;
+  }
 }
 
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.two-colum-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  &.--colum-gap-16 {
+    column-gap: 1rem;
+  }
+  & .span-colums {
+    grid-column: 1/3;
+  }
 }
 
 .justify {
@@ -115,9 +152,13 @@ select {
 .input-text-box {
   border: none;
   border-radius: 0.3rem;
-  background-color: #fafafa;
+  background-color: var(--text-bg);
   width: 100%;
   height: 2.5rem;
+  resize: none;
+  &.--h-152 {
+    height: 152px;
+  }
 }
 
 .divider-bar {
@@ -133,26 +174,108 @@ select {
   transition: all 0.2s ease-in;
 }
 
-.btn--mono {
-  border: 1px solid #ececee;
-  border-radius: 0.3rem;
-  padding: 12px 75px 8px 75px;
-  &:hover {
-    border-color: gray;
-    background-color: gray;
+.btn {
+  &.--mono {
+    border: 1px solid #ececee;
+    border-radius: 0.3rem;
+    &:hover {
+      border-color: black;
+      background-color: black;
+      & img {
+        -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+        filter: invert(100%);
+      }
+    }
+  }
+
+  &.--purple {
+    background-color: #651fff;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    border: 1px solid #651fff;
+    &:hover {
+      background-color: white;
+      color: #651fff;
+    }
+  }
+  &.--height-16 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  &.--sides-75 {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+  &.--sides-48 {
+    padding-left: 48px;
+    padding-right: 48px;
   }
 }
 
-.btn--purple {
-  background-color: #651fff;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  border: 1px solid #651fff;
-  padding: 12px 0 12px 0;
-  &:hover {
-    background-color: white;
-    color: #651fff;
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 0.25rem;
+  border: 1px solid #d3d3d3;
+  background-color: var(--screen-bg);
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  & .checkmark:after {
+    left: 6.3px;
+    top: 1.2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  & input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .checkmark {
+      background-color: blue;
+      border-color: #fd7918;
+    }
+    &:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+
+  &:hover input ~ .checkmark {
+    background-color: var(--text-bg);
+  }
+
+  &.--orange input:checked ~ .checkmark {
+    background-color: #fd7918;
+    border-color: #fd7918;
   }
 }
 
@@ -162,15 +285,14 @@ select {
   background: #555;
   position: relative;
   border-radius: 5px;
-  & label input[type="checkbox"] {
-    visibility: hidden;
-  }
 }
 
 .p-bot-16 {
   padding-bottom: 16px;
 }
-
+.p-bot-72 {
+  padding-bottom: 72px;
+}
 .m-top-12 {
   margin-top: 12px;
 }
@@ -181,13 +303,55 @@ select {
 .m-top-32 {
   margin-top: 32px;
 }
+
 .purple-text {
   color: #651fff;
-  &:hover {
+  &.--hover:hover {
     color: #9a6bff;
   }
 }
 
-.intern-fnt{
+.title {
+  font-size: 28px;
+}
+
+.intern-fnt {
   font-family: "Inter";
+}
+
+@media (max-width: 670px) {
+  .screen-container {
+    padding: 16px;
+  }
+  .sign-up-screen {
+    width: 343px;
+  }
+  .contact-us-screen {
+    width: 343px;
+  }
+  .contact-us-form .btn.--purple {
+    align-self: center;
+  }
+
+  .btn {
+    &.--height-16 {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    &.--sides-75 {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+    &.--stretch-max {
+      width: 100%;
+    }
+  }
+  .two-colum-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.hid {
+  display: none;
 }
