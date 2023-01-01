@@ -1,3 +1,9 @@
-body {
-  background-color: antiquewhite;
+$primary:       #2e8cad;
+
+.section-one {
+  background-image: url("assets/images/bg-1.png");
+}
+
+.--mitr {
+  font-family: "Mitr";
 }
