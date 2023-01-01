@@ -4,9 +4,16 @@ $primary: #2e8cad;
   background-image: url("assets/images/bg-1.png");
 }
 
+.circle {
+  border: .13rem solid #2e8cad;
+  width:24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
 #services {
-  box-shadow: 0 1rem 30rem rgba(33, 37,41, 0.175) inset !important;
-  background-color: black;
+  box-shadow: 0 1rem 30rem rgba(33, 37, 41, 0.175) inset !important;
 }
 
 #reviews {
@@ -28,10 +35,15 @@ footer {
   padding-bottom: 4rem;
   background-color: #47626b;
 }
-.--mitr {
-  font-family: 'Mitr';
-  font-weight: 600;
+.--mitr * {
+  font-family: "Mitr";
+  font-weight: bolder;
 }
+.--poppins * {
+  font-family: "Poppins";
+  font-weight:bolder;
+}
+
 .--white {
   color: white;
 }
