@@ -4,6 +4,39 @@ $primary:       #2e8cad;
   background-image: url("assets/images/bg-1.png");
 }
 
+#reviews{
+  background-color: #95D4EB;
+}
+
+.flex-row{
+  display: flex;
+}
+.starts{
+  display: flex;
+  justify-content: start;
+  & img {
+    padding-right: 5px;
+  }
+}
+
+footer{
+  padding-bottom: 4rem;
+  background-color: #47626B;
+}
 .--mitr {
-  font-family: "Mitr";
+  font-family: 'Mitr';
+  font-weight: semibold;
+}
+.--white{
+  color: white;
+}
+
+.w-33{
+  width: 32% !important;
+}
+.fs-14{
+  font-size: 14px;
+}
+.fs-48 *{
+  font-size: 48px !important;
 }
