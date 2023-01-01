@@ -1,17 +1,22 @@
-$primary:       #2e8cad;
+$primary: #2e8cad;
 
 .section-one {
   background-image: url("assets/images/bg-1.png");
 }
 
-#reviews{
-  background-color: #95D4EB;
+#services {
+  box-shadow: 0 1rem 30rem rgba(33, 37,41, 0.175) inset !important;
+  background-color: black;
 }
 
-.flex-row{
+#reviews {
+  background-color: #95d4eb;
+}
+
+.flex-row {
   display: flex;
 }
-.starts{
+.starts {
   display: flex;
   justify-content: start;
   & img {
@@ -19,24 +24,21 @@ $primary:       #2e8cad;
   }
 }
 
-footer{
+footer {
   padding-bottom: 4rem;
-  background-color: #47626B;
+  background-color: #47626b;
 }
 .--mitr {
   font-family: 'Mitr';
-  font-weight: semibold;
+  font-weight: 600;
 }
-.--white{
+.--white {
   color: white;
 }
 
-.w-33{
-  width: 32% !important;
-}
-.fs-14{
+.fs-14 {
   font-size: 14px;
 }
-.fs-48 *{
+.fs-48 * {
   font-size: 48px !important;
 }
