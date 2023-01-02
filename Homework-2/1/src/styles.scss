@@ -278,6 +278,21 @@ select {
   }
 }
 
+.slider {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  width: 30px;
+  height: 15px;
+  background: #555;
+  border-radius: 50px;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}
+
 .checkbox {
   display: block;
   position: relative;
@@ -310,7 +325,7 @@ select {
 
     &:checked ~ .checkmark {
       background-color: blue;
-      border-color: #fd7918;
+      border-color: blue;
     }
     &:checked ~ .checkmark:after {
       display: block;
@@ -325,14 +340,32 @@ select {
     background-color: #fd7918;
     border-color: #fd7918;
   }
-}
 
-.slider {
-  width: 30px;
-  height: 15px;
-  background: #555;
-  position: relative;
-  border-radius: 5px;
+  &.--slider {
+    & .slider:after {
+      left: 6.3px;
+      top: 1.2px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 1px 1px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    & input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 1;
+      width: 1;
+
+      &:checked ~ .slider:after {
+        background-color: red;
+        display: block;
+      }
+    }
+  }
 }
 
 .p-bot-16 {
@@ -378,18 +411,18 @@ select {
 }
 
 .gray-text {
-  color: #6E6C74;
+  color: #6e6c74;
 }
-.text-14{
+.text-14 {
   font-size: 14px;
 }
 
 .title {
   font-size: 28px;
-  &.--medium{
+  &.--medium {
     font-size: 18px;
   }
-  &.--small{
+  &.--small {
     font-size: 16px;
   }
 }
@@ -451,11 +484,11 @@ select {
   }
 }
 
-.product-icon{
+.product-icon {
   width: 40px;
   height: 40px;
 }
 
-.m-bot-4-child *{
+.m-bot-4-child * {
   margin-bottom: 4px;
 }
