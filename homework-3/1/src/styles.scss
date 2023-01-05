@@ -1,0 +1,67 @@
+.box {
+  width: 100%;
+  padding-bottom: 5rem;
+}
+
+
+#header {
+  grid-area: header;
+  background-color: black;
+}
+#menu {
+  grid-area: menu;
+  background-color: red;
+}
+#hero {
+  grid-area: hero;
+  background-color: rgb(11, 113, 201);
+}
+#main {
+  grid-area: main;
+  background-color: rgb(66, 66, 122);
+}
+#banner {
+  grid-area: banner;
+  background-color: rgb(227, 227, 102);
+}
+#extra {
+  grid-area: extra;
+  background-color: rgb(85, 171, 146);
+}
+#img {
+  grid-area: img;
+  background-color: rgb(165, 201, 201);
+}
+
+.c4-grid {
+  max-width: 100%;
+  display: grid;
+  grid-template-areas:
+    "header menu menu menu"
+      "hero hero hero hero"
+      "main main . img"
+      "main main . extra"
+      "banner banner banner banner";
+  // grid-template-columns: repeat(4, 1fr);
+  // grid-template-rows: repeat(5, auto);
+}
+
+//*Tablet view
+@media (max-width: 767px) {
+  .c4-grid {
+    grid-template-areas:
+      "header header header header"
+      "hero hero hero hero"
+      "menu main main main"
+      "menu banner banner banner"
+      "menu extra extra img";
+  }
+}
+//*Phone view
+@media (max-width: 480px) {
+  .c4-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
