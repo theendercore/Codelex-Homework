@@ -1,4 +1,6 @@
 # Homework for codelex
 
-[ ] - Lading Page 0 
-[ ] - Lading Page 1
+- [ ] - Homeworks 0 
+- [x] - Homeworks 1
+- [x] - Homeworks 2
+- [ ] - Homeworks 3
