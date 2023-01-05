@@ -280,69 +280,36 @@ select {
 
 .slider {
   position: absolute;
-  top: 0.25rem;
+  top: 0;
   left: 0;
-  width: 30px;
-  height: 15px;
-  background: #555;
+  height: 16px;
+  width: 32px;
   border-radius: 50px;
+  background-color: #e9e9e9;
+
   &:after {
-    content: "";
     position: absolute;
-    display: none;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50px;
+    content: "";
   }
 }
 
 .checkbox {
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 30px;
   margin-bottom: 12px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  & .checkmark:after {
-    left: 6.3px;
-    top: 1.2px;
-    width: 6px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 1px 1px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  & input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:checked ~ .checkmark {
-      background-color: blue;
-      border-color: blue;
-    }
-    &:checked ~ .checkmark:after {
-      display: block;
-    }
-  }
-
-  &:hover input ~ .checkmark {
-    background-color: var(--text-bg);
-  }
-
-  &.--orange input:checked ~ .checkmark {
-    background-color: #fd7918;
-    border-color: #fd7918;
-  }
-
-  &.--slider {
-    & .slider:after {
+  &.--orange {
+    & .checkmark:after {
       left: 6.3px;
       top: 1.2px;
       width: 6px;
@@ -353,18 +320,49 @@ select {
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
     }
+
     & input {
       position: absolute;
       opacity: 0;
       cursor: pointer;
-      height: 1;
-      width: 1;
+      height: 0;
+      width: 0;
 
-      &:checked ~ .slider:after {
-        background-color: red;
+      &:checked ~ .checkmark {
+        background-color: #fd7918;
+        border-color: #fd7918;
+      }
+      &:checked ~ .checkmark:after {
         display: block;
       }
     }
+  }
+
+  &.--slider {
+    padding-left: 45px;
+    & .slider:after {
+      left: 0;
+    }
+
+    & input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .slider {
+        background-color: orange;
+      }
+      &:checked ~ .slider:after {
+        left: 10;
+        display: flex;
+      }
+    }
+  }
+
+  &:hover input ~ .checkmark {
+    background-color: var(--text-bg);
   }
 }
 
@@ -455,6 +453,9 @@ select {
   }
   .contact-us-form .btn.--purple {
     align-self: center;
+  }
+  .checkout-screen {
+    width: 343px;
   }
 
   .btn {
