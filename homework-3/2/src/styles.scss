@@ -19,10 +19,14 @@ body{
   width: 82%;
 }
 
+
+//!columns 2 grid
 .c2-g{
   // max-width: 82%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
 }
 .span-c{
   grid-column: 1/3;
