@@ -16,28 +16,32 @@
 
 
     <header id="header">
-        <nav>
-            <a href="#works">Works</a>
-            <a href="#">Blog</a>
-            <a href="#footer">Contact</a>
-        </nav>
+        <div class="nav">
+            <a href="#works" class="nav__item">Works</a>
+            <a href="#" class="nav__item">Blog</a>
+            <a href="#footer" class="nav__item">Contact</a>
+            <div class="nav__burger"></div>
+        </div>
     </header>
 
     <section id="hero" class="">
         <div class="cont c2-g">
             <div class="info__card">
-                <div class="info__card-tite">
+                <div class="info__tite">
                     <h1>
                         Hi, I am John,
                         Creative Technologist
                     </h1>
                 </div>
-                <div class="info__card-text">
+                <div class="info__text">
                     <p>
                         Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
                         consequat
                         duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
                     </p>
+                </div>
+                <div class="info_btn">
+                    <a href="#">Download Resume</a>
                 </div>
             </div>
 
@@ -148,7 +152,18 @@
     </div>
     </section>
 
-    <footer id="footer"></footer>
+    <footer id="footer" class="footer">
+        <div class="footer__icons">
+            <a href="#"><img src="assets/svgs/fb.svg" alt="facebook"></a>
+            <a href="#"><img src="assets/svgs/insta.svg" alt="instagram"></a>
+            <a href="#"><img src="assets/svgs/twt.svg" alt="twitter"></a>
+            <a href="#"><img src="assets/svgs/Linkedin.svg" alt="linked-in"></a>
+        </div>
+        <br>
+        <div class="footer_copyright">
+            <span>Copyright ©2020 All rights reserved </span>
+        </div>
+    </footer>
 
 
     <script src="/scripts.js"></script>
