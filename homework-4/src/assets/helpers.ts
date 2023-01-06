@@ -28,4 +28,5 @@ export function test(...args: any) {
       log("test " + (i - 1) + ": ", func(args[i]));
     }
   }
+  br()
 }

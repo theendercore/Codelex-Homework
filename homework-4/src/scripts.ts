@@ -1,4 +1,4 @@
-import { log, br, test } from "./assets/helpers";
+import { test } from "./assets/helpers";
 
 /*
     ! IMPORTANT 
@@ -15,71 +15,43 @@ import { log, br, test } from "./assets/helpers";
 const sum = (a: number, b: number): number => {
   return a + b;
 };
-log("Function - ", "sum");
-log("test 1: ", sum(1, 3));
-log("test 2: ", sum(1, 10));
-log("test 3: ", sum(99, 1));
-br();
+test(sum, "sum", [1, 3], [1, 10], [99, 1]);
+
 //2
 const myType = (val: any): string => {
   return typeof val;
 };
-log("Function - ", "myType");
-log("test 1: ", myType(1));
-log("test 2: ", myType(false));
-log("test 3: ", myType({}));
-log("test 4: ", myType(null));
-log("test 5: ", myType("string"));
-log("test 6: ", myType(["array"]));
-br();
+test(myType, "myType", 1, false, {}, null, "string", ["array"]);
+
 //3
 const equal = (a: any, b: any): boolean => {
   return a === b;
 };
-log("Function - ", "equal");
-log("test 1: ", equal(2, 3));
-log("test 2: ", equal(3, 3));
-log("test 3: ", equal(1, "1"));
-log("test 4: ", equal("10", "10"));
-br();
+test(equal, "equal", [2, 3], [3, 3], [1, "1"], ["10", "10"]);
+
 //4
 const nthChar = (a: string, b: number): string => {
   return a[b - 1];
 };
-log("Function - ", "nthChar");
-log("test 1: ", nthChar("abcd", 1));
-log("test 2: ", nthChar("zyxbwpl", 5));
-log("test 3: ", nthChar("gfedcba", 3));
-br();
+test(nthChar, "nthChar", ["abcd", 1], ["zyxbwpl", 5], ["gfedcba", 3]);
+
 //5
 const lastThree = (a: string): string => {
   return a.slice(-3);
 };
-log("Function - ", "lastThree");
-log("test 1: ", lastThree("abcdefg"));
-log("test 2: ", lastThree("1234"));
-log("test 3: ", lastThree("fgedcba"));
-br();
+test(lastThree, "lastThree", "abcdefg", "1234", "fgedcba");
 
 //6
 const lastThreeRemoved = (a: string): string => {
   return a.slice(0, -3);
 };
-log("Function - ", "lastThreeRemoved");
-log("test 1: ", lastThreeRemoved("abcdefg"));
-log("test 2: ", lastThreeRemoved("1234"));
-log("test 3: ", lastThreeRemoved("fgedcba"));
-br();
+test(lastThree, "lastThree", "abcdefg", "1234", "fgedcba");
 
 //7
-const bProcOfA = (a: number, b: number): number => {
+const bPercentOfA = (a: number, b: number): number => {
   return (b * 100) / a;
 };
-log("Function - ", "bProcOfA");
-log("test 1: ", bProcOfA(100, 50));
-log("test 2: ", bProcOfA(10, 1));
-log("test 3: ", bProcOfA(500, 25));
-br();
+test(bPercentOfA, "bPercentOfA", [100, 50], [10, 1], [500, 25]);
 
 //8
 const mathFormula = (
@@ -92,75 +64,45 @@ const mathFormula = (
 ): number => {
   return Math.pow(((a + b - c) * d) / e, f);
 };
-log("Function - ", "mathFormula");
-log("test 1: ", mathFormula(6, 5, 4, 3, 2, 1));
-log("test 2: ", mathFormula(6, 2, 1, 4, 2, 3));
-log("test 3: ", mathFormula(2, 3, 6, 4, 2, 3));
-br();
+test(
+  mathFormula,
+  "mathFormula",
+  [6, 5, 4, 3, 2, 1],
+  [6, 2, 1, 4, 2, 3],
+  [2, 3, 6, 4, 2, 3]
+);
 
 //9
 const isEven = (a: number): Boolean => {
   return Boolean(a & 1);
 };
-log("Function - ", "isEven");
-log("test 1: ", isEven(10));
-log("test 2: ", isEven(-4));
-log("test 3: ", isEven(5));
-log("test 4: ", isEven(-111));
-br();
+test(isEven, "isEven", 10, -4, 5, -111);
 
 //10
 const stringRepeating = (a: string, b: string): number => {
   return b.split(a).length - 1;
 };
-log("Function - ", "stringRepeating");
-log(
-  "test 1: ",
-  stringRepeating(
-    "m",
-    "how many times does the character occur in this sentence?"
-  )
+let textIn = "how many times does the character occur in this sentence?";
+test(
+  stringRepeating,
+  "stringRepeating",
+  ["m", textIn],
+  ["h", textIn],
+  ["?", textIn],
+  ["z", textIn]
 );
-log(
-  "test 2: ",
-  stringRepeating(
-    "h",
-    "how many times does the character occur in this sentence?"
-  )
-);
-log(
-  "test 3: ",
-  stringRepeating(
-    "?",
-    "how many times does the character occur in this sentence?"
-  )
-);
-log(
-  "test 4: ",
-  stringRepeating(
-    "z",
-    "how many times does the character occur in this sentence?"
-  )
-);
-br();
 
 //11
 const isWhole = (a: number): boolean => {
   return Number.isInteger(a);
 };
-log("Function - ", "isWhole");
-log("test 1: ", isWhole(4));
-log("test 2: ", isWhole(1.123));
-log("test 3: ", isWhole(1048));
-log("test 4: ", isWhole(10.48));
-br();
+test(isWhole, "isWhole", 4, 1.123, 1048, 10.48);
 
 //12
 const mathFormulaTwo = (a: number, b: number): number => {
   return a < b ? a / b : a * b;
 };
 test(mathFormulaTwo, "mathFormulaTwo", [10, 100], [90, 45], [8, 20], [2, 0.5]);
-br();
 
 //13
 const stringMagic = (a: string, b: string): string => {
@@ -174,14 +116,12 @@ test(
   ["Java", "script"],
   [" think, therefore I am", "I"]
 );
-br();
 
 //14
 const roundByTwo = (a: number): number => {
   return Number(a.toFixed(2));
 };
 test(roundByTwo, "roundByTwo", 2.12397, 3.136, 1.12397, 26.1379);
-br();
 
 //15
 const numberToDigits = (a: number): number[] => {
@@ -191,7 +131,6 @@ const numberToDigits = (a: number): number[] => {
     .map((b) => Number(b));
 };
 test(numberToDigits, "numberToDigits", 10, 931, 193278);
-br();
 
 //16
 const stringDarkMagic = (a: string, b: string): string => {
@@ -208,7 +147,6 @@ test(
   ["c%ountry", "edis"],
   ["down", "nw%ot"]
 );
-br();
 
 //17
 const isItPrime = (a: number): number => {
@@ -227,7 +165,6 @@ const isItPrime = (a: number): number => {
   return a;
 };
 test(isItPrime, "isItPrime", 38, 7, 115, 2000);
-br();
 
 //18
 const isItDivis = (a: number, b: number): number => {
@@ -241,7 +178,6 @@ const isItDivis = (a: number, b: number): number => {
   return a;
 };
 test(isItDivis, "isItDivis", [1, 23], [23, 23], [7, 3], [-5, 7]);
-br();
 
 //19
 const stringMagicTwo = (a: string, b: string): string => {
@@ -254,7 +190,6 @@ test(
   ["abcde", "$"],
   ["zxyzxyzxyzxyzxyz", "w"]
 );
-br();
 
 //20
 const incASCII = (a: string): string => {
@@ -264,4 +199,3 @@ const incASCII = (a: string): string => {
     .join("");
 };
 test(incASCII, "incASCII", "bnchmf", "bgddrd", "sdrshmf");
-br();
