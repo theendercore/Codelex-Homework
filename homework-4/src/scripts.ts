@@ -1,11 +1,12 @@
-function log(args: any) {
-  console.log(args);
-}
+import { log, br } from "./helper-func";
+
 
 const sum = (a: number, b: number): number => {
   return a + b;
 };
-log(sum(1,3))
-log(sum(1,10))
-log(sum(99,1))
-console.log("Ready for coding");
+log("Function - ", "Sum");
+log("Sum: ", sum(1, 3));
+log("Sum: ", sum(1, 10));
+log("Sum: ", sum(99, 1));
+br();
+
