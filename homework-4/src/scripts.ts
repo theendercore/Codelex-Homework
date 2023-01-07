@@ -384,7 +384,7 @@ test(
 );
 
 //35
-interface obj {
+type obj = {
   a: number;
   b: number;
 }
@@ -439,7 +439,7 @@ const arrayFromMinMax = (min: number, max: number): number[] => {
 test(arrayFromMinMax, "arrayFromMinMax", [2, 10], [1, 3], [-5, 5], [2, 7]);
 
 //39
-interface WordArchive {
+type WordArchive = {
   [Key: string]: string[];
 }
 
@@ -472,3 +472,14 @@ test(
   [["a", "b"], 2],
   [[null, false], 11]
 );
+
+//41
+//42
+//43
+//44
+//45
+//46
+//47
+//48
+//49
+//50
