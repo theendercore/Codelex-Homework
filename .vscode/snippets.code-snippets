@@ -11,5 +11,11 @@
     "prefix": "test",
     "body": ["const $1 = ($2)$3 => {$4};\ntest($1, \"$1\", $5)"],
     "description": "Test func snipet"
+  },
+   "test.func.dic": {
+    "scope": "javascript,typescript",
+    "prefix": "testd",
+    "body": ["const $1 = (a: Dictionary,$2):Dictionary => {return {}};\ntest($1, \"$1\", $5)"],
+    "description": "Test func snipet for dictionarys"
   }
 }

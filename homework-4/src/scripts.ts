@@ -610,12 +610,144 @@ test(
 );
 
 //51
+const removeValueB = (a: Dictionary): Dictionary => {
+  delete a["b"];
+  return a;
+};
+test(
+  removeValueB,
+  "removeValueB",
+  { a: 1, b: 7, c: 3 },
+  { b: 0, a: 7, d: 8 },
+  { e: 6, f: 4, b: 5, a: 3 }
+);
+
 //52
+const mergeObjs = (a: Dictionary, b: Dictionary): Dictionary => {
+  b["d"] = b["b"];
+  delete b["b"];
+  return { ...a, ...b };
+};
+test(
+  mergeObjs,
+  "mergeObjs",
+  [
+    { a: 1, b: 2 },
+    { c: 3, b: 4, e: 5 },
+  ],
+  [
+    { a: 5, b: 4 },
+    { c: 3, b: 1, e: 2 },
+  ]
+);
+
 //53
+const multiplyObjVal = (a: Dictionary, b: number): Dictionary => {
+  let d: Dictionary = {};
+  getKeyFromObj(a).forEach((e) => {
+    d[e] = Number(a[e]) * b;
+  });
+  return d;
+};
+test(
+  multiplyObjVal,
+  "multiplyObjVal",
+  [{ a: 1, b: 2, c: 3 }, 3],
+  [{ j: 9, i: 2, x: 3, z: 4 }, 10],
+  [{ w: 15, x: 22, y: 13 }, 6]
+);
+
 //54
+const swapKeysAndValues = (a: Dictionary): Dictionary => {
+  let d: Dictionary = {};
+  getKeyFromObj(a).forEach((e) => {
+    d[a[e]] = e;
+  });
+  return d;
+};
+test(
+  swapKeysAndValues,
+  "swapKeysAndValues",
+  { z: "a", y: "b", x: "c", w: "d" },
+  { 2: "a", 4: "b", 6: "c", 8: "d" },
+  { a: 1, z: 24 }
+);
+
 //55
+const removeEmptyObj = (a: Dictionary): Dictionary => {
+  let d: Dictionary = {};
+  getKeyFromObj(a).forEach((e) => {
+    d[e] = a[e].toString().trim() !== "" ? a[e] : null;
+  });
+  return d;
+};
+test(
+  removeEmptyObj,
+  "removeEmptyObj",
+  { a: "a", b: "b", c: "" },
+  { a: "", b: "b", c: " ", d: "d" },
+  { a: "a", b: "b ", c: " ", d: "" }
+);
+
 //56
+const personReader = (a: Dictionary): Dictionary => {
+  const values = ["fn", "ln", "size", "weight"];
+  let d: Dictionary = {};
+  values.forEach((e) => {
+    if (a[e] !== undefined) {
+      d[e] = a[e] + (e === "size" ? "cm" : e === "weight" ? "kg" : "");
+    }
+  });
+  return d;
+};
+test(
+  personReader,
+  "personReader",
+  {
+    fn: "Lisa",
+    ln: "Müller",
+    age: 17,
+    size: 175,
+    weight: 67,
+  },
+  {
+    fn: "Martin",
+    ln: "Harper",
+    age: 26,
+    email: "martin.harper@test.de",
+    weight: 102,
+  },
+  { fn: "Andrew", ln: "Harper", age: 81, size: 175, weight: 71 },
+  { fn: "Matthew", ln: "Müller", age: 19, email: "matthew@mueller.de" }
+);
+
 //57
+const addContinent = (a: Dictionary[], b: string): Dictionary[] => {
+  let da: Dictionary[] = [...a];
+  da.map((e) => {
+    e["continent"] = b;
+  });
+  return da;
+};
+test(
+  addContinent,
+  "addContinent",
+  [
+    [
+      { city: "Tokyo", country: "Japan" },
+      { city: "Bangkok", country: "Thailand" },
+    ],
+    "Asia",
+  ],
+  [
+    [
+      { city: "Stockholm", country: "Sweden" },
+      { city: "Paris", country: "France" },
+    ],
+    "Europe",
+  ]
+);
+
 //58
 //59
 //60
