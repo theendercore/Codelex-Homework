@@ -1,4 +1,4 @@
-import { test } from "./assets/helpers";
+import { log, test } from "./assets/helpers";
 
 let sArray = "SingleArray";
 /*
@@ -321,4 +321,154 @@ test(
   "sortAlphabetically",
   [["b", "c", "d", "a"], sArray],
   [["z", "c", "d", "a", "y", "a", "w"], sArray]
+);
+
+//31
+const arrayAverage = (a: number[]): number => {
+  return a.reduce((a, b) => a + b) / a.length;
+};
+test(
+  arrayAverage,
+  "arrayAverage",
+  [[10, 100, 40], sArray],
+  [[10, 100, 1000], sArray],
+  [[-50, 0, 50, 200], sArray]
+);
+
+//32
+const longestStrInArray = (a: string[]): string => {
+  return a.sort((a, b) => b.length - a.length)[0];
+};
+test(
+  longestStrInArray,
+  "longestStrInArray",
+  [["help", "me"], sArray],
+  [["I", "need", "candy"], sArray]
+);
+
+//33
+const isArraySame = (a: any[]): boolean => {
+  console.log([...new Set(a)]);
+
+  return [...new Set(a)].length < 2 ? true : false;
+};
+test(
+  isArraySame,
+  "isArraySame",
+  [[true, true, true, true], sArray],
+  [["test", "test", "test"], sArray],
+  [[1, 1, 1, 2], sArray],
+  [["10", 10, 10, 10], sArray]
+);
+
+//34
+const addArrays = (...arrays: any[]): any[] => {
+  return arrays.reduce((a: any, b: any) => a.concat(b));
+};
+test(
+  addArrays,
+  "addArrays",
+  [
+    [1, 2, 3],
+    [4, 5, 6],
+  ],
+  [
+    ["a", "b", "c"],
+    [4, 5, 6],
+  ],
+  [
+    [true, true],
+    [1, 2],
+    ["a", "b"],
+  ]
+);
+
+//35
+interface obj {
+  a: number;
+  b: number;
+}
+const sortObjArray = (a: obj[]) => {
+  console.log();
+  return a.sort((a: obj, b: obj) => a.b - b.b);
+};
+test(
+  sortObjArray,
+  "sortObjArray",
+  [[[{ a: 1, b: 2 } as obj, { a: 5, b: 4 } as obj]], sArray],
+  [[{ a: 2, b: 10 } as obj, { a: 5, b: 4 } as obj], sArray],
+  [[{ a: 1, b: 7 } as obj, { a: 2, b: 1 } as obj], sArray]
+);
+
+//36
+const arrayMagic = (a: number[], b: number[]): number[] => {
+  return [...new Set(a.concat(b))].sort((a, b) => a - b);
+};
+test(
+  arrayMagic,
+  "arrayMagic",
+  [
+    [1, 2, 3],
+    [3, 4, 5],
+  ],
+  [
+    [-10, 22, 333, 42],
+    [-11, 5, 22, 41, 42],
+  ]
+);
+
+//37
+const mathFormulaFour = (a: number[], b: number): number => {
+  return a.reduce((x, y) => {
+    y > b ? (x += y) : x;
+    return x;
+  }, 0);
+};
+test(
+  mathFormulaFour,
+  "mathFormulaFour",
+  [[1, 2, 3, 4, 5, 6, 7], 2],
+  [[-10, -11, -3, 1, -4], -3],
+  [[78, 99, 100, 101, 401], 99]
+);
+
+//38
+const arrayFromMinMax = (min: number, max: number): number[] => {
+  return Array.from({ length: max - min + 1 }, (_, i) => i + min);
+};
+test(arrayFromMinMax, "arrayFromMinMax", [2, 10], [1, 3], [-5, 5], [2, 7]);
+
+//39
+interface WordArchive {
+  [Key: string]: string[];
+}
+
+const objArrayMagic = (a: string[]): WordArchive => {
+  return a.reduce((a: WordArchive, b: string) => {
+    return {
+      ...a,
+      [b.toLowerCase().charAt(0)]: (a[b.toLowerCase().charAt(0)] || []).concat(
+        b
+      ),
+    };
+  }, {});
+};
+test(
+  objArrayMagic,
+  "objArrayMagic",
+  [["Alf", "Alice", "Ben"], sArray],
+  [["Ant", "Bear", "Bird"], sArray],
+  [["Berlin", "Paris", "Prague"], sArray]
+);
+
+//40
+const arrayMagicTwo = (a: any[], b: number): any[] => {
+  return [b > 5 ? b : 0].concat(a);
+};
+test(
+  arrayMagicTwo,
+  "arrayMagicTwo",
+  [[1, 2, 3], 6],
+  [["a", "b"], 2],
+  [[null, false], 11]
 );

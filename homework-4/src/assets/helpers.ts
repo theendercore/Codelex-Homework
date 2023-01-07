@@ -4,7 +4,7 @@ export function br() {
 
 export function log(string: string, value: any) {
   document.getElementById("console").innerHTML +=
-    string + '<span class="val">' + value + "</span>";
+    string + '<span class="val">' + JSON.stringify(value) + "</span>";
   br();
   console.log(string + value);
 }
