@@ -1,4 +1,4 @@
-import { log, test } from "./assets/helpers";
+import { test } from "./assets/helpers";
 
 let sArray = "SingleArray";
 /*
@@ -348,8 +348,6 @@ test(
 
 //33
 const isArraySame = (a: any[]): boolean => {
-  console.log([...new Set(a)]);
-
   return [...new Set(a)].length < 2 ? true : false;
 };
 test(
@@ -387,9 +385,8 @@ test(
 type obj = {
   a: number;
   b: number;
-}
+};
 const sortObjArray = (a: obj[]) => {
-  console.log();
   return a.sort((a: obj, b: obj) => a.b - b.b);
 };
 test(
@@ -441,7 +438,7 @@ test(arrayFromMinMax, "arrayFromMinMax", [2, 10], [1, 3], [-5, 5], [2, 7]);
 //39
 type WordArchive = {
   [Key: string]: string[];
-}
+};
 
 const objArrayMagic = (a: string[]): WordArchive => {
   return a.reduce((a: WordArchive, b: string) => {
@@ -474,12 +471,161 @@ test(
 );
 
 //41
+const everyThirdElemArray = (a: number[], b: number): number[] => {
+  return a.filter((i) => i % b == 0);
+};
+test(
+  everyThirdElemArray,
+  "everyThirdElemArray",
+  [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3],
+  [[10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5],
+  [[7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2]
+);
+
 //42
+type GeoLocation = {
+  country: string;
+  continent: string;
+};
+const findCountry = (a: GeoLocation): string => {
+  return a.country;
+};
+test(
+  findCountry,
+  "findCountry",
+  { continent: "Asia", country: "Japan" } as GeoLocation,
+  { country: "Sweden", continent: "Europe" } as GeoLocation
+);
+
 //43
+interface prop {
+  "prop-2": any;
+}
+const findPropTwo = (a: prop): number | string => {
+  return a["prop-2"];
+};
+test(
+  findPropTwo,
+  "findPropTwo",
+  { one: 1, "prop-2": 2 },
+  { "prop-2": "two", prop: "test" }
+);
+
 //44
+const findFromGeoLocation = (
+  a: GeoLocation,
+  b: "country" | "continent"
+): string => {
+  return a[b];
+};
+test(
+  findFromGeoLocation,
+  "findFromGeoLocation",
+  [{ continent: "Asia", country: "Japan" }, "continent"],
+  [{ country: "Sweden", continent: "Europe" }, "country"]
+);
+
 //45
+type char = string | number;
+interface Dictionary {
+  [key: char]: char;
+}
+const getFromDictionary = (a: Dictionary, b: char): boolean => {
+  return a[b] !== undefined ? true : false;
+};
+test(
+  getFromDictionary,
+  "getFromDictionary",
+  [{ a: 1, b: 2, c: 3 }, "b"],
+  [{ x: "a", y: "b", z: "c" }, "a"],
+  [{ x: "a", y: "b", z: "c" }, "z"]
+);
+
 //46
+const toKeyObj = (a: string): Dictionary => {
+  return { key: a } as Dictionary;
+};
+test(toKeyObj, "toKeyObj", "a", "z", "b");
+
 //47
+
+const keyAndValueToObj = (a: char, b: string): Dictionary => {
+  return { [a]: b };
+};
+test(keyAndValueToObj, "keyAndValueToObj", ["a", "b"], ["z", "x"], ["b", "w"]);
+
 //48
+const mergeArraysToDictionary = (
+  a: string[] | number[],
+  b: string[] | number[]
+): Dictionary => {
+  let d: Dictionary = {};
+  a.forEach((e: char, i: number, a: char[]) => {
+    d[e] = b[i];
+  });
+  return d;
+};
+test(
+  mergeArraysToDictionary,
+  "mergeArraysToDictionary",
+  [
+    ["a", "b", "c"],
+    [1, 2, 3],
+  ],
+  [
+    ["w", "x", "y", "z"],
+    [10, 9, 5, 2],
+  ],
+  [
+    [1, "b"],
+    ["a", 2],
+  ]
+);
+
 //49
+const getKeyFromObj = (a: Dictionary): char[] => {
+  return Object.keys(a);
+};
+test(
+  getKeyFromObj,
+  "getKeyFromObj",
+  { a: 1, b: 2, c: 3 },
+  { j: 9, i: 2, x: 3, z: 4 },
+  { w: 15, x: 22, y: 13 }
+);
+
 //50
+
+const sumObjValues = (a: Dictionary): number => {
+  let sum = 0;
+  getKeyFromObj(a).forEach((e: char) => (sum += Number(a[e]).valueOf()));
+  return sum;
+};
+test(
+  sumObjValues,
+  "sumObjValues",
+  { a: 1, b: 2, c: 3 },
+  { j: 9, i: 2, x: 3, z: 4 },
+  { w: 15, x: 22, y: 13 }
+);
+
+//51
+//52
+//53
+//54
+//55
+//56
+//57
+//58
+//59
+//60
+
+//61
+//62
+//63
+//64
+//65
+//66
+//67
+//68
+//69
