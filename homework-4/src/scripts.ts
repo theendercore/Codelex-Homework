@@ -199,3 +199,21 @@ const incASCII = (a: string): string => {
     .join("");
 };
 test(incASCII, "incASCII", "bnchmf", "bgddrd", "sdrshmf");
+
+//21
+const run = (a:string):string => {return a};
+test(run, "run", "a")
+
+//22
+
+
+//23
+
+
+//24
+//25
+//26
+//27
+//28
+//29
+//30
