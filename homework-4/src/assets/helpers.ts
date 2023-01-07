@@ -6,7 +6,7 @@ export function log(string: string, value: any) {
   document.getElementById("console").innerHTML +=
     string + '<span class="val">' + JSON.stringify(value) + "</span>";
   br();
-  console.log(string + value);
+  console.log(string + JSON.stringify(value));
 }
 
 /*
