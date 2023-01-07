@@ -1,5 +1,6 @@
 import { test } from "./assets/helpers";
 
+let sArray = "SingleArray";
 /*
     ! IMPORTANT 
     Im very lazy and don't want to write a million lines of "console.log()"
@@ -201,19 +202,123 @@ const incASCII = (a: string): string => {
 test(incASCII, "incASCII", "bnchmf", "bgddrd", "sdrshmf");
 
 //21
-const run = (a:string):string => {return a};
-test(run, "run", "a")
+const returnIndexed = (a: number[], b: number): number => {
+  return a[b - 1];
+};
+test(
+  returnIndexed,
+  "returnIndexed",
+  [[1, 2, 3, 4, 5], 3],
+  [[10, 9, 8, 7, 6], 5],
+  [[7, 2, 1, 6, 3], 1]
+);
 
 //22
-
+const removeFirstThreeArray = (a: number[]): number[] => {
+  return a.slice(3);
+};
+test(
+  removeFirstThreeArray,
+  "removeFirstThreeArray",
+  [[1, 2, 3, 4], sArray],
+  [[5, 4, 3, 2, 1, 0], sArray],
+  [[99, 1, 1], sArray]
+);
 
 //23
-
+const lastThreeArray = (a: number[]): number[] => {
+  return a.slice(-3);
+};
+test(
+  lastThreeArray,
+  "lastThreeArray",
+  [[1, 2, 3, 4], sArray],
+  [[5, 4, 3, 2, 1, 0], sArray],
+  [[99, 1, 1], sArray]
+);
 
 //24
+const firstThreeArray = (a: number[]): number[] => {
+  return a.slice(0, 3);
+};
+test(
+  firstThreeArray,
+  "firstThreeArray",
+  [[1, 2, 3, 4], sArray],
+  [[5, 4, 3, 2, 1, 0], sArray],
+  [[99, 1, 1], sArray]
+);
+
 //25
+const lastNElements = (a: number[], b: number): number[] => {
+  return a.slice(b * -1);
+};
+test(
+  lastNElements,
+  "lastNElements",
+  [[1, 2, 3, 4, 5], 2],
+  [[1, 2, 3], 6],
+  [[1, 2, 3, 4, 5, 6, 7, 8], 3]
+);
+
 //26
+const cleanFromB = (a: any[], b: any): any[] => {
+  return a.filter((c: any) => c !== b);
+};
+test(
+  cleanFromB,
+  "cleanFromB",
+  [[1, 2, 3], 2],
+  [[1, 2, "2"], "2"],
+  [[false, "2", 1], false],
+  [[1, 2, "2", 1], 1]
+);
+
 //27
+const arrayLength = (a: number[]): number => {
+  return a.length;
+};
+test(
+  arrayLength,
+  "arrayLength",
+  [[1, 2, 2, 4], sArray],
+  [[9, 9, 9], sArray],
+  [[4, 3, 2, 1, 0], sArray]
+);
+
 //28
+const negativeNumberCount = (a: number[]): number => {
+  return a.reduce((a, b) => {
+    b < 0 ? a++ : a;
+    return a;
+  }, 0);
+};
+test(
+  negativeNumberCount,
+  "negativeNumberCount",
+  [[1, -2, 2, -4], sArray],
+  [[0, 9, 1], sArray],
+  [[4, -3, 2, 1, 0], sArray]
+);
+
 //29
+const sortDescending = (a: number[]): number[] => {
+  return a.sort((a, b) => b - a);
+};
+test(
+  sortDescending,
+  "sortDescending",
+  [[1, 2, 3], sArray],
+  [[4, 2, 3, 1], sArray]
+);
+
 //30
+const sortAlphabetically = (a: string[]): string[] => {
+  return a.sort((a, b) => a.localeCompare(b));
+};
+test(
+  sortAlphabetically,
+  "sortAlphabetically",
+  [["b", "c", "d", "a"], sArray],
+  [["z", "c", "d", "a", "y", "a", "w"], sArray]
+);

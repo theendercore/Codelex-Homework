@@ -23,10 +23,14 @@ export function test(...args: any) {
   log("Function - ", args[1]);
   for (let i = 2; i < args.length; i++) {
     if (Array.isArray(args[i])) {
-      log("test " + (i - 1) + ": ", func(...args[i]));
+      if (args[i][1]  === "SingleArray") {
+        log("test " + (i - 1) + ": ", func(args[i][0]));
+      } else {
+        log("test " + (i - 1) + ": ", func(...args[i]));
+      }
     } else {
       log("test " + (i - 1) + ": ", func(args[i]));
     }
   }
-  br()
+  br();
 }
