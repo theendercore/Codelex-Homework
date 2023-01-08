@@ -1,6 +1,7 @@
 import { test } from "./assets/helpers";
 
 let sArray = "SingleArray";
+
 /*
     ! IMPORTANT 
     Im very lazy and don't want to write a million lines of "console.log()"
@@ -25,7 +26,7 @@ const myType = (val: any): string => {
 test(myType, "myType", 1, false, {}, null, "string", ["array"]);
 
 //3
-const equal = (a: any, b: any): boolean => {
+const equal = (a: number | string, b: number | string): boolean => {
   return a === b;
 };
 test(equal, "equal", [2, 3], [3, 3], [1, "1"], ["10", "10"]);
@@ -182,7 +183,15 @@ test(isItDivis, "isItDivis", [1, 23], [23, 23], [7, 3], [-5, 7]);
 
 //19
 const stringMagicTwo = (a: string, b: string): string => {
-  return a.match(/[\s\S]{1,3}/g).join(b);
+  return a
+    .split("")
+    .reverse()
+    .join("")
+    .match(/[\s\S]{1,3}/g)
+    .join(b)
+    .split("")
+    .reverse()
+    .join("");
 };
 test(
   stringMagicTwo,
@@ -502,7 +511,7 @@ interface prop {
   "prop-2": any;
 }
 const findPropTwo = (a: prop): number | string => {
-  return a["prop-2"];
+  return a["prop-2"] !== undefined ? a["prop-2"] : "no value";
 };
 test(
   findPropTwo,
@@ -749,15 +758,121 @@ test(
 );
 
 //58
+const arrayToObject = (a: number[]): Dictionary => {
+  return a.reduce((a: Dictionary, b: number) => {
+    return {
+      ...a,
+      [b]: ((a[b] || 0) as number) + 1,
+    };
+  }, {});
+};
+test(
+  arrayToObject,
+  "arrayToObject",
+  [[1, 2, 2, 3], sArray],
+  [[9, 9, 9, 99], sArray],
+  [[4, 3, 2, 1], sArray]
+);
+
 //59
+const compareDates = (a: Date, b: Date): boolean => {
+  return +a === +b;
+};
+test(
+  compareDates,
+  "compareDates",
+  [new Date("2000/01/01 08:00:00"), new Date("2000/01/01 08:45:00")],
+  [new Date("2000/01/01 08:00:00"), new Date("2000/01/01 08:00:00")],
+  [new Date("2001/01/01 08:00:00"), new Date("2000/01/01 08:00:00")]
+);
+
 //60
+const dayBetweenDates = (a: Date, b: Date): number => {
+  return Math.abs(+a - +b) / 86400000;
+};
+test(
+  dayBetweenDates,
+  "dayInbetweenDates",
+  [new Date("2020-06-11"), new Date("2020-06-01")],
+  [new Date("2000-01-01"), new Date("2020-06-01")]
+);
 
 //61
+const sameDay = (a: Date, b: Date): boolean => {
+  return a.getDay() === b.getDay();
+};
+test(
+  sameDay,
+  "sameDay",
+  [new Date("2000/01/01"), new Date("2000/01/01")],
+  [new Date("2000/01/01"), new Date("2000/01/02")],
+  [new Date("2001/01/01"), new Date("2000/01/01")],
+  [new Date("2000/11/01"), new Date("2000/01/01")]
+);
+
 //62
+const combineArrays = (a: number[], b: number[]): number[] => {
+  return [...a, ...b];
+};
+test(
+  combineArrays,
+  "combineArrays",
+  [
+    [1, 2],
+    [3, 4],
+  ],
+  [
+    [1, 2],
+    [3, 4, 5, 6],
+  ]
+);
+
 //63
+const addStringToArray = (a: string[], b: string): string[] => {
+  return [...a, b];
+};
+test(addStringToArray, "addStringToArray", [
+  ["Apple", "Orange", "Banana"],
+  "Kiwi",
+]);
+
 //64
+const addStringInStartArray = (a: string[], b: string): string[] => {
+  return [b, ...a];
+};
+test(addStringInStartArray, "addStringInStartArray", [
+  ["Apple", "Orange", "Banana"],
+  "Kiwi",
+]);
+
 //65
+const mergeObjects = (a: Dictionary, b: Dictionary): Dictionary => {
+  return { ...a, ...b };
+};
+test(
+  mergeObjects,
+  "mergeObjects",
+  [
+    { a: 1, b: 2 },
+    { c: 3, d: 4 },
+  ],
+  [
+    { a: 1, b: 2 },
+    { c: 3, d: 4, e: 5, f: 6 },
+  ]
+);
+
 //66
+const addPropertyObj = (a: Dictionary, b: string): Dictionary => {
+  return { ...a, favoriteMovie: b };
+};
+test(
+  addPropertyObj,
+  "addPropertyObj",
+  [{ eyeColor: "green", age: 10 }, "Garfield"],
+  [{ eyeColor: "blue", age: 15 }, "Twilight"]
+);
+
 //67
 //68
 //69
