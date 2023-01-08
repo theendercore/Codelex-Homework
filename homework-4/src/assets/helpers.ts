@@ -1,9 +1,9 @@
 export function br() {
-  document.getElementById("console").innerHTML += "<br>";
+  document.querySelector("#console").innerHTML += "<br>";
 }
 
 export function log(string: string, value: any) {
-  document.getElementById("console").innerHTML +=
+  document.querySelector("#console").innerHTML +=
     string + '<span class="val">' + JSON.stringify(value) + "</span>";
   br();
   console.log(string);
