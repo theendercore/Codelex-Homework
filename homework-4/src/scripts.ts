@@ -996,8 +996,8 @@ test(
   Attach the unit kg to the weight
   Return a new object with all available properties that we are interested in
  */
+const values = ["fn", "ln", "size", "weight"];
 const personReader = (a: Dictionary): Dictionary => {
-  const values = ["fn", "ln", "size", "weight"];
   let d: Dictionary = {};
   values.forEach((e) => {
     if (a[e] !== undefined) {
