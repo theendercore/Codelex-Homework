@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strictNullChecks": true,
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "es6",
@@ -8,10 +9,6 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "lib": [
-      "es2019",
-      "dom",
-      "dom.iterable"
-    ]
+    "lib": ["es2019", "dom", "dom.iterable"]
   }
 }
