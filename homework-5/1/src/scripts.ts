@@ -305,6 +305,7 @@ type AccountWithOrWithoutCurrency = {
   name: string;
   currency?: Currency;
 };
+
 const removeCurrency = (
   account: AccountWithOrWithoutCurrency
 ): AccountWithOrWithoutCurrency => {
