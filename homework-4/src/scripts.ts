@@ -1,6 +1,5 @@
 import { br, test } from "./assets/helpers";
 
-let sArray = "SingleArray";
 
 //*Universal types
 type char = string | number;
@@ -361,9 +360,9 @@ const removeFirstThreeArray = (a: number[]): number[] => {
 test(
   removeFirstThreeArray,
   "removeFirstThreeArray",
-  [[1, 2, 3, 4], sArray],
-  [[5, 4, 3, 2, 1, 0], sArray],
-  [[99, 1, 1], sArray]
+  [[1, 2, 3, 4]],
+  [[5, 4, 3, 2, 1, 0]],
+  [[99, 1, 1]]
 );
 
 //26
@@ -378,9 +377,9 @@ const lastThreeArray = (a: number[]): number[] => {
 test(
   lastThreeArray,
   "lastThreeArray",
-  [[1, 2, 3, 4], sArray],
-  [[5, 4, 3, 2, 1, 0], sArray],
-  [[99, 1, 1], sArray]
+  [[1, 2, 3, 4]],
+  [[5, 4, 3, 2, 1, 0]],
+  [[99, 1, 1]]
 );
 
 //27
@@ -395,9 +394,9 @@ const firstThreeArray = (a: number[]): number[] => {
 test(
   firstThreeArray,
   "firstThreeArray",
-  [[1, 2, 3, 4], sArray],
-  [[5, 4, 3, 2, 1, 0], sArray],
-  [[99, 1, 1], sArray]
+  [[1, 2, 3, 4]],
+  [[5, 4, 3, 2, 1, 0]],
+  [[99, 1, 1]]
 );
 
 //28
@@ -445,9 +444,9 @@ const arrayLength = (a: number[]): number => {
 test(
   arrayLength,
   "arrayLength",
-  [[1, 2, 2, 4], sArray],
-  [[9, 9, 9], sArray],
-  [[4, 3, 2, 1, 0], sArray]
+  [[1, 2, 2, 4]],
+  [[9, 9, 9]],
+  [[4, 3, 2, 1, 0]]
 );
 
 //31
@@ -464,9 +463,9 @@ const negativeNumberCount = (a: number[]): number => {
 test(
   negativeNumberCount,
   "negativeNumberCount",
-  [[1, -2, 2, -4], sArray],
-  [[0, 9, 1], sArray],
-  [[4, -3, 2, 1, 0], sArray]
+  [[1, -2, 2, -4]],
+  [[0, 9, 1]],
+  [[4, -3, 2, 1, 0]]
 );
 
 //32
@@ -480,8 +479,8 @@ const sortDescending = (a: number[]): number[] => {
 test(
   sortDescending,
   "sortDescending",
-  [[1, 2, 3], sArray],
-  [[4, 2, 3, 1], sArray]
+  [[1, 2, 3]],
+  [[4, 2, 3, 1]]
 );
 
 //33
@@ -496,8 +495,8 @@ const sortAlphabetically = (a: string[]): string[] => {
 test(
   sortAlphabetically,
   "sortAlphabetically",
-  [["b", "c", "d", "a"], sArray],
-  [["z", "c", "d", "a", "y", "a", "w"], sArray]
+  [["b", "c", "d", "a"]],
+  [["z", "c", "d", "a", "y", "a", "w"]]
 );
 
 //34
@@ -511,9 +510,9 @@ const arrayAverage = (a: number[]): number => {
 test(
   arrayAverage,
   "arrayAverage",
-  [[10, 100, 40], sArray],
-  [[10, 100, 1000], sArray],
-  [[-50, 0, 50, 200], sArray]
+  [[10, 100, 40]],
+  [[10, 100, 1000]],
+  [[-50, 0, 50, 200]]
 );
 
 //35
@@ -527,8 +526,8 @@ const longestStrInArray = (a: string[]): string => {
 test(
   longestStrInArray,
   "longestStrInArray",
-  [["help", "me"], sArray],
-  [["I", "need", "candy"], sArray]
+  [["help", "me"]],
+  [["I", "need", "candy"]]
 );
 
 //36
@@ -543,10 +542,10 @@ const isArraySame = (a: any[]): boolean => {
 test(
   isArraySame,
   "isArraySame",
-  [[true, true, true, true], sArray],
-  [["test", "test", "test"], sArray],
-  [[1, 1, 1, 2], sArray],
-  [["10", 10, 10, 10], sArray]
+  [[true, true, true, true]],
+  [["test", "test", "test"]],
+  [[1, 1, 1, 2]],
+  [["10", 10, 10, 10]]
 );
 
 //37
@@ -591,9 +590,9 @@ const sortObjArray = (a: obj[]) => {
 test(
   sortObjArray,
   "sortObjArray",
-  [[[{ a: 1, b: 2 } as obj, { a: 5, b: 4 } as obj]], sArray],
-  [[{ a: 2, b: 10 } as obj, { a: 5, b: 4 } as obj], sArray],
-  [[{ a: 1, b: 7 } as obj, { a: 2, b: 1 } as obj], sArray]
+  [[[{ a: 1, b: 2 } as obj, { a: 5, b: 4 } as obj]]],
+  [[{ a: 2, b: 10 } as obj, { a: 5, b: 4 } as obj]],
+  [[{ a: 1, b: 7 } as obj, { a: 2, b: 1 } as obj]]
 );
 
 //39
@@ -674,9 +673,9 @@ const objArrayMagic = (a: string[]): WordArchive => {
 test(
   objArrayMagic,
   "objArrayMagic",
-  [["Alf", "Alice", "Ben"], sArray],
-  [["Ant", "Bear", "Bird"], sArray],
-  [["Berlin", "Paris", "Prague"], sArray]
+  [["Alf", "Alice", "Ben"]],
+  [["Ant", "Bear", "Bird"]],
+  [["Berlin", "Paris", "Prague"]]
 );
 
 //43
@@ -1078,9 +1077,9 @@ const arrayToObject = (a: number[]): Dictionary => {
 test(
   arrayToObject,
   "arrayToObject",
-  [[1, 2, 2, 3], sArray],
-  [[9, 9, 9, 99], sArray],
-  [[4, 3, 2, 1], sArray]
+  [[1, 2, 2, 3]],
+  [[9, 9, 9, 99]],
+  [[4, 3, 2, 1]]
 );
 
 //62
