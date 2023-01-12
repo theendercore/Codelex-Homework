@@ -138,17 +138,20 @@ options = [true, true, false];
 //    correct the input data and the function usage below based on that.
 
 interface ProductTwo {
+  name:string,
   title: string;
   price: number;
+
 }
 
 const anyProduct: ProductTwo = {
-  title: "Mr. Fluff",
+  name: "Mr. Fluff",
+  title:" ??",
   price: 4.0,
 };
 const productTitle = anyProduct.title;
 const priceWithTaxes = anyProduct.price * 1.25;
-const upperCaseTitle = anyProduct.price.toString().toUpperCase();
+const upperCaseTitle = anyProduct.title.toUpperCase();
 
 //* Exercise 3) Anonymous Functions
 
@@ -264,7 +267,7 @@ type EUR = "EUR";
 //  both EUR and USD. How can you define two possible
 //  types for one type? (we have seen before
 //  with numbers and strings).
-type Currency = USD | EUR;
+type Currency = USD | EUR | null;
 const firstCurrency: Currency = "USD";
 const secondCurrency: Currency = "EUR";
 const usd: USD = firstCurrency;
@@ -302,7 +305,7 @@ const someCurrency = getSomeCurrency(someAccount);
 //  the type errors.
 type AccountWithOrWithoutCurrency = {
   name: string;
-  currency: "USD" | "EUR" | undefined | null;
+  currency?: Currency;
 };
 const removeCurrency = (
   account: AccountWithOrWithoutCurrency

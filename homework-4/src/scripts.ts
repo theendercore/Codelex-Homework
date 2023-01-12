@@ -6,7 +6,7 @@ let sArray = "SingleArray";
 type char = string | number;
 
 interface Dictionary {
-  [key: char]: char;
+  [key: string]: char;
 }
 
 /*
@@ -34,7 +34,7 @@ test(sum, "sum", [1, 3], [1, 10], [99, 1]);
   Write a function that takes a value as argument
   Return the type of the value
 */
-const myType = (val: any): string => typeof val;
+const myType = (val: unknown): string => typeof val;
 test(myType, "myType", 1, false, {}, null, "string", ["array"]);
 
 //3

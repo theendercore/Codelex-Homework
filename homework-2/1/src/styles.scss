@@ -1,6 +1,10 @@
 :root {
   --screen-bg: white;
   --text-bg: #fafafa;
+  .dark-mode {
+    --screen-bg: #130f1c;
+    --text-bg: #2e2a36;
+  }
 }
 
 /* Box sizing rules */
@@ -501,6 +505,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
   }
   .p-r-4 {
     padding-right: 4px;
