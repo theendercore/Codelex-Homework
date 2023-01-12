@@ -138,20 +138,18 @@ options = [true, true, false];
 //    correct the input data and the function usage below based on that.
 
 interface ProductTwo {
-  name:string,
   title: string;
   price: number;
 
 }
 
 const anyProduct: ProductTwo = {
-  name: "Mr. Fluff",
-  title:" ??",
+  title:"product",
   price: 4.0,
 };
 const productTitle = anyProduct.title;
 const priceWithTaxes = anyProduct.price * 1.25;
-const upperCaseTitle = anyProduct.title.toUpperCase();
+const upperCaseTitle = productTitle.toUpperCase();
 
 //* Exercise 3) Anonymous Functions
 
