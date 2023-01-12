@@ -69,8 +69,7 @@ function filterCourses(products: Product[]): Product[] {
   return products.filter((product: Product) => product.type === "Course");
 }
 
-function getTitles(products: Product[]) {
-  // returns:    string[]
+function getTitles(products: Product[]) { // returns:    string[]
   return products.map((product) => product.title);
 }
 
@@ -102,14 +101,14 @@ function formatPrice(product: { price: string; currency: string }) {
 const price0 = formatPrice(products[0]);
 
 //! Everyday Types
-// If you get stucked, here is the docs: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+// If you get stuck, here is the docs: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
 
 //* Exercise 1) Primitives and arrays
 
-// TODO: remove the "any" type, and add a concerete type for these basic primitives
+// TODO: remove the "any" type, and add a concrete type for these basic primitives
 // How they are working, if you remove all type definitions? How inference is working here?
 
-let price: number; /* add the correcy type annotation here instead of any */
+let price: number; /* add the currency type annotation here instead of any */
 price = 100.5;
 
 let title: string; /* add type annotation here */
@@ -130,9 +129,9 @@ options = [true, true, false];
 //* Exercise 2) Any
 
 // Here we have a product, which type is an explicit any.
-// Unforunately we have here a cat instead. It is clearly seen,
+// Unfortunately we have here a cat instead. It is clearly seen,
 // that everything is accepted, typescript basically switched off.
-// We will got a lot of runtime errors and unexpected undefineds
+// We will got a lot of runtime errors and unexpected undefined
 // here.
 
 // TODO: Create a proper type definition based on the usage of the product,
@@ -151,11 +150,11 @@ const productTitle = anyProduct.title;
 const priceWithTaxes = anyProduct.price * 1.25;
 const upperCaseTitle = anyProduct.price.toString().toUpperCase();
 
-//* Exercise 3) Anonymus Functions
+//* Exercise 3) Anonymous Functions
 
-// In JS we are putting anonymus functions to a lot of place,
+// In JS we are putting anonymous functions to a lot of place,
 //  typically in the higher order functions like map. Typescript
-//  can figure out the anonymus functions types based on the usage.
+//  can figure out the anonymous functions types based on the usage.
 
 // TODO: correct the parameter's type of createKeysFromTitles. Spot out
 //  how it is changing the map function's types.
