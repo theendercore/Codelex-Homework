@@ -1,3 +1,39 @@
 body {
-  background-color: antiquewhite;
+  background-color: lightblue;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+}
+
+.btn {
+  font-size: 5rem;
+  background-color: lightblue;
+  color: royalblue;
+  border-color: royalblue;
+  border-width: 4px;
+  border-radius: 9px;
+  border-style: solid;
+  &:hover{
+    background-color: rgb(34, 101, 247);
+  }
+}
+
+.btn-play{
+  padding: 10rem 5rem 10rem 5rem;
+}
+
+.none{
+  display: none;
+}
+
+.hidden{
+  visibility: hidden;
+}
+.grid{
+  display: grid;
+  gap: 20px;
 }
