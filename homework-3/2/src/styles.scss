@@ -1,5 +1,10 @@
+::root {
+  @import url("https://fonts.googleapis.com/css2?family=Heebo");
+}
+
 body {
   box-sizing: border-box;
+  font-family: "Heebo", sans-serif;
 }
 
 .cont {
@@ -24,9 +29,29 @@ body {
   display: none;
 }
 
+.cards__body {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+.cards__title {
+  font-size: 1.3rem;
+  font-weight: lighter;
+  padding-bottom: 1rem;
+}
+.cards__grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  place-items: center;
+}
+
+.card__divider {
+  padding-top: 2rem;
+  background-color: red;
+}
+
 .footer {
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +62,7 @@ body {
 }
 
 .footer__icons {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   display: flex;
   width: 100%;
   justify-content: space-between;

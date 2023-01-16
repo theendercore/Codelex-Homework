@@ -1,6 +1,6 @@
 import { log } from "./assets/helper";
-const btns = [...document.querySelectorAll(".ts-btn")];
-const boxes = [...document.querySelectorAll(".ts-box")];
+const btns = document.querySelectorAll<HTMLButtonElement | null>(".ts-btn");
+const boxes = document.querySelectorAll<HTMLDivElement | null>(".ts-box");
 
 const colors = ["blue", "red", "green", "orange", "yellow"];
 let iterator = 0;
@@ -43,6 +43,7 @@ boxes[4].addEventListener("mouseenter", () => {
   };
   count = setInterval(counter, 500);
 });
+
 boxes[4].addEventListener("mouseleave", () => {
   clearInterval(count);
   let box4 = boxes[4];
@@ -64,11 +65,11 @@ btns[5].addEventListener("click", () => {
 });
 
 btns[6].addEventListener("click", () => {
-  let boxes = [...document.querySelectorAll(".ts-box")];
+  let boxes = document.querySelectorAll<HTMLDivElement | null>(".ts-box");
   boxes.forEach((e) => {
     e.classList.toggle("super-color");
   });
-  document.querySelector("body").classList.toggle("white-bg");
+  document.querySelector<HTMLBodyElement | null>("body").classList.toggle("white-bg");
 });
 
 const red = () => {
@@ -78,7 +79,7 @@ const red = () => {
 boxes[0].addEventListener("mouseenter", red);
 boxes[0].addEventListener("mouseleave", red);
 
-let txtIn = document.querySelector(".text-input") as HTMLInputElement;
+let txtIn = document.querySelector<HTMLInputElement | null>(".text-input");
 txtIn.addEventListener("input", () => {
-  document.querySelector(".text-box").innerHTML = txtIn.value;
+  document.querySelector<HTMLDivElement | null>(".text-box").innerHTML = txtIn.value;
 });
