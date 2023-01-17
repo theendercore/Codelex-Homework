@@ -1,11 +1,10 @@
-import { Color } from "./assets/images/color";
 import {
-  log,
   GridOptions,
   GameState,
   createGrid,
   Card,
-  shuffleArray,
+  sleep,
+  randomizeColors,
 } from "./assets/images/helper";
 
 const startScreen = document.querySelector<HTMLDivElement | null>(
@@ -34,22 +33,8 @@ const cardBtns = document.querySelectorAll<HTMLButtonElement | null>(
   ".btn-play"
 );
 
-const randomizeColors = () => {
-  let colorCount = gameState.cards.length;
-  let colors: Set<Color>= new Set;
-  while (colors.size < colorCount){
-    colors.add(Color[Math.floor(Math.random() * Color.length)])
-  }
-  log(colors)
-  shuffleArray(gameState.cards)
-  for (let i = 0; i < colorCount; i+=2) {
-    gameState.cards[i].color = [...colors][i]
-    gameState.cards[i+1].color = [...colors][i]
-  }
 
-};
-
-const gameLoop = (btn: HTMLButtonElement) => {
+const gameLoop = async (btn: HTMLButtonElement) => {
   if (gameState.animationTimer) {
     return;
   }
@@ -63,21 +48,27 @@ const gameLoop = (btn: HTMLButtonElement) => {
     let selectedCard = gameState.cards.find((a) => a.id === btn.classList[1]);
     btn.style.backgroundColor = selectedCard.color;
     selectedCard.state = "up";
+    gameState.animationTimer = 1;
+    await sleep(500)
     if (selectedCard.color === gameState.selectedCard.color) {
       cardHide(selectedCard);
       cardHide(gameState.selectedCard);
-      gameState.turnsLeft--;
+      gameState.turnsLeft -= 1;
     } else {
       cardReset(selectedCard);
       cardReset(gameState.selectedCard);
     }
     gameState.selectedCard = null;
+    gameState.animationTimer = 0;
   }
   gameState.clicks++;
   if (gameState.turnsLeft === 0) {
     hasWon();
   }
+  // log(gameState);
 };
+
+
 
 const cardHide = (card: Card) => {
   let btn = document.querySelector<HTMLButtonElement>(`.${card.id}`);
@@ -87,14 +78,14 @@ const cardHide = (card: Card) => {
 
 const cardReset = (card: Card) => {
   let btn = document.querySelector<HTMLButtonElement>(`.${card.id}`);
-  btn.style.backgroundColor = "";
+  btn.removeAttribute("style");
   card.state = "down";
 };
 
 const hasWon = () => {
   gameScreen.classList.toggle("grid");
   endScreen.classList.toggle("none");
-  endScreen.innerHTML += `<p>Turns Made: ${gameState.clicks}</p>`;
+  endScreen.innerHTML += `<p>Turns Made: ${Math.floor(gameState.clicks / 2)}</p>`;
 };
 
 /*
@@ -106,7 +97,7 @@ const hasWon = () => {
 //This is Init (essentially)
 startBtn.addEventListener("click", () => {
   startScreen.classList.toggle("none");
-  randomizeColors();
+  randomizeColors(gameState);
   gameScreen.classList.toggle("grid");
 });
 

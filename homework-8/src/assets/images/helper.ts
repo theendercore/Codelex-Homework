@@ -55,3 +55,19 @@ export const shuffleArray = <T>(array: T[]) => {
     [array[i], array[j]] = [array[j], array[i]];
   }
 };
+export const sleep = (duration: number) => {
+  return new Promise((resolve) => setTimeout(resolve, duration));
+};
+
+export const randomizeColors = (gameState: GameState) => {
+  let colorCount = gameState.cards.length;
+  let colors: Set<Color> = new Set();
+  while (colors.size < colorCount) {
+    colors.add(Color[Math.floor(Math.random() * Color.length)]);
+  }
+  shuffleArray(gameState.cards);
+  for (let i = 0; i < colorCount; i += 2) {
+    gameState.cards[i].color = [...colors][i];
+    gameState.cards[i + 1].color = [...colors][i];
+  }
+};
