@@ -8,6 +8,9 @@ body {
   justify-content: center;
   height: 98vh;
 }
+.col{
+  flex-direction: column;
+}
 
 .btn {
   font-size: 5rem;
@@ -18,12 +21,12 @@ body {
   border-radius: 9px;
   border-style: solid;
   &:hover{
-    background-color: rgb(34, 101, 247);
+   border-color: blue; 
   }
 }
 
 .btn-play{
-  padding: 10rem 5rem 10rem 5rem;
+  padding: 8rem 5rem 8rem 5rem;
 }
 
 .none{

@@ -1,4 +1,4 @@
-const Color = [
+export const Color = [
   "AliceBlue",
   "AntiqueWhite",
   "Aqua",
