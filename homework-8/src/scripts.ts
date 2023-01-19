@@ -5,7 +5,7 @@ import {
   Card,
   sleep,
   randomizeColors,
-} from "./assets/images/helper";
+} from "./assets/ts/helper";
 
 const startScreen = document.querySelector<HTMLDivElement | null>(
   ".start-screen"
@@ -19,7 +19,7 @@ const startBtn = document.querySelector<HTMLButtonElement | null>(
   ".ts-btn-start"
 );
 
-const gridOptions: GridOptions = { rows: 2, columns: 4 };
+const gridOptions: GridOptions = { rows: 2, columns: 3 };
 
 const gameState: GameState = {
   cards: createGrid(gameScreen, gridOptions),

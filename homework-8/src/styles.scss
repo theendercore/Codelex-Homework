@@ -1,5 +1,6 @@
 body {
-  background-color: lightblue;
+  background-color: #212022;
+  color: white;
 }
 
 .cont {
@@ -14,14 +15,14 @@ body {
 
 .btn {
   font-size: 5rem;
-  background-color: lightblue;
-  color: royalblue;
-  border-color: royalblue;
+  background-color: #363537;
+  color: white;
+  border-color: #363537;
   border-width: 4px;
   border-radius: 9px;
   border-style: solid;
   &:hover{
-   border-color: blue; 
+   border-color: gray; 
   }
 }
 
