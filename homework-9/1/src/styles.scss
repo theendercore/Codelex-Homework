@@ -21,7 +21,6 @@ body {
 }
 .card__img {
   width: 100%;
-  // overflow: hidden;
 }
 
 .card__text-area {
@@ -71,4 +70,25 @@ body {
 .subtext {
   font-weight: normal;
   font-size: 1.2rem;
+}
+
+.btn-more{
+  width: 60%;
+  margin: 5rem auto 5rem auto;
+  display: flex;
+  justify-content: center;
+}
+.btn{
+  width: 40%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  color: white;
+  background-color: rgb(67, 68, 70);
+  border-style: none;
+  border-radius: 15px;
+  &:hover{
+    background-color: rgb(58, 58, 58);
+    color: rgb(211, 209, 209);
+  }
 }
