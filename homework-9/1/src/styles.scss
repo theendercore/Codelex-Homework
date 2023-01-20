@@ -17,7 +17,7 @@ body {
 .card {
   background-color: rgb(45, 45, 47);
   border-radius: 10px;
-  overflow:hidden;
+  overflow: hidden;
 }
 .card__img {
   width: 100%;
@@ -72,13 +72,13 @@ body {
   font-size: 1.2rem;
 }
 
-.btn-more{
+.btn-more {
   width: 60%;
   margin: 5rem auto 5rem auto;
   display: flex;
   justify-content: center;
 }
-.btn{
+.btn {
   width: 40%;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -87,8 +87,26 @@ body {
   background-color: rgb(67, 68, 70);
   border-style: none;
   border-radius: 15px;
-  &:hover{
+  &:hover {
     background-color: rgb(58, 58, 58);
     color: rgb(211, 209, 209);
+  }
+}
+
+@media all and (min-width:1200px) and (max-width: 1700px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media all and (min-width: 850px) and (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 850px) {
+  .container {
+    grid-template-columns:1fr;
   }
 }
