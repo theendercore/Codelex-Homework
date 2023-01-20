@@ -1,0 +1,74 @@
+body {
+  background-color: rgb(26, 26, 26);
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+}
+
+.container {
+  background-color: rgb(67, 68, 70);
+  width: 70%;
+  margin: 50px auto 50px auto;
+  padding: 60px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.card {
+  background-color: rgb(45, 45, 47);
+  border-radius: 10px;
+  overflow:hidden;
+}
+.card__img {
+  width: 100%;
+  // overflow: hidden;
+}
+
+.card__text-area {
+  padding: 25px;
+}
+
+.card__title {
+  padding-bottom: 2rem;
+}
+
+.card__title-text {
+  font-weight: bolder;
+  font-size: 2rem;
+}
+.card__title-subtext {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.circle {
+  border-radius: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: lime;
+}
+.gray {
+  background-color: lightgray;
+}
+
+.card__subtitle-text-block {
+  padding-bottom: 1.6rem;
+}
+
+.title {
+  font-weight: light;
+  font-size: 1rem;
+  color: gray;
+  padding-bottom: 0.8rem;
+}
+
+.subtext {
+  font-weight: normal;
+  font-size: 1.2rem;
+}
