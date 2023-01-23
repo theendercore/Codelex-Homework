@@ -23,6 +23,12 @@
       "title": "Title 2, but better",
       "text": "words words words words words words words words ",
       "skin": "https://picsum.photos/id/120/300"
+    },
+    {
+      "skin": "https://picsum.photos/id/122/300",
+      "title": "YT",
+      "text": "sdasd",
+      "id": 121
     }
   ]
 }
