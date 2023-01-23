@@ -6,10 +6,10 @@ import { PlayerCard, PlayerCardInterface } from "./interfaces";
 
 // RETRIEVE | GET
 const get = async <T>(urlExtra?: string) => {
-  const response = await axios.get<T>(
+  const {data} = await axios.get<T>(
     `${dbUrl}${urlExtra !== undefined ? urlExtra : ""}`
   );
-  return await response.data;
+  return data;
 };
 
 // Create | POST

@@ -1,26 +1,14 @@
 {
   "players": [
     {
-      "id": 117,
-      "title": "end",
-      "text": "words words words ",
-      "skin": "https://picsum.photos/id/3/300"
-    },
-    {
       "id": 118,
       "title": "Title 1",
       "text": "words words words words words words words words ",
       "skin": "https://picsum.photos/id/4/300"
     },
     {
-      "id": 119,
-      "title": "Title 2",
-      "text": "words words words words words words words words ",
-      "skin": "https://picsum.photos/id/119/300"
-    },
-    {
       "id": 120,
-      "title": "Title 2, but better",
+      "title": "Title 2, but better, NO its not",
       "text": "words words words words words words words words ",
       "skin": "https://picsum.photos/id/120/300"
     },
@@ -29,6 +17,18 @@
       "title": "YT",
       "text": "sdasd",
       "id": 121
+    },
+    {
+      "skin": "https://picsum.photos/id/123/300",
+      "title": "Me !!",
+      "text": "Intersesting description",
+      "id": 122
+    },
+    {
+      "id": 123,
+      "title": "Title",
+      "text": "asdad",
+      "skin": "https://picsum.photos/id/124/300"
     }
   ]
 }

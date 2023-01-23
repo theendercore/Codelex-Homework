@@ -1,9 +1,6 @@
 import { addTitle, addText, addURL, addBtn, box } from "./assets/ts/const";
 import { reload } from "./assets/ts/helper-func";
-import { PlayerCard } from "./assets/ts/interfaces";
-import { post, put } from "./assets/ts/restAPI";
-
-if (box.childElementCount === 0) reload();
+import { post } from "./assets/ts/restAPI";
 
 addBtn.addEventListener("click", () => {
   if (addTitle.value === "" || addText.value === "" || addURL.value === "") {
@@ -22,3 +19,5 @@ addBtn.addEventListener("click", () => {
     });
   }
 });
+
+reload();
