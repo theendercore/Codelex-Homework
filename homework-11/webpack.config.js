@@ -54,7 +54,7 @@ module.exports = {
         },
       ],
     }),
-    TailwindCSS("./tailwind.config.js"),
+    // TailwindCSS("./tailwind.config.js"),
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
