@@ -20,3 +20,9 @@ interface Currency {
   name: string;
   symbol: string;
 } 
+interface Page {
+  first: string;
+  previous: string;
+  next: string;
+  last: string;
+}
