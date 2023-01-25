@@ -12,16 +12,60 @@
     <title>Document</title>
 </head>
 
-<body class="bg-slate-500">
-    <div class="header">
-        asdadss
+<body class="bg-slate-500 font-mono">
+    <div class="header mx-auto px-4 container flex justify-center flex-col">
+        <div class="title mx-auto pt-10 pb-4">
+            <h1 class="text-6xl text-gray-50">The Country Table</h1>
+        </div>
+        <form class="search mx-auto">
+            <label>
+                Name
+                <input type="text">
+            </label>
+            <label>
+                Capital City
+                <input type="text">
+            </label>
+            <label>
+                Currency
+                <input type="text">
+            </label>
+            <label>
+                Language
+                <input type="text">
+            </label>
+            <button type="submit" class="btn ts-btn-submit">Search</button>
+        </form>
     </div>
-    <div class="main-page">
-        <div class="container mx-auto w-4/5">
-            asdasd
-            asdsadasd
+    <div class="main-page mt-10">
+        <div class="container mx-auto ">
+            <div class="relative rounded-xl overflow-auto bg-slate-700">
+                <div class="shadow-sm overflow-hidden my-8">
+                    <table class="border-collapse table-fixed w-full text-sm">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="border-b dark:border-slate-500 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                    Name</th>
+                                <th
+                                    class="border-b dark:border-slate-500 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                    Capital</th>
+                                <th
+                                    class="border-b dark:border-slate-500 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                    Currency</th>
+                                <th
+                                    class="border-b dark:border-slate-500 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                                    Language</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white dark:bg-slate-600 ts-table">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    <button class="absolute left-2 top-2 btn ts-add">ADD</button>
     <script src="/scripts.js"></script>
 </body>
 
