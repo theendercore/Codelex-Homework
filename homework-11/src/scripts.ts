@@ -11,9 +11,9 @@ let state: State = {
   },
   filters: {
     strict: false,
+    values: {},
   },
 };
-
 
 getPage(DB_URL, 1).then(({ data, headers }) => {
   data.forEach(addRow);
@@ -25,10 +25,8 @@ getPage(DB_URL, 1).then(({ data, headers }) => {
   rPaginator(state.page);
 });
 
-
-
 submitBtn.addEventListener("click", () => {
-  let params: Filters = { },
+  let params: Filters = {},
     z = state.filters.strict ? "^" : "";
   if (formInputs.name.value !== "") {
     params.values["name_like"] = z + formInputs.name.value;
