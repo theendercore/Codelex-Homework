@@ -18,6 +18,7 @@ let page = {
 
 ADD.addEventListener("click", () => {
   changePage(page, new URLSearchParams({}));
+  rPaginator(page);
 });
 
 getPage(DB_URL, 1).then((res) => {
@@ -31,27 +32,29 @@ getPage(DB_URL, 1).then((res) => {
 });
 
 submitBtn.addEventListener("click", () => {
-  let name,
-    capital,
-    currency,
-    lang = "";
-  
+  let params: {
+    name?: string;
+    capital?: string;
+    "currency.name"?: string;
+    "language.name"?: string;
+  } = {};
   if (formBtns.name.value !== "") {
-    name = formBtns.name.value;
-    console.log(name);
-    changePage(page, new URLSearchParams({ name }));
-  } else if (formBtns.capital.value !== "") {
-    capital = formBtns.capital.value;
-    console.log(capital);
-    changePage(page, new URLSearchParams({ capital }));
-  } else if (formBtns.currency.value !== "") {
-    currency = formBtns.currency.value;
-    console.log(currency);
-    changePage(page, new URLSearchParams({ currency }));
-  } else if (formBtns.lang.value !== "") {
-    lang = formBtns.lang.value;
-    console.log(lang);
-    changePage(page, new URLSearchParams({ lang }));
+    params.name = formBtns.name.value;
+  }
+  if (formBtns.capital.value !== "") {
+    params.capital = formBtns.capital.value;
+  }
+  if (formBtns.currency.value !== "") {
+    params["currency.name"] = formBtns.currency.value;
+  }
+  if (formBtns.lang.value !== "") {
+    params["language.name"] = formBtns.lang.value;
+  }
+  if (Object.keys(params).length !== 0) {
+    changePage(page, new URLSearchParams({ ...params }));
+    rPaginator(page);
+  } else {
+    alert("Please fill all the form fields!");
   }
 });
 
