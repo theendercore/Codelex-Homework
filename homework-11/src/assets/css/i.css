@@ -15,3 +15,12 @@
 .page{
   @apply bg-slate-100 dark:bg-slate-800 text-slate-100 px-6;
 }
+
+
+.table-header {
+  @apply border-b dark:border-slate-500 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left;
+}
+
+.disabled {
+  display: none;
+}

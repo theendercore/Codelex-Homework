@@ -1,60 +1,52 @@
-import {
-  ADD,
-  DB_URL,
-  formBtns,
-  submitBtn,
-  tableHeaders,
-} from "./assets/ts/const";
+import { DB_URL, formInputs, submitBtn, tableHeaders } from "./assets/ts/const";
 import { addRow, changePage, rPaginator } from "./assets/ts/constructors";
 import { getPage } from "./assets/ts/restAPI";
-
-let page = {
-  first: "http://localhost:3004/countries?_limit=20&_page=1",
-  previous: "",
-  current: "",
-  next: "",
-  last: "",
+let state: State = {
+  page: {
+    first: "http://localhost:3004/countries?_limit=20&_page=1",
+    previous: "",
+    current: "",
+    next: "",
+    last: "",
+  },
+  filters: {
+    strict: false,
+  },
 };
 
-ADD.addEventListener("click", () => {
-  changePage(page, new URLSearchParams({}));
-  rPaginator(page);
-});
 
-getPage(DB_URL, 1).then((res) => {
-  res.data.forEach(addRow);
-  let z = res.headers.link
+getPage(DB_URL, 1).then(({ data, headers }) => {
+  data.forEach(addRow);
+  let z = headers.link
     .split(",")
     .map((a) => a.split(";")[0].replace(/[<>]/g, ""));
-  page.next = z[1];
-  page.last = z[2];
-  rPaginator(page);
+  state.page.next = z[1];
+  state.page.last = z[2];
+  rPaginator(state.page);
 });
 
+
+
 submitBtn.addEventListener("click", () => {
-  let params: {
-    name?: string;
-    capital?: string;
-    "currency.name"?: string;
-    "language.name"?: string;
-  } = {};
-  if (formBtns.name.value !== "") {
-    params.name = formBtns.name.value;
+  let params: Filters = { },
+    z = state.filters.strict ? "^" : "";
+  if (formInputs.name.value !== "") {
+    params.values["name_like"] = z + formInputs.name.value;
   }
-  if (formBtns.capital.value !== "") {
-    params.capital = formBtns.capital.value;
+  if (formInputs.capital.value !== "") {
+    params.values["capital_like"] = z + formInputs.capital.value;
   }
-  if (formBtns.currency.value !== "") {
-    params["currency.name"] = formBtns.currency.value;
+  if (formInputs.currency.value !== "") {
+    params.values["currency.name_like"] = z + formInputs.currency.value;
   }
-  if (formBtns.lang.value !== "") {
-    params["language.name"] = formBtns.lang.value;
+  if (formInputs.lang.value !== "") {
+    params.values["language.name_like"] = z + formInputs.lang.value;
   }
-  if (Object.keys(params).length !== 0) {
-    changePage(page, new URLSearchParams({ ...params }));
-    rPaginator(page);
+  if (Object.keys(params.values).length !== 0) {
+    changePage(state.page, new URLSearchParams({ ...params.values }));
+    rPaginator(state.page);
   } else {
-    alert("Please fill all the form fields!");
+    alert("Please at least one form!");
   }
 });
 
