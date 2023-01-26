@@ -12,13 +12,20 @@ const addRow = (country: Country) => {
     `;
 };
 
-const addNumber = (url: string, label: string) => {
-  return `<a href="${url}">${label}</a>`;
+const addNumber = (url: string, label: string, cssClass: string) => {
+  return `<a href="${url}" class="page .ts-${cssClass}">${label}</a>`;
 };
-const changePage = (page: Page) => {
+
+const changePage = (page: Page, params?: URLSearchParams) => {
+  let link = page.next;
   table.innerHTML = "";
-  get<Country[]>(page.next).then((res) => {
+  if (params !== null) {
+    link = page.first + "&" + params.toString();
+    console.log(link);
+  }
+  get<Country[]>(link).then((res) => {
     res.data.forEach(addRow);
+    page.current = page.next;
     let z = res.headers.link
       .split(",")
       .map((a) => a.split(";")[0].replace(/[<>]/g, ""));
@@ -27,4 +34,16 @@ const changePage = (page: Page) => {
   });
 };
 
-export { addRow, addNumber };
+const rPaginator = (page: Page) => {
+  if (page.first === page.last) {
+  paginator.classList.add("disabled");
+  }
+  paginator.innerHTML =
+    addNumber(page.first, "<< 1", "first") +
+    addNumber(page.previous, "prv", "previous") +
+    `<span class="page">${page.current}</span>` +
+    addNumber(page.next, "nxt", "next") +
+    addNumber(page.last, "12 >>", "last");
+};
+
+export { addRow, addNumber, changePage, rPaginator };

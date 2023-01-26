@@ -1,0 +1,11 @@
+th {
+  cursor: pointer;
+  &.asc svg {
+    transition: all 0.3s ease-in-out;
+    transform: rotate(0deg);
+  }
+  &.desc svg {
+    transition: all 0.3s ease-in-out;
+    transform: rotate(180deg);
+  }
+}

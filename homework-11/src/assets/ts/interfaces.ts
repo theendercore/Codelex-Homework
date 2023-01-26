@@ -23,6 +23,7 @@ interface Currency {
 interface Page {
   first: string;
   previous: string;
+  current: string;
   next: string;
   last: string;
 }
