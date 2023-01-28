@@ -1,22 +1,16 @@
 {
   "players": [
     {
-      "id": 118,
-      "title": "Title 1",
-      "text": "words words words words words words words words ",
-      "skin": "https://picsum.photos/id/4/300"
-    },
-    {
       "id": 120,
       "title": "Title 2, but better, NO its not",
       "text": "words words words words words words words words ",
       "skin": "https://picsum.photos/id/120/300"
     },
     {
-      "skin": "https://picsum.photos/id/122/300",
-      "title": "YT",
+      "id": 121,
+      "title": "YTsagyjhjhbjh",
       "text": "sdasd",
-      "id": 121
+      "skin": "https://picsum.photos/id/102/300"
     },
     {
       "skin": "https://picsum.photos/id/123/300",
