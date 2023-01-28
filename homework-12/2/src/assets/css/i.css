@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.arrow-btn {
+  @apply px-10 py-20 m-5 bg-slate-500 rounded;
+}
+
+.fullscreen {
+  background-color: rgba(0, 0, 0, 0.8);
+  @apply absolute top-0 left-0 bottom-0 right-0 z-10 flex justify-center items-center;
+}
