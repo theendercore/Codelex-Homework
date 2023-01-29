@@ -6,20 +6,40 @@
   @apply px-10 py-20 m-5 bg-slate-500 rounded;
 }
 .fs-btn {
-  @apply bg-slate-900 hover:bg-slate-800 p-2 rounded-md absolute top-2 right-2
+  @apply bg-slate-900 hover:bg-slate-800 p-2 rounded-md absolute top-2 right-2;
 }
 
-.carousel {
-  @apply my-6 flex flex-row items-center justify-center bg-slate-600 rounded-2xl;
+.box {
+  @apply my-6 flex flex-col;
 }
 
-.flip-180{
+.box-item {
+  @apply my-3 flex flex-row items-center justify-center bg-slate-600 rounded-2xl;
+}
+
+.dots-cont {
+  @apply gap-3 py-3;
+}
+
+.flip-180 {
   transform: rotate(180deg);
 }
 
-.rel{
+.rel {
   position: relative;
-} 
+}
+
+.dot {
+  @apply bg-slate-500 w-6 h-6 rounded-full;
+}
+
+.dot-sel {
+  @apply bg-slate-700 !important;
+}
+
+.flex-col-rev{
+ @apply flex flex-col-reverse
+}
 
 .fullscreen {
   background-color: rgba(0, 0, 0, 0.8);
