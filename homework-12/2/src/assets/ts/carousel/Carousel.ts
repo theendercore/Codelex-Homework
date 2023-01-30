@@ -22,11 +22,11 @@ class Carousel {
     // Register the Base Block
     container.appendChild(this.#baseBlock);
     this.#baseBlock.classList.add("js-base-block", "box");
+    this.#baseBlock.setAttribute("data-id", `js-id-${this.#id}`);
 
     // Register the Carousel
     this.#baseBlock.appendChild(this.#carousel);
     this.#carousel.classList.add("js-carousel", "box-item");
-    this.#carousel.setAttribute("data-id", `js-id-${this.#id}`);
 
     // Register the Previous Button
     this.#carousel.appendChild(this.#prevBtn);
