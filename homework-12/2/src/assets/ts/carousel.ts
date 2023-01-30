@@ -49,7 +49,7 @@ class Carousel {
     this.#prevBtn.addEventListener("click", left);
   };
 
-  nextImage() {
+  nextImage = () => {
     this.changeImg(
       this.getImageCount() - 1 > this.#selectedImage
         ? this.#selectedImage + 1
@@ -137,19 +137,8 @@ class BubbleCarousel extends Carousel {
     for (let i = 0; i < images; i++) this.#createDot(i);
 
     // Register Clicks
-    this.registerClicks(this.nextImage, this.previousImage);
+    this.registerClicks(this.changeSelection, this.changeSelection);
   }
-
-  nextImage = () => {
-    // console.log(super.nextImage.toString());
-    super.nextImage();
-    this.changeSelection();
-  };
-
-  previousImage = () => {
-    super.previousImage;
-    this.changeSelection();
-  };
 
   #createDot = (id: number) => {
     let dot = document.createElement("div");
@@ -216,6 +205,7 @@ class MovingCarousel extends ImgCarousel {
 
   tick = () => {
     this.nextImage();
+    this.changeSelection();
   };
 }
 
