@@ -49,34 +49,35 @@ class Carousel {
     this.#prevBtn.addEventListener("click", left);
   };
 
-  nextImage = () => {
-    console.log("n:", this.#selectedImage);
-    this.#selectedImage =
+  nextImage() {
+    this.changeImg(
       this.getImageCount() - 1 > this.#selectedImage
         ? this.#selectedImage + 1
-        : 0;
-    console.log("n:", this.#selectedImage);
-    this.#imgCont.changeSrc(this.#images[this.#selectedImage]);
+        : 0
+    );
   };
 
   previousImage = () => {
-    console.log("p:", this.#selectedImage);
-    this.#selectedImage =
+    this.changeImg(
       0 < this.#selectedImage
         ? this.#selectedImage - 1
-        : this.getImageCount() - 1;
-    console.log("p:", this.#selectedImage);
-    this.#imgCont.changeSrc(this.#images[this.#selectedImage]);
+        : this.getImageCount() - 1
+    );
   };
 
   getImageCount = () => this.#images.length;
 
   getBaseBlock = () => this.#baseBlock;
 
+  getImages = () => this.#images;
+
+  getImage = (index: number) => this.#images[index];
+
   getSelectedImg = () => this.#selectedImage;
 
-  setSelectionImg = (num: number) => {
-    this.#selectedImage = num;
+  changeImg = (index: number) => {
+    this.#selectedImage = index;
+    this.#imgCont.changeSrc(this.#images[this.#selectedImage]);
   };
 }
 
@@ -108,6 +109,7 @@ class ImageContainer {
       this.#fullscreenButton.children[0].innerHTML = toFullScreen;
     }
   };
+
   changeSrc = (src: string) => {
     this.#img.src = src;
   };
@@ -132,14 +134,15 @@ class BubbleCarousel extends Carousel {
     );
 
     // Register the Dots
-    for (let i = 0; i < images; i++) this.createDot(i);
+    for (let i = 0; i < images; i++) this.#createDot(i);
 
     // Register Clicks
     this.registerClicks(this.nextImage, this.previousImage);
   }
 
   nextImage = () => {
-    super.nextImage;
+    // console.log(super.nextImage.toString());
+    super.nextImage();
     this.changeSelection();
   };
 
@@ -148,18 +151,18 @@ class BubbleCarousel extends Carousel {
     this.changeSelection();
   };
 
-  createDot = (id: number) => {
+  #createDot = (id: number) => {
     let dot = document.createElement("div");
     this.#dotsContainer.appendChild(dot);
     dot.classList.add(`js-dot-${id}`, "dot");
-    dot.addEventListener("click", () => this.clickDot(id));
+    dot.addEventListener("click", () => this.#clickDot(id));
     if (id === 0) {
       dot.classList.add("dot-sel");
     }
   };
 
-  clickDot = (id: number) => {
-    this.setSelectionImg(id);
+  #clickDot = (id: number) => {
+    this.changeImg(id);
     this.changeSelection();
   };
 
@@ -169,7 +172,52 @@ class BubbleCarousel extends Carousel {
       .querySelector(`.js-dot-${this.getSelectedImg()}`)
       .classList.add("dot-sel");
   };
+
+  getSliders = () => this.#imageSlider;
+}
+
+class ImgCarousel extends BubbleCarousel {
+  #iconContainer = document.createElement("div");
+  constructor(container: HTMLDivElement, images: number) {
+    super(container, images); // Runs the constructor for BubbleCarousel
+
+    //register Image Container
+    this.getSliders().appendChild(this.#iconContainer);
+    this.#iconContainer.classList.add(
+      "js-icon-container",
+      "box-item",
+      "icons-cont"
+    );
+
+    //register Icons
+    for (let i = 0; i < images; i++) this.createIcon(i);
+  }
+
+  createIcon = (id: number) => {
+    let icon = document.createElement("div");
+    this.#iconContainer.appendChild(icon);
+    icon.classList.add(`js-icon-${id}`, "icon");
+    icon.addEventListener("click", () => this.clickIcon(id));
+    icon.style.backgroundImage = `url('${this.getImage(id)}')`;
+  };
+
+  clickIcon = (id: number) => {
+    this.changeImg(id);
+    this.changeSelection();
+  };
+}
+
+class MovingCarousel extends ImgCarousel {
+  constructor(container: HTMLDivElement, images: number) {
+    super(container, images); // Runs the constructor for ImgCarousel
+
+    setInterval(this.tick, 2000);
+  }
+
+  tick = () => {
+    this.nextImage();
+  };
 }
 
 export default Carousel;
-export { BubbleCarousel };
+export { BubbleCarousel, ImgCarousel, MovingCarousel };

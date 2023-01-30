@@ -605,6 +605,14 @@ video {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
+.fs-svg {
+  fill: #475569;
+}
+
+.fs-svg:hover {
+  fill: #64748b;
+}
+
 .box {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -625,6 +633,12 @@ video {
 }
 
 .dots-cont {
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.icons-cont {
   gap: 0.75rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -651,6 +665,17 @@ video {
   background-color: rgb(51 65 85 / var(--tw-bg-opacity)) !important;
 }
 
+.icon {
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 0.25rem;
+  background-size: contain;
+}
+
+.icon:hover {
+  opacity: 0.5;
+}
+
 .flex-col-rev {
   display: flex;
   flex-direction: column-reverse;
@@ -658,7 +683,7 @@ video {
 
 .fullscreen {
   background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   bottom: 0px;

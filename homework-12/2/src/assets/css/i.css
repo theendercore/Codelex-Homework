@@ -8,6 +8,9 @@
 .fs-btn {
   @apply bg-slate-900 hover:bg-slate-800 p-2 rounded-md absolute top-2 right-2;
 }
+.fs-svg {
+  @apply fill-slate-600 hover:fill-slate-500;
+}
 
 .box {
   @apply my-6 flex flex-col;
@@ -21,6 +24,9 @@
   @apply gap-3 py-3;
 }
 
+.icons-cont {
+  @apply gap-3 py-3;
+}
 .flip-180 {
   transform: rotate(180deg);
 }
@@ -37,11 +43,19 @@
   @apply bg-slate-700 !important;
 }
 
-.flex-col-rev{
- @apply flex flex-col-reverse
+.icon {
+  @apply rounded w-20 h-10 bg-contain;
+}
+
+.icon:hover {
+  @apply opacity-50;
+}
+
+.flex-col-rev {
+  @apply flex flex-col-reverse;
 }
 
 .fullscreen {
   background-color: rgba(0, 0, 0, 0.8);
-  @apply absolute top-0 left-0 bottom-0 right-0 z-10 flex justify-center items-center;
+  @apply fixed top-0 left-0 bottom-0 right-0 z-10 flex justify-center items-center;
 }
