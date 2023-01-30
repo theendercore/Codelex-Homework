@@ -3,8 +3,8 @@ import Carousel from "./Carousel";
 class BubbleCarousel extends Carousel {
   #imageSlider = document.createElement("div");
   #dotsContainer: HTMLDivElement = document.createElement("div");
-  constructor(container: HTMLDivElement, images: number) {
-    super(container, images); // Runs the constructor for Carousel
+  constructor(container: HTMLDivElement, count: number) {
+    super(container, count); // Runs the constructor for Carousel
 
     // Register the Image Slider
     this.getBaseBlock().appendChild(this.#imageSlider);
@@ -19,7 +19,7 @@ class BubbleCarousel extends Carousel {
     );
 
     // Register the Dots
-    for (let i = 0; i < images; i++) this.#createDot(i);
+    for (let i = 0; i < count; i++) this.#createDot(i);
 
     // Register Clicks
     this.registerClicks(this.changeSelection, this.changeSelection);

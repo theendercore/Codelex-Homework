@@ -2,8 +2,8 @@ import BubbleCarousel from "./BubbleCarousel";
 
 class ImgCarousel extends BubbleCarousel {
   #iconContainer = document.createElement("div");
-  constructor(container: HTMLDivElement, images: number) {
-    super(container, images); // Runs the constructor for BubbleCarousel
+  constructor(container: HTMLDivElement, count: number) {
+    super(container, count); // Runs the constructor for BubbleCarousel
 
     //register Image Container
     this.getSliders().appendChild(this.#iconContainer);
@@ -14,7 +14,7 @@ class ImgCarousel extends BubbleCarousel {
     );
 
     //register Icons
-    for (let i = 0; i < images; i++) this.createIcon(i);
+    for (let i = 0; i < count; i++) this.createIcon(i);
   }
 
   createIcon = (id: number) => {

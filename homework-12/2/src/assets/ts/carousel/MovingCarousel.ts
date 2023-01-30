@@ -1,8 +1,8 @@
 import ImgCarousel from "./ImgCarousel";
 
 class MovingCarousel extends ImgCarousel {
-  constructor(container: HTMLDivElement, images: number) {
-    super(container, images); // Runs the constructor for ImgCarousel
+  constructor(container: HTMLDivElement, count: number) {
+    super(container, count); // Runs the constructor for ImgCarousel
 
     setInterval(this.tick, 2000);
   }

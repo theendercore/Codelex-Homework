@@ -1,4 +1,5 @@
 import { arrowSVG } from "../const";
+import { generateImages } from "../helper-func";
 import ImageContainer from "./ImageContainer";
 
 class Carousel {
@@ -10,13 +11,13 @@ class Carousel {
   #nextBtn: HTMLButtonElement = document.createElement("button");
   #images: string[] = [];
   #selectedImage: number = 0;
-  constructor(container: HTMLDivElement, images: number) {
+  constructor(container: HTMLDivElement, count: number) {
     //ID generator
     this.#id = Math.floor(Math.random() * 85);
 
     // Photo generator
-    for (let i = 0; i < images; i++)
-      this.#images.push(`https://picsum.photos/id/${this.#id + i}/900/500`);
+    this.#images = generateImages(this.#id, count, 900, 500)
+    
 
     // Register the Base Block
     container.appendChild(this.#baseBlock);
