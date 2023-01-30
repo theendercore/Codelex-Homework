@@ -1,3 +1,6 @@
 .text-box {
   @apply: bg-slate-900 border-b-2 border-slate-300;
 }
+.check-box {
+  @apply m-3 h-10 w-10 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500
+}

@@ -5,14 +5,13 @@ import { useState } from 'react'
 interface item { id: number, todo: JSX.Element }
 
 
-
 const ListElement: React.FC = (remove:any) => {
   const [checked, setChecked] = useState<boolean>(false)
   return (
     <div className='ListElement my-7'>
       <input
         type="checkbox"
-        className="m-3 h-10 w-10 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        className="check-box"
         onClick={() => setChecked(!checked)} />
       <input
         type="text"
@@ -21,7 +20,6 @@ const ListElement: React.FC = (remove:any) => {
     </div>
   )
 }
-
 
 
 function App() {
