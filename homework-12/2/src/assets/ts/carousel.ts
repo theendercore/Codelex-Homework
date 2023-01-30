@@ -8,6 +8,7 @@ class Carousel {
   #imgCont: ImageContainer;
   #nextBtn: HTMLButtonElement = document.createElement("button");
   #images: string[] = [];
+  #selectedImage: number = 0;
   constructor(container: HTMLDivElement, images: number) {
     //ID generator
     this.#id = Math.floor(Math.random() * 85);
@@ -40,27 +41,43 @@ class Carousel {
     this.#nextBtn.innerHTML = arrowSVG;
 
     // Register Clicks
-    this.registerClicks(this.previousImage, this.nextImage);
+    this.registerClicks(this.nextImage, this.previousImage);
   }
 
   registerClicks = (right: EventListener, left: EventListener) => {
-    this.#prevBtn.addEventListener("click", left);
     this.#nextBtn.addEventListener("click", right);
+    this.#prevBtn.addEventListener("click", left);
   };
 
   nextImage = () => {
-    this.#images.push(this.#images.shift());
-    this.#imgCont.changeSrc(this.#images[0]);
+    console.log("n:", this.#selectedImage);
+    this.#selectedImage =
+      this.getImageCount() - 1 > this.#selectedImage
+        ? this.#selectedImage + 1
+        : 0;
+    console.log("n:", this.#selectedImage);
+    this.#imgCont.changeSrc(this.#images[this.#selectedImage]);
   };
 
   previousImage = () => {
-    this.#images.unshift(this.#images.pop());
-    this.#imgCont.changeSrc(this.#images[0]);
+    console.log("p:", this.#selectedImage);
+    this.#selectedImage =
+      0 < this.#selectedImage
+        ? this.#selectedImage - 1
+        : this.getImageCount() - 1;
+    console.log("p:", this.#selectedImage);
+    this.#imgCont.changeSrc(this.#images[this.#selectedImage]);
   };
 
   getImageCount = () => this.#images.length;
 
   getBaseBlock = () => this.#baseBlock;
+
+  getSelectedImg = () => this.#selectedImage;
+
+  setSelectionImg = (num: number) => {
+    this.#selectedImage = num;
+  };
 }
 
 class ImageContainer {
@@ -99,7 +116,6 @@ class ImageContainer {
 class BubbleCarousel extends Carousel {
   #imageSlider = document.createElement("div");
   #dotsContainer: HTMLDivElement = document.createElement("div");
-  #selectedImg: number = 0;
   constructor(container: HTMLDivElement, images: number) {
     super(container, images); // Runs the constructor for Carousel
 
@@ -116,14 +132,7 @@ class BubbleCarousel extends Carousel {
     );
 
     // Register the Dots
-    for (let i = 0; i < images; i++) {
-      let dot = document.createElement("div");
-      this.#dotsContainer.appendChild(dot);
-      dot.classList.add(`js-dot-${i}`, "dot");
-      if (i === 0) {
-        dot.classList.add("dot-sel");
-      }
-    }
+    for (let i = 0; i < images; i++) this.createDot(i);
 
     // Register Clicks
     this.registerClicks(this.nextImage, this.previousImage);
@@ -131,29 +140,33 @@ class BubbleCarousel extends Carousel {
 
   nextImage = () => {
     super.nextImage;
-    this.#selectedImg =
-      this.getImageCount() - 1 > this.#selectedImg ? this.#selectedImg + 1 : 0;
-    // console.log("next: ", this.#selectedImg);
     this.changeSelection();
   };
 
   previousImage = () => {
     super.previousImage;
-    this.#selectedImg =
-      0 < this.#selectedImg ? this.#selectedImg - 1 : this.getImageCount() - 1;
-    // console.log("last: ", this.#selectedImg);
     this.changeSelection();
   };
 
-  clickDot = (id: number, dot: HTMLDivElement) => {
-    this.#selectedImg = id;
+  createDot = (id: number) => {
+    let dot = document.createElement("div");
+    this.#dotsContainer.appendChild(dot);
+    dot.classList.add(`js-dot-${id}`, "dot");
+    dot.addEventListener("click", () => this.clickDot(id));
+    if (id === 0) {
+      dot.classList.add("dot-sel");
+    }
+  };
+
+  clickDot = (id: number) => {
+    this.setSelectionImg(id);
     this.changeSelection();
   };
 
   changeSelection = () => {
     this.#dotsContainer.querySelector(".dot-sel").classList.remove("dot-sel");
     this.#dotsContainer
-      .querySelector(`.js-dot-${this.#selectedImg}`)
+      .querySelector(`.js-dot-${this.getSelectedImg()}`)
       .classList.add("dot-sel");
   };
 }
