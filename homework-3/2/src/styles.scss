@@ -22,31 +22,166 @@ body {
   grid-template-columns: 1fr 1fr;
   place-items: center;
 }
+
+.gap {
+  gap: 2rem;
+}
+
 .span-c {
   grid-column: 1/3;
 }
+
+.nav {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nav__item {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+  color: black;
+}
+
 .nav__burger {
   display: none;
+}
+
+.hero {
+  padding-top: 12rem;
+  padding-bottom: 4rem;
+}
+
+.info__tite {
+  padding-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.info__text {
+  padding-bottom: 3rem;
+}
+
+.info_btn {
+  background-color: #ff6464;
+  border-radius: 0.1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+.banner {
+  background-image: url("./assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title-small {
+  font-size: 1rem;
+  color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.blog__card {
+  background-color: white;
+  padding: 2rem;
+  padding-right: 3rem;
+  margin-bottom: 2rem;
+}
+
+.blog__card-title {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.blog__card-meta {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.big-line {
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .cards__body {
   padding-top: 2rem;
   padding-bottom: 5rem;
 }
+
 .cards__title {
   font-size: 1.3rem;
   font-weight: lighter;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
+
 .cards__grid {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
+  display: flex;
+  flex-direction: column;
   place-items: center;
 }
 
+.work-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.work-card__img {
+  padding: 2rem;
+  & img {
+    width: 600px;
+  }
+}
+
+.work-card__cont {
+  padding: 2rem;
+}
+
+.work-card__title {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.work-card__meta {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.work-card__year {
+  margin-right: 2rem;
+  width: fit-content;
+  padding: 0.1rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  border-radius: 2rem;
+  background-color: #142850;
+  color: white;
+  font-size: 1.02rem;
+  font-weight: bolder;
+}
+
+.work-card__tag {
+  color: #8695a4;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
 .card__divider {
-  padding-top: 2rem;
-  background-color: red;
+  height: 0.1rem;
+  width: 96%;
+  background-color: #e0e0e0;
 }
 
 .footer {
@@ -71,6 +206,8 @@ body {
 @media (max-width: 600px) {
   .c2-g {
     display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .nav__burger {
     display: flex;
@@ -79,5 +216,22 @@ body {
   }
   .nav__item {
     display: none;
+  }
+
+  .work-card {
+    flex-direction: column;
+  }
+
+  .info__tite {
+    font-size: 1.6rem;
+  }
+
+  .hero {
+    padding-top: 3rem;
+    text-align: center;
+  }
+
+  .col-rev {
+    flex-direction: column-reverse;
   }
 }
