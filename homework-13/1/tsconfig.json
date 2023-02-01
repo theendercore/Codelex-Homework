@@ -8,10 +8,8 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "lib": [
-      "es2019",
-      "dom",
-      "dom.iterable"
-    ]
+    "lib": ["es2019", "dom", "dom.iterable"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

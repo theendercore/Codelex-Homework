@@ -1,24 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="./assets/css/o.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="./assets/css/o.css" />
     <title>Document</title>
-</head>
-
-<body>
-
-    <div class="container px-10">
-       
+  </head>
+  <body>
+    <div class="container mx-auto my-20 flex items-center justify-center px-10">
+      <form
+        action="submit"
+        class="js-from flex w-max flex-col items-center justify-center rounded-xl bg-slate-900 p-6"
+      >
+        <label class="py-3 text-white">
+          Name:
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="px-2 text-slate-800"
+          />
+        </label>
+        <label class="py-3 text-white">
+          Email:
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="px-2 text-slate-800"
+            required
+          />
+        </label>
+        <label class="py-3 text-white">
+          Password:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="px-2 text-slate-800"
+            required
+          />
+        </label>
+        <input
+          type="button"
+          value="Submit"
+          class="js-sub-btn rounded-full bg-slate-500 px-5 py-2"
+          required
+        />
+      </form>
     </div>
-
     <script src="/scripts.js"></script>
-</body>
-
+  </body>
 </html>
