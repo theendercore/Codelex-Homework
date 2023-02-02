@@ -24,7 +24,7 @@ export default function AddScreen({ addCard }: AddScreenProps) {
 
   return (
     <div className="EditScreen m-auto flex w-max flex-col rounded-md bg-slate-800 p-5">
-      <h2 className="text-3xl text-slate-300">Add New</h2>
+      <h2 className="text-3xl text-slate-300 pb-3">Add New</h2>
       <input
         className="mb-3 rounded bg-slate-600 p-2 text-xl text-slate-400"
         type="text"

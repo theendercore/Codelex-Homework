@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [currentUrl, setCurrentUrl] = useState(DB_URL);
 
+  //Load cards upon page load
   useEffect(() => {
     setLoading(true);
     let cancel: Canceler;
@@ -31,15 +32,24 @@ function App() {
   }, [currentUrl]);
 
   const deleteCard = (inCard: iCard) => {
-
-    let updatedTodo: iCard[] = cards!!.filter((card) => card.id !== inCard.id);
-    setCards(updatedTodo);
+    axios
+      .delete(`${DB_URL}/${inCard.id}`)
+      .then(() => {
+        console.log(inCard);
+        let updatedTodo: iCard[] = cards!!.filter(
+          (card) => card.id !== inCard.id
+        );
+        setCards(updatedTodo);
+      })
+      .catch((err) => {
+        console.log("Failed to delete: ", err);
+      });
   };
 
   const editCard = (inCard: iCard) => {
     //TODO edit on db
     // setMutableCard(inCard);
-    // console.log(inCard);
+    console.log(inCard);
   };
 
   const addCard = (inCard: PseudoCard) => {
