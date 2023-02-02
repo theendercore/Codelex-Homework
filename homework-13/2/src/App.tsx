@@ -3,21 +3,26 @@ import CardList from "./components/CardList";
 import { iCard, PseudoCard } from "./assets/ts/interfaces";
 import axios, { Canceler } from "axios";
 import { DB_URL } from "./assets/ts/const";
-import EditScreen from "./components/EditScreen";
-import AddScreen from "./components/AddScreen";
+import CardForm from "./components/CardForm";
 
 function App() {
-  const [cards, setCards] = useState<iCard[] | null>(null);
-  // const [mutableCard, setMutableCard] = useState<iCard | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [currentUrl, setCurrentUrl] = useState(DB_URL);
+  const [cards, setCards] = useState<iCard[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [editing, setEditing] = useState<boolean>(false);
+  const [editableCard, setEditableCard] = useState<iCard>({
+    id: -1,
+    title: "oh no",
+    text: "oh no",
+    url: "oh no",
+  });
 
   //Load cards upon page load
+
   useEffect(() => {
     setLoading(true);
     let cancel: Canceler;
     axios
-      .get<iCard[]>(currentUrl, {
+      .get<iCard[]>(DB_URL, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then(({ data }) => {
@@ -29,38 +34,68 @@ function App() {
       });
 
     return () => cancel();
-  }, [currentUrl]);
+  }, []);
+
+  const addCard = (inCard: PseudoCard) => {
+    setLoading(true);
+    axios
+      .post<iCard>(DB_URL, inCard)
+      .then(({ data }) => {
+        setCards([...cards, data]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const deleteCard = (inCard: iCard) => {
+    setLoading(true);
     axios
       .delete(`${DB_URL}/${inCard.id}`)
       .then(() => {
         console.log(inCard);
-        let updatedTodo: iCard[] = cards!!.filter(
+        let updatedTodo: iCard[] = cards.filter(
           (card) => card.id !== inCard.id
         );
         setCards(updatedTodo);
+        setLoading(false);
       })
       .catch((err) => {
         console.log("Failed to delete: ", err);
+        setLoading(false);
       });
   };
 
+  const closeEditScreen = () => {
+    setEditing(false);
+  };
+
   const editCard = (inCard: iCard) => {
-    //TODO edit on db
-    // setMutableCard(inCard);
-    console.log(inCard);
+    if (editing) {
+      return alert("Please finish editing first");
+    }
+    setEditing(true);
+    setEditableCard(inCard);
   };
 
-  const addCard = (inCard: PseudoCard) => {
+  const saveCard = (inCard: iCard) => {
+    setLoading(true);
     axios
-      .post<iCard>(DB_URL, inCard)
-      .then(({ data }) => cards !== null && setCards([...cards, data]));
-  };
+      .put<iCard>(`${DB_URL}/${inCard.id}`, inCard)
+      .then(() => {
+        let updatedTodo: iCard[] = cards.filter(
+          (card) => card.id !== inCard.id
+        );
+        setCards([...updatedTodo, inCard]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("Failed to put: ", err);
+      });
 
-  const saveCard: saveCard = (inCard: iCard | null) => {
-    console.log("saved card", inCard);
-    // setMutableCard(null);
+    setEditing(false);
   };
 
   return (
@@ -71,11 +106,20 @@ function App() {
         </h2>
       ) : (
         <>
-          <EditScreen saveCard={null} />
+          {!editing ? (
+            <></>
+          ) : (
+            <CardForm
+              onSubmit={saveCard}
+              title={"Editing Card"}
+              onClose={closeEditScreen}
+              card={editableCard}
+            />
+          )}
           <CardList cards={cards} deleteCard={deleteCard} editCard={editCard} />
+          <CardForm onSubmit={addCard} title={"Add New"} />
         </>
       )}
-      <AddScreen addCard={addCard} />
     </div>
   );
 }

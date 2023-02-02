@@ -2,18 +2,20 @@ import React from "react";
 import Card from "./Card";
 import { iCard } from "../assets/ts/interfaces";
 
+type CardListProps = {
+  cards: iCard[];
+  deleteCard: deleteCardFunc;
+  editCard: editCard;
+};
+
 export default function CardList({
   cards,
   deleteCard,
   editCard,
-}: {
-  cards: iCard[] | null;
-  deleteCard: deleteCardFunc;
-  editCard: editCard;
-}) {
+}: CardListProps) {
   return (
-    <div className="CardList flex flex-row flex-wrap gap-6 p-8 justify-center">
-      {cards === null ? (
+    <div className="CardList flex flex-row flex-wrap justify-center gap-6 p-8">
+      {cards.length < 1 ? (
         <h1>No cards...</h1>
       ) : (
         cards.map((card) => (
