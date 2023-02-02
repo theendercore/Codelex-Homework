@@ -12,7 +12,7 @@ export default function CardList({
   editCard: editCard;
 }) {
   return (
-    <div className="CardList flex flex-row gap-6 p-8">
+    <div className="CardList flex flex-row flex-wrap gap-6 p-8">
       {cards === null ? (
         <h1>No cards...</h1>
       ) : (

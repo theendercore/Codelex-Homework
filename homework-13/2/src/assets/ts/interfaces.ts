@@ -4,7 +4,7 @@ interface iCard extends PseudoCard {
 interface PseudoCard {
   title: string;
   text: string;
-  img: string;
+  url: string;
 }
 
-export type { iCard };
+export type { iCard, PseudoCard };

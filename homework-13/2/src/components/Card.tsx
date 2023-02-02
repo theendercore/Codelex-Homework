@@ -6,7 +6,7 @@ export type CardProp = { card: iCard; deleteCard: deleteCardFunc; editCard: edit
 export default function Card({ card, deleteCard, editCard }: CardProp) {
   return (
     <div className="Card flex w-max flex-col justify-center border border-solid border-slate-400">
-      <img src={card.img} alt="image" />
+      <img src={card.url} alt="image" className="h-max"/>
       <div className="flex flex-col items-start p-4">
         <h2 className="pb-2 text-xl text-slate-100">{card.title}</h2>
         <p className="pb-2 text-slate-300">{card.text}</p>
