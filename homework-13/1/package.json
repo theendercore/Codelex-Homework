@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack build",
     "start": "webpack serve",
-    "test": "jest",
+    "test": "jest --watch",
     "db": "json-server --watch db.json --port 3004",
     "tw": "npx tailwindcss -i ./src/assets/css/i.css -o ./src/assets/css/o.css --watch"
   },
