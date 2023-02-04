@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Colors, ColorsList } from "../types.d";
+import { Color } from "../../../../homework-8/src/assets/ts/color";
+import "./ComponentOne.css";
 
 export default function ComponentOne() {
   let [text1, setText1] = useState("");
@@ -10,8 +12,8 @@ export default function ComponentOne() {
   let [buttonState, setButtonState] = useState(true);
   let [count, setCount] = useState(0);
 
-  let [colors, setColors] = useState<Colors[]>([]);
-  let [color, setColor] = useState<Colors>();
+  let [colors, setColors] = useState<string[]>([]);
+  let [color, setColor] = useState<string>("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,7 +58,7 @@ export default function ComponentOne() {
             className="w-max rounded-full bg-slate-500 px-4 py-2 text-slate-900 hover:bg-slate-300 hover:text-slate-700"
           />
         </form>
-        <span className="text-color-400 p-4">{list.join(" ")}</span>
+        <span className="text-color-400 p-4">{JSON.stringify(list)}</span>
       </>
 
       <>
@@ -86,25 +88,43 @@ export default function ComponentOne() {
       </>
 
       <>
-        <form className="flex flex-row" 
-        onSubmit={(e)=>{
-          setColors([...colors, color])
-        }}>
+        <form
+          className="flex flex-row"
+          onSubmit={(e) => {
+            e.preventDefault();
+            color && setColors([...colors, color]);
+          }}
+        >
           <button className="m-3 w-max rounded-xl bg-slate-900 px-2 text-3xl text-slate-500 hover:bg-slate-700 hover:text-slate-300">
             +
           </button>
           <select
             name="colorDropdown"
             id="colorDropdown"
+            onChange={(e) => setColor(e.target.value)}
+            value={color}
             className="m-3 w-max border-none bg-slate-700 p-2"
           >
-            <option selected disabled>Color Dropdown</option>
-
             {ColorsList.map((e) => {
-              return <option value={e}>{e}</option>;
+              return (
+                <option value={e} key={crypto.randomUUID()}>
+                  {e}
+                </option>
+              );
             })}
           </select>
         </form>
+        <div className="divArray flex flex-row gap-3">
+          {colors.map((e) => (
+            <div
+              className={
+                e +
+                " h-12 w-12 overflow-hidden rounded-xl border-2 border-solid border-slate-600"
+              }
+              key={crypto.randomUUID()}
+            ></div>
+          ))}
+        </div>
       </>
     </div>
   );
