@@ -1,14 +1,18 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import CharTextBox from "./CharTextBox";
 
 export default function CharCard({ char }: { char: Character }) {
+
   return (
-    <div className="overflow-hidden rounded-xl bg-gray-900 shadow-xl">
-      <img src={char.image} alt="charter" className="w-full" />
+    <Link
+      to={`/character/${char.id}`}
+      className="overflow-hidden rounded-3xl bg-gray-900 shadow-xl"
+    >
+      <img src={char.image} alt="charter" className="w-full shadow-inner" />
       <div className="p-6">
         <div className="pb-6">
           <h2 className="text-xl font-extrabold">{char.name}</h2>
-          <p className="txt-md font-bold">
+          <div className="txt-md font-bold">
             <div
               className={
                 "mr-2 ml-1 inline-block h-2.5 w-2.5 rounded-full" +
@@ -20,14 +24,16 @@ export default function CharCard({ char }: { char: Character }) {
               }
             ></div>
             {char.status} - {char.species}
-          </p>
+          </div>
         </div>
         <div>
           <CharTextBox title={"Origins:"} subtext={char.origin.name} />
-          <CharTextBox title={"Last know location:"} subtext={char.location.name} />
-          <CharTextBox title={"First seen in:"} subtext={char.url} />
+          <CharTextBox
+            title={"Last know location:"}
+            subtext={char.location.name}
+          />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

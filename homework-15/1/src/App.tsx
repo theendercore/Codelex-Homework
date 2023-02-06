@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/characters" element={<Characters />} />
-        <Route path="/characters/:id" element={<Character />} />
+        <Route path="/character/:id" element={<Character />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
