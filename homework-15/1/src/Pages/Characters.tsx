@@ -17,9 +17,8 @@ export default function Characters() {
   } = useInfiniteQuery({
     queryKey: ["chars"],
     queryFn: getCharsParams,
-    getNextPageParam: (lastPage) =>
-      !lastPage.info.next ? lastPage.info.next?.split("=")[-1] : undefined,
-    keepPreviousData: true,
+    getNextPageParam: (lastPage) => lastPage.info.next?.split("=")[-1],
+    // keepPreviousData: true,
   });
 
   if (isLoading) return <Container input={<h1>Loading...</h1>} />;
@@ -31,9 +30,13 @@ export default function Characters() {
     <div className="container mx-auto my-5">
       <h2 className="my-8 text-center text-4xl font-extrabold">Characters</h2>
       <div className="grid grid-cols-4 gap-10">
-        {data.pages.map(({ results }) =>
-          results.map((char) => <CharCard key={char.id} char={char} />)
-        )}
+        {data.pages.map(({ results }, i) => (
+          <React.Fragment key={i}>
+            {results.map((char) => (
+              <CharCard key={char.id} char={char} />
+            ))}
+          </React.Fragment>
+        ))}
       </div>
       <button
         onClick={() => fetchNextPage()}
