@@ -9,7 +9,7 @@ export function getChars() {
 
 export function getCharsParams({
   pageParam = 0,
-}: QueryFunctionContext<string[], any>) {
+}: QueryFunctionContext<string[]>) {
   return axios
     .get<CharList>(`${db_page}${pageParam}`)
     .then(async ({ data }) => data);

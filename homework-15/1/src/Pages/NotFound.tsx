@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import Container from "../components/Container";
 
 export default function NotFound() {
   return (
-    <h1 className="container mx-auto my-5">NotFound 404</h1>
-  )
+    <Container
+      input={<h1 className="container mx-auto my-5">NotFound 404</h1>}
+    />
+  );
 }

@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Container from "../components/Container";
 import CharCard from "../components/CharCard";
-import { getChars, getCharsParams } from "../api/chars";
+import { getCharsParams } from "../api/chars";
 
 export default function Characters() {
   const {
@@ -17,8 +16,7 @@ export default function Characters() {
   } = useInfiniteQuery({
     queryKey: ["chars"],
     queryFn: getCharsParams,
-    getNextPageParam: (lastPage) => lastPage.info.next?.split("=").slice(-1)[0],
-    // keepPreviousData: true,
+    getNextPageParam: (lastPage) => lastPage.info.next?.split("=").pop(),
   });
 
   if (isLoading) return <Container input={<h1>Loading...</h1>} />;
