@@ -1,14 +1,14 @@
 type BlogPost = {
   id: number;
-  img: string;
-  title: string;
-  excerpt: string;
+  image: string;
   content: BlogContent;
   author: User;
-  comments: Comment[];
+  comments: BlogComment[];
 };
 
 type BlogContent = {
+  title: string;
+  excerpt: string;
   text: string;
 };
 
@@ -18,7 +18,7 @@ type User = {
   icon: string;
 };
 
-type Comment = {
+type BlogComment = {
   author: User;
   text: string;
 };

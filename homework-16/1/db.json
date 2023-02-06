@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "image": "https://picsum.photos/id/1/500/350",
+      "content": {
+        "title": "Title",
+        "excerpt": "Wow so interesting",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde non laudantium amet atque aspernatur totam iste dolorum est ex, excepturi quos ullam. Magni, molestiae deleniti nobis nulla facilis officiis!"
+      },
+      "author": {
+        "name": "end",
+        "surname": "end 2",
+        "icon": "https://picsum.photos/id/69/50"
+      },
+      "comments": [
+        {
+          "author": {
+            "name": "not end",
+            "surname": "end 1",
+            "icon": "https://picsum.photos/id/4/50"
+          },
+          "text": "hello, are you interested in buying one of our lore imspuments?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "image": "https://picsum.photos/id/3/500/350",
+      "content": {
+        "title": "Title 2",
+        "excerpt": "so crazy",
+        "text": "text"
+      },
+      "author": {
+        "name": "not end",
+        "surname": "end 1",
+        "icon": "https://picsum.photos/id/4/50"
+      },
+      "comments": []
+    }
+  ]
+}
