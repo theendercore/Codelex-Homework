@@ -8,7 +8,7 @@ export default function Post() {
   const { id } = useParams();
   const { isLoading, isError, error, data } = useQuery<BlogPostWithId, Error>({
     queryKey: ["post", id],
-    queryFn: () => getBlogPost(id || "0"),
+    queryFn: ({signal}) => getBlogPost(id || "0", signal),
   });
 
   if (isLoading) return <h1 className="text-center text-6xl">Loading...</h1>;

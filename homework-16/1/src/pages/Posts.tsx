@@ -7,7 +7,7 @@ export default function Posts() {
   const { isLoading, isError, error, data } = useQuery<BlogPostSchema[], Error>(
     {
       queryKey: ["posts"],
-      queryFn: getBlogPosts,
+      queryFn: ({ signal }) => getBlogPosts(signal),
     }
   );
 
