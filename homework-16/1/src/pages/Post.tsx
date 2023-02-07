@@ -1,13 +1,14 @@
-import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { getBlogPost } from "../api/apiCalls";
+import CommentList from "../components/CommentList";
 
 export default function Post() {
   const { id } = useParams();
-  const { isLoading, isError, error, data } = useQuery({
-    queryKey: ["character", id],
-    queryFn: (context) => getBlogPost(context.queryKey[1] || ""),
+  const { isLoading, isError, error, data } = useQuery<BlogPostWithId, Error>({
+    queryKey: ["post", id],
+    queryFn: () => getBlogPost(id || "0"),
   });
 
   if (isLoading) return <h1 className="text-center text-6xl">Loading...</h1>;
@@ -19,7 +20,11 @@ export default function Post() {
 
   return (
     <div className="Post container mx-auto mb-5">
-      <img src={data.image} alt="fancy img" className="h-96 w-full rounded-3xl" />
+      <img
+        src={data.image}
+        alt="fancy img"
+        className="h-96 w-full rounded-3xl"
+      />
       <div className="Content m-5 mt-0 flex flex-col rounded-b-3xl bg-slate-900">
         <h2 className="m-8 text-6xl font-extrabold">{data.content.title}</h2>
         <div className="text-block mx-20">
@@ -37,26 +42,7 @@ export default function Post() {
           <span className="text-l py-8 px-5">{`${data.author.name} ${data.author.surname}`}</span>
         </div>
       </div>
-      <div className="comments flex justify-center">
-        {data.comments.map((comment, i) => (
-          <div
-            key={i}
-            className="flex w-max flex-row items-center rounded-xl bg-slate-700 px-5"
-          >
-            <div className="user flex flex-row p-5">
-              <img
-                src={comment.author.icon}
-                alt={comment.author.name + " image"}
-                className="rounded-full"
-              />
-              <span className="text-l px-2 py-1 ">{`${comment.author.name} ${comment.author.surname}`}</span>
-            </div>
-            <div className="comment rounded-xl bg-slate-600 py-5 px-10">
-              {comment.text}
-            </div>
-          </div>
-        ))}
-      </div>
+      <CommentList commentsId={data.commentsId} />
     </div>
   );
 }
