@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 type PostsPreviewProps = {
-  post: BlogPostSchema;
+  post: BlogPost;
 };
 
 

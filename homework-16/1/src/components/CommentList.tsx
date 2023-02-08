@@ -22,7 +22,7 @@ export default function CommentList({ commentsId }: { commentsId: number }) {
   return (
     <div className="CommentList comments flex flex-col items-center">
       {data.map((c) => (
-        <Comment comment={c} />
+        <Comment key={crypto.randomUUID()} comment={c} />
       ))}
     </div>
   );

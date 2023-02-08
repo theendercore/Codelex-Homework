@@ -23,7 +23,7 @@ export default function Posts() {
   return (
     <div className="Posts container mx-auto my-10 grid grid-cols-3 gap-6">
       {data.map((post) => (
-        <PostPreview post={post} />
+        <PostPreview key={crypto.randomUUID()} post={post} />
       ))}
     </div>
   );
