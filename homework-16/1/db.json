@@ -36,6 +36,11 @@
           "id": 2,
           "authorId": 1,
           "text": "have you comadrered lorem imspum?"
+        },
+        {
+          "id": 3,
+          "authorId": 5,
+          "text": "Did you know that acording to our lore imspuments, we have a lot of fun! And that this is the best thing we have ever!"
         }
       ]
     },
@@ -47,15 +52,33 @@
   "users": [
     {
       "id": 1,
-      "name": "end",
-      "surname": "end 2",
-      "icon": "https://picsum.photos/id/69/50"
+      "name": "Jonathan",
+      "surname": "Smith",
+      "icon": "https://picsum.photos/id/31/50"
     },
     {
       "id": 2,
-      "name": "not end",
-      "surname": "end 1",
-      "icon": "https://picsum.photos/id/4/50"
+      "name": "Peter",
+      "surname": "Jasmine",
+      "icon": "https://picsum.photos/id/32/50"
+    },
+    {
+      "id": 3,
+      "name": "Daniela",
+      "surname": "Richards",
+      "icon": "https://picsum.photos/id/33/50"
+    },
+    {
+      "id": 4,
+      "name": "Merlin",
+      "surname": "Waterson",
+      "icon": "https://picsum.photos/id/34/50"
+    },
+    {
+      "id": 5,
+      "name": "Joseph",
+      "surname": "Redding",
+      "icon": "https://picsum.photos/id/35/50"
     }
   ]
 }
