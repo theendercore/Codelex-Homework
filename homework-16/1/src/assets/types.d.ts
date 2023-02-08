@@ -2,24 +2,8 @@ type BlogPost = {
   id: number;
   image: string;
   content: BlogContent;
-  author: User;
-  comments: BlogComment[];
-};
-
-type BlogPostWithId = {
-  id: number;
-  image: string;
-  content: BlogContent;
-  author: User;
-  commentsId: number;
-};
-
-type BlogPostSchema = {
-  id: number;
-  image: string;
-  content: BlogContent;
   authorId: number;
-  commentsListId: number;
+  commentListId: number;
 };
 
 type BlogContent = {
@@ -33,15 +17,9 @@ type CommentList = {
   comments: BlogCommentSchema[];
 };
 
-type BlogCommentSchema = {
-  id: number;
-  authorId: number; 
-  text: string;
-};
-
 type BlogComment = {
   id: number;
-  author: User;
+  authorId: number; 
   text: string;
 };
 

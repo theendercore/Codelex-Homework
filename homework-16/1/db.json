@@ -9,7 +9,7 @@
         "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde non laudantium amet atque aspernatur totam iste dolorum est ex, excepturi quos ullam. Magni, molestiae deleniti nobis nulla facilis officiis!"
       },
       "authorId": 1,
-      "commentsListId": 1
+      "commentListId": 1
     },
     {
       "id": 2,
@@ -20,7 +20,7 @@
         "text": "text"
       },
       "authorId": 2,
-      "commentsListId": 2
+      "commentListId": 2
     }
   ],
   "comments": [

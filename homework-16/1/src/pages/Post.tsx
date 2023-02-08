@@ -3,10 +3,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { getBlogPost } from "../api/apiCalls";
 import CommentList from "../components/CommentList";
+import Author from '../components/Author';
 
 export default function Post() {
   const { id } = useParams();
-  const { isLoading, isError, error, data } = useQuery<BlogPostWithId, Error>({
+  const { isLoading, isError, error, data } = useQuery<BlogPost, Error>({
     queryKey: ["post", id],
     queryFn: ({signal}) => getBlogPost(id || "0", signal),
   });
@@ -34,15 +35,10 @@ export default function Post() {
           <p className="text-xl ">{data.content.text}</p>
         </div>
         <div className="Footer m-5 my-10 flex w-max flex-row items-center rounded-xl bg-slate-700 px-5">
-          <img
-            src={data.author.icon}
-            alt={data.author.name + " image"}
-            className="rounded-full"
-          />
-          <span className="text-l py-8 px-5">{`${data.author.name} ${data.author.surname}`}</span>
+          <Author authorId={data.authorId}/>
         </div>
       </div>
-      <CommentList commentsId={data.commentsId} />
+      <CommentList commentsId={data.commentListId} />
     </div>
   );
 }

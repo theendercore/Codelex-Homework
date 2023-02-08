@@ -9,9 +9,9 @@ import Posts from "./pages/Posts";
 function App() {
   return (
     <>
-      <nav className="bg-slate-500 mb-5">
+      <nav className="mb-5 bg-slate-500">
         <div className="container mx-auto p-3">
-          <ul className="flex flex-row justify-evenly p-1">
+          <ul className="flex flex-row justify-evenly p-1 relative">
             <li className="mx-6 my-4">
               <Link
                 to="/"
@@ -27,6 +27,14 @@ function App() {
               >
                 Blog
               </Link>
+            </li>
+            <li>
+              <button
+                onClick={() => alert("aaa")}
+                className="text-md absolute top-1 right-0 rounded-xl bg-cyan-600 px-6 py-4 shadow-md hover:bg-cyan-800 hover:shadow-inner"
+              >
+                add Post
+              </button>
             </li>
           </ul>
         </div>
