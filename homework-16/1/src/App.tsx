@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import reactLogo from "./assets/react.svg";
+import Popup from "./components/Popup/Popup";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
 import Posts from "./pages/Posts";
 
 function App() {
+  const [popupOpen, setPopupOpen] = useState(false);
   return (
     <>
       <nav className="mb-5 bg-slate-500">
         <div className="container mx-auto p-3">
-          <ul className="flex flex-row justify-evenly p-1 relative">
+          <ul className="relative flex flex-row justify-evenly p-1">
             <li className="mx-6 my-4">
               <Link
                 to="/"
@@ -30,7 +31,7 @@ function App() {
             </li>
             <li>
               <button
-                onClick={() => alert("aaa")}
+                onClick={() => setPopupOpen(true)}
                 className="text-md absolute top-1 right-0 rounded-xl bg-cyan-600 px-6 py-4 shadow-md hover:bg-cyan-800 hover:shadow-inner"
               >
                 add Post
@@ -39,6 +40,11 @@ function App() {
           </ul>
         </div>
       </nav>
+
+      <Popup open={popupOpen} onClose={() => setPopupOpen(false)}>
+       Popup 
+      </Popup>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts />} />

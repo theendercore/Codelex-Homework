@@ -2,7 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { getUser } from "../api/apiCalls";
 
-export default function Author({ authorId }: { authorId: number }) {
+export default function Author({
+  authorId,
+  className,
+}: {
+  authorId: number;
+  className?: string;
+}) {
   const { isLoading, isError, error, data } = useQuery<User, Error>({
     queryKey: ["user", authorId],
     queryFn: ({ signal }) => getUser(authorId, signal),
@@ -16,7 +22,7 @@ export default function Author({ authorId }: { authorId: number }) {
     return <h3>Could not get Author.</h3>;
 
   return (
-    <div className="user flex flex-row p-5">
+    <div className={"user flex flex-row" + " " + className}>
       <img
         src={data.icon}
         alt={data.name + " image"}

@@ -17,7 +17,12 @@ export async function getBlogPosts(signal?: AbortSignal) {
 }
 
 export async function getUser(id: number | string, signal?: AbortSignal) {
-  const { data } = await axios.get<User>(`${API_URL}/users/${id}`);
+  const { data } = await axios.get<User>(`${API_URL}/users/${id}`, { signal });
+  return data;
+}
+
+export async function getUsers(signal?: AbortSignal) {
+  const { data } = await axios.get<User[]>(`${API_URL}/users`, { signal });
   return data;
 }
 
@@ -26,4 +31,15 @@ export async function getComments(id: number | string, signal?: AbortSignal) {
     signal,
   });
   return data.comments;
+}
+
+export async function postComment(
+  commentId: number,
+  comment: Omit<BlogComment, "id">
+) {
+  const { data } = await axios.post<BlogComment>(
+    `${API_URL}/comments/${commentId}`,
+    comment
+  );
+  return data;
 }

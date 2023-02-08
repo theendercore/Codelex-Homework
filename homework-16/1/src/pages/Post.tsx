@@ -1,15 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getBlogPost } from "../api/apiCalls";
+import { getBlogPost, postComment } from "../api/apiCalls";
 import CommentList from "../components/CommentList";
-import Author from '../components/Author';
+import Author from "../components/Author";
+import Popup from "../components/Popup/Popup";
+import AuthorDropdown from "../components/AuthorDropdown";
 
 export default function Post() {
   const { id } = useParams();
   const { isLoading, isError, error, data } = useQuery<BlogPost, Error>({
     queryKey: ["post", id],
-    queryFn: ({signal}) => getBlogPost(id || "0", signal),
+    queryFn: ({ signal }) => getBlogPost(id || "0", signal),
   });
 
   if (isLoading) return <h1 className="text-center text-6xl">Loading...</h1>;
@@ -35,7 +37,7 @@ export default function Post() {
           <p className="text-xl ">{data.content.text}</p>
         </div>
         <div className="Footer m-5 my-10 flex w-max flex-row items-center rounded-xl bg-slate-700 px-5">
-          <Author authorId={data.authorId}/>
+          <Author authorId={data.authorId} className="py-2" />
         </div>
       </div>
       <CommentList commentsId={data.commentListId} />

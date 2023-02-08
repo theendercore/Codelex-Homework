@@ -41,6 +41,11 @@
           "id": 3,
           "authorId": 5,
           "text": "Did you know that acording to our lore imspuments, we have a lot of fun! And that this is the best thing we have ever!"
+        },
+        {
+          "text": "Oh thats a lovely idea i will not that down for latter so i can talk about this with my family",
+          "authorId": 3,
+          "id": 3
         }
       ]
     },
