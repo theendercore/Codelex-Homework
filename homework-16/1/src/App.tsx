@@ -6,17 +6,23 @@ import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
 import Posts from "./pages/Posts";
 import AuthorDropdown from "./components/AuthorDropdown";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postNewPost } from "./api/apiCalls";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
+  const queryClient = useQueryClient();
   const [popupOpen, setPopupOpen] = useState(false);
 
   const mutation = useMutation<BlogPost, Error, Omit<BlogPost, "id">>({
     mutationFn: (newPost) => postNewPost(newPost),
-    onError: (error) => console.log(error),
+    onError: (error) => {
+      toast.error(error.message);
+    },
     onSuccess: () => {
-      alert("Post Posted!");
+      queryClient.invalidateQueries(["posts"]);
+      toast.success("Blog Post Added!");
     },
   });
 
@@ -128,7 +134,15 @@ function App() {
           </button>
         </form>
       </Popup>
-
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        theme="dark"
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts />} />

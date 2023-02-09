@@ -4,6 +4,7 @@
         "btns",
         "Morty",
         "parādās",
-        "teksts"
+        "teksts",
+        "toastify"
     ]
 }

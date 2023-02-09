@@ -1,11 +1,13 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { getComments, postComment } from "../api/apiCalls";
 import AuthorDropdown from "./AuthorDropdown";
 import Comment from "./Comment";
 import Popup from "./Popup/Popup";
 
 export default function CommentList({ blogId }: { blogId: string }) {
+  const queryClient = useQueryClient();
   const [popup, setPopup] = useState(false);
   const { isLoading, isError, error, data } = useQuery<BlogComment[], Error>({
     queryKey: ["comments", blogId],
@@ -14,8 +16,12 @@ export default function CommentList({ blogId }: { blogId: string }) {
 
   const mutation = useMutation<BlogComment, Error, Omit<BlogComment, "id">>({
     mutationFn: (newComment) => postComment(newComment),
+    onError: (error) => {
+      toast.error(error.message);
+    },
     onSuccess: () => {
-      alert("Comment Posted!");
+      queryClient.invalidateQueries({ queryKey: ["comments", blogId] });
+      toast.success("Comment Posted !");
     },
   });
 

@@ -1,13 +1,14 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { editBlogPost, getBlogPost, postComment } from "../api/apiCalls";
 import CommentList from "../components/CommentList";
 import Author from "../components/Author";
 import Popup from "../components/Popup/Popup";
-import AuthorDropdown from "../components/AuthorDropdown";
+import { toast } from "react-toastify";
 
 export default function Post() {
+  const queryClient = useQueryClient();
   const [popup, setPopup] = useState(false);
   const { id } = useParams();
   const { isLoading, isError, error, data } = useQuery<BlogPost, Error>({
@@ -25,9 +26,12 @@ export default function Post() {
     }
   >({
     mutationFn: (editedPost) => editBlogPost(editedPost),
-    onError: (error) => console.log(error),
+    onError: (error) => {
+      toast.error(error.message);
+    },
     onSuccess: () => {
-      alert("Post Updated!");
+      queryClient.invalidateQueries({ queryKey: ["post", id] });
+      toast.success("Blog Post Edited!");
     },
   });
 
