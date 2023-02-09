@@ -3,7 +3,6 @@ type BlogPost = {
   image: string;
   content: BlogContent;
   authorId: number;
-  commentListId: number;
 };
 
 type BlogContent = {
@@ -12,14 +11,10 @@ type BlogContent = {
   text: string;
 };
 
-type CommentList = {
-  id: number;
-  comments: BlogCommentSchema[];
-};
-
 type BlogComment = {
   id: number;
-  authorId: number; 
+  blogId: number;
+  authorId: number;
   text: string;
 };
 

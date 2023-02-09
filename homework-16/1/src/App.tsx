@@ -5,9 +5,39 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
 import Posts from "./pages/Posts";
+import AuthorDropdown from "./components/AuthorDropdown";
+import { useMutation } from "@tanstack/react-query";
+import { postNewPost } from "./api/apiCalls";
 
 function App() {
   const [popupOpen, setPopupOpen] = useState(false);
+
+  const mutation = useMutation<BlogPost, Error, Omit<BlogPost, "id">>({
+    mutationFn: (newPost) => postNewPost(newPost),
+    onError: (error) => console.log(error),
+    onSuccess: () => {
+      alert("Post Posted!");
+    },
+  });
+
+  function handleAddNewPost(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    let formData = new FormData(e.currentTarget);
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    });
+    mutation.mutate({
+      image: formData.get("image")!.toString().trim(),
+      content: {
+        title: formData.get("title")!.toString().trim(),
+        excerpt: formData.get("excerpt")!.toString().trim(),
+        text: formData.get("text")!.toString().trim(),
+      },
+      authorId: Number(formData.get("authorId")!.toString().trim()),
+    });
+    setPopupOpen(false);
+  }
+
   return (
     <>
       <nav className="mb-5 bg-slate-500">
@@ -42,7 +72,31 @@ function App() {
       </nav>
 
       <Popup open={popupOpen} onClose={() => setPopupOpen(false)}>
-       Popup 
+        <form
+          onSubmit={handleAddNewPost}
+          className="flex flex-col items-center justify-center"
+        >
+          <label className="pb-2 text-slate-800">
+            Title <input type="text" name="title" id="title" required />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Header <input type="text" name="excerpt" id="excerpt" required />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Text <input type="text" name="text" id="text" required />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Image
+            <input
+              type="url"
+              name="image"
+              id="image"
+              defaultValue={"https://picsum.photos/id/234/500/350"}
+            />
+          </label>
+          <AuthorDropdown className="pb-2 text-slate-800" />
+          <button type="submit">Add Post</button>
+        </form>
       </Popup>
 
       <Routes>

@@ -5,19 +5,20 @@ import AuthorDropdown from "./AuthorDropdown";
 import Comment from "./Comment";
 import Popup from "./Popup/Popup";
 
-export default function CommentList({ commentsId }: { commentsId: number }) {
+export default function CommentList({ blogId }: { blogId: string }) {
   const [popup, setPopup] = useState(false);
   const { isLoading, isError, error, data } = useQuery<BlogComment[], Error>({
-    queryKey: ["comments", commentsId],
-    queryFn: ({ signal }) => getComments(commentsId, signal),
+    queryKey: ["comments", blogId],
+    queryFn: ({ signal }) => getComments(blogId, signal),
   });
 
   const mutation = useMutation<BlogComment, Error, Omit<BlogComment, "id">>({
-    mutationFn: (newComment) => postComment(commentsId, newComment),
+    mutationFn: (newComment) => postComment(newComment),
     onSuccess: () => {
       alert("Comment Posted!");
     },
   });
+
   if (isLoading || mutation.isLoading)
     return <h3 className="text-center text-6xl">Loading...</h3>;
 
@@ -25,10 +26,6 @@ export default function CommentList({ commentsId }: { commentsId: number }) {
     return (
       <h3 className="text-center text-6xl">Error {JSON.stringify(error)}</h3>
     );
-
-  if (!data || data.length === 0)
-    return <h3 className="text-center text-xl">No comments...</h3>;
-
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     let formData = new FormData(e.currentTarget);
@@ -37,16 +34,20 @@ export default function CommentList({ commentsId }: { commentsId: number }) {
       return;
     }
     mutation.mutate({
-      text: formData.get("text")?.toString().trim() || "",
-      authorId: Number(formData.get("authorId")?.toString()),
+      blogId: Number(blogId),
+      text: formData.get("text")!.toString().trim(),
+      authorId: Number(formData.get("authorId")!.toString()),
     });
+    setPopup(false);
   }
 
   return (
     <div className="CommentList comments flex flex-col items-center">
-      {data.map((c) => (
-        <Comment key={crypto.randomUUID()} comment={c} />
-      ))}
+      {!data || data.length === 0 ? (
+        <h3 className="pb-5 text-center text-xl">No comments...</h3>
+      ) : (
+        data.map((c) => <Comment key={crypto.randomUUID()} comment={c} />)
+      )}
       <div className="m-auto flex w-max items-center justify-center  ">
         <button
           onClick={() => setPopup(true)}

@@ -8,8 +8,7 @@
         "excerpt": "Wow so interesting",
         "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde non laudantium amet atque aspernatur totam iste dolorum est ex, excepturi quos ullam. Magni, molestiae deleniti nobis nulla facilis officiis!"
       },
-      "authorId": 1,
-      "commentListId": 1
+      "authorId": 1
     },
     {
       "id": 2,
@@ -19,39 +18,97 @@
         "excerpt": "so crazy",
         "text": "text"
       },
-      "authorId": 2,
-      "commentListId": 2
+      "authorId": 2
+    },
+    {
+      "image": "https://picsum.photos/id/234/500/350",
+      "content": {
+        "title": "qweqweq",
+        "excerpt": "weqweqe",
+        "text": "qweqeq"
+      },
+      "authorId": 1,
+      "id": 3
+    },
+    {
+      "image": "https://picsum.photos/id/240/500/350",
+      "content": {
+        "title": "Very intersting",
+        "excerpt": "wow soo cool",
+        "text": "serfz jkjk bfgnl;asjkngklsdgjagnklfgjkeabjkdfbgkasbgkabsdhkgbfksdbgabgjbsdfgbsfjbgkafjbgksdfjg"
+      },
+      "authorId": 5,
+      "id": 4
+    },
+    {
+      "image": "https://picsum.photos/id/234/500/350",
+      "content": {
+        "title": "sdf",
+        "excerpt": "sdfs",
+        "text": "sdfs"
+      },
+      "authorId": 4,
+      "id": 5
+    },
+    {
+      "image": "https://picsum.photos/id/234/500/350",
+      "content": {
+        "title": "Blog #334",
+        "excerpt": "Hi",
+        "text": "omg"
+      },
+      "authorId": 4,
+      "id": 6
     }
   ],
   "comments": [
     {
       "id": 1,
-      "comments": [
-        {
-          "id": 1,
-          "authorId": 2,
-          "text": "hello, are you interested in buying one of our lore imspuments?"
-        },
-        {
-          "id": 2,
-          "authorId": 1,
-          "text": "have you comadrered lorem imspum?"
-        },
-        {
-          "id": 3,
-          "authorId": 5,
-          "text": "Did you know that acording to our lore imspuments, we have a lot of fun! And that this is the best thing we have ever!"
-        },
-        {
-          "text": "Oh thats a lovely idea i will not that down for latter so i can talk about this with my family",
-          "authorId": 3,
-          "id": 3
-        }
-      ]
+      "blogId": 1,
+      "authorId": 2,
+      "text": "hello, are you interested in buying one of our lore imspuments?"
     },
     {
       "id": 2,
-      "comments": []
+      "blogId": 1,
+      "authorId": 1,
+      "text": "have you comadrered lorem imspum?"
+    },
+    {
+      "id": 3,
+      "blogId": 1,
+      "authorId": 5,
+      "text": "Did you know that acording to our lore imspuments, we have a lot of fun! And that this is the best thing we have ever!"
+    },
+    {
+      "text": "Oh thats a lovely idea i will not that down for latter so i can talk about this with my family",
+      "authorId": 3,
+      "blogId": 1,
+      "id": 3
+    },
+    {
+      "blogId": 1,
+      "text": "yo this is sick",
+      "authorId": 3,
+      "id": 4
+    },
+    {
+      "blogId": 2,
+      "text": "this is an interting take",
+      "authorId": 5,
+      "id": 5
+    },
+    {
+      "blogId": 2,
+      "text": "heloo there",
+      "authorId": 4,
+      "id": 6
+    },
+    {
+      "blogId": 6,
+      "text": "hello !",
+      "authorId": 2,
+      "id": 7
     }
   ],
   "users": [

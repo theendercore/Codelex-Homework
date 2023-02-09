@@ -4,7 +4,7 @@ import { getBlogPosts } from "../api/apiCalls";
 import PostPreview from "../components/PostPreview";
 
 export default function Posts() {
-  const { isLoading, isError, error, data } = useQuery<BlogPostSchema[], Error>(
+  const { isLoading, isError, error, data } = useQuery<BlogPost[], Error>(
     {
       queryKey: ["posts"],
       queryFn: ({ signal }) => getBlogPosts(signal),

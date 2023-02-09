@@ -8,10 +8,11 @@ import Popup from "../components/Popup/Popup";
 import AuthorDropdown from "../components/AuthorDropdown";
 
 export default function Post() {
+  const [popup, setPopup] = useState(false);
   const { id } = useParams();
   const { isLoading, isError, error, data } = useQuery<BlogPost, Error>({
     queryKey: ["post", id],
-    queryFn: ({ signal }) => getBlogPost(id || "0", signal),
+    queryFn: ({ signal }) => getBlogPost(id!, signal),
   });
 
   if (isLoading) return <h1 className="text-center text-6xl">Loading...</h1>;
@@ -22,7 +23,13 @@ export default function Post() {
     );
 
   return (
-    <div className="Post container mx-auto mb-5">
+    <div className="Post container relative mx-auto mb-5">
+      <button
+        onClick={() => setPopup(true)}
+        className="absolute top-2 right-2 w-max rounded-full bg-slate-800 px-4 py-2 text-xl text-slate-400 hover:bg-slate-900 hover:text-slate-200"
+      >
+        Edit Blog
+      </button>
       <img
         src={data.image}
         alt="fancy img"
@@ -40,7 +47,54 @@ export default function Post() {
           <Author authorId={data.authorId} className="py-2" />
         </div>
       </div>
-      <CommentList commentsId={data.commentListId} />
+      <Popup open={popup} onClose={() => setPopup(false)}>
+        <form
+          // onSubmit={handleAddNewPost}
+          className="flex flex-col items-center justify-center"
+        >
+          <label className="pb-2 text-slate-800">
+            Title{" "}
+            <input
+              type="text"
+              name="title"
+              id="title"
+              defaultValue={data.content.title}
+              required
+            />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Header{" "}
+            <input
+              type="text"
+              name="excerpt"
+              id="excerpt"
+              defaultValue={data.content.excerpt}
+              required
+            />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Text{" "}
+            <input
+              type="text"
+              name="text"
+              id="text"
+              defaultValue={data.content.text}
+              required
+            />
+          </label>
+          <label className="pb-2 text-slate-800">
+            Image
+            <input
+              type="url"
+              name="image"
+              id="image"
+              defaultValue={data.image}
+            />
+          </label>
+          <button type="submit">Add Post</button>
+        </form>
+      </Popup>
+      <CommentList blogId={id!} />
     </div>
   );
 }

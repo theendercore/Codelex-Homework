@@ -26,20 +26,22 @@ export async function getUsers(signal?: AbortSignal) {
   return data;
 }
 
-export async function getComments(id: number | string, signal?: AbortSignal) {
-  const { data } = await axios.get<CommentList>(`${API_URL}/comments/${id}`, {
+export async function getComments(id: string, signal?: AbortSignal) {
+  const { data } = await axios.get<BlogComment[]>(`${API_URL}/comments?blogId=${id}`, {
     signal,
   });
-  return data.comments;
+  return data;
 }
 
-export async function postComment(
-  commentId: number,
-  comment: Omit<BlogComment, "id">
-) {
+export async function postComment(comment: Omit<BlogComment, "id">) {
   const { data } = await axios.post<BlogComment>(
-    `${API_URL}/comments/${commentId}`,
+    `${API_URL}/comments`,
     comment
   );
+  return data;
+}
+
+export async function postNewPost(post: Omit<BlogPost, "id">) {
+  const { data } = await axios.post<BlogPost>(`${API_URL}/posts`, post);
   return data;
 }
