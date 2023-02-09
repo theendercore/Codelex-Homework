@@ -21,10 +21,10 @@
       "authorId": 2
     },
     {
-      "image": "https://picsum.photos/id/234/500/350",
+      "image": "https://picsum.photos/id/13/500/350",
       "content": {
-        "title": "qweqweq",
-        "excerpt": "weqweqe",
+        "title": "Better title",
+        "excerpt": "Wow so intertsing !!!!!!",
         "text": "qweqeq"
       },
       "authorId": 1,
@@ -109,6 +109,12 @@
       "text": "hello !",
       "authorId": 2,
       "id": 7
+    },
+    {
+      "blogId": 2,
+      "text": "byibjhcvbjisuijknjisdfhdfhs",
+      "authorId": 3,
+      "id": 8
     }
   ],
   "users": [

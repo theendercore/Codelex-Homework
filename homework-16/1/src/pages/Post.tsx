@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getBlogPost, postComment } from "../api/apiCalls";
+import { editBlogPost, getBlogPost, postComment } from "../api/apiCalls";
 import CommentList from "../components/CommentList";
 import Author from "../components/Author";
 import Popup from "../components/Popup/Popup";
@@ -15,12 +15,44 @@ export default function Post() {
     queryFn: ({ signal }) => getBlogPost(id!, signal),
   });
 
-  if (isLoading) return <h1 className="text-center text-6xl">Loading...</h1>;
+  const mutation = useMutation<
+    BlogPost,
+    Error,
+    {
+      id: number;
+      image?: string;
+      content?: BlogContent;
+    }
+  >({
+    mutationFn: (editedPost) => editBlogPost(editedPost),
+    onError: (error) => console.log(error),
+    onSuccess: () => {
+      alert("Post Updated!");
+    },
+  });
 
-  if (isError)
+  if (isLoading || mutation.isLoading)
+    return <h1 className="text-center text-6xl">Loading...</h1>;
+
+  if (isError || mutation.isError)
     return (
       <h1 className="text-center text-6xl">Error {JSON.stringify(error)}</h1>
     );
+
+  function handleEditPost(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    let formData = new FormData(e.currentTarget);
+    mutation.mutate({
+      id: Number(id),
+      image: formData.get("image")!.toString().trim(),
+      content: {
+        title: formData.get("title")!.toString().trim(),
+        excerpt: formData.get("excerpt")!.toString().trim(),
+        text: formData.get("text")!.toString().trim(),
+      },
+    });
+    setPopup(false);
+  }
 
   return (
     <div className="Post container relative mx-auto mb-5">
@@ -49,7 +81,7 @@ export default function Post() {
       </div>
       <Popup open={popup} onClose={() => setPopup(false)}>
         <form
-          // onSubmit={handleAddNewPost}
+          onSubmit={handleEditPost}
           className="flex flex-col items-center justify-center"
         >
           <label className="pb-2 text-slate-800">
@@ -91,7 +123,7 @@ export default function Post() {
               defaultValue={data.image}
             />
           </label>
-          <button type="submit">Add Post</button>
+          <button type="submit">Edit Post</button>
         </form>
       </Popup>
       <CommentList blogId={id!} />
