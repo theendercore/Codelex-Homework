@@ -23,7 +23,7 @@ export default function AuthorDropdown({ className }: AuthorDropdownProps) {
     <select
       name="authorId"
       id="authorId"
-      className={className}
+      className={"rounded-xl bg-slate-600 py-2 px-2 " + className}
       defaultValue="1"
     >
       {data.map(({ name, surname, id }) => (

@@ -29,10 +29,6 @@ export default function CommentList({ blogId }: { blogId: string }) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     let formData = new FormData(e.currentTarget);
-    if (formData.get("text") === null || formData.get("text") === "") {
-      alert("Please write a comment!");
-      return;
-    }
     mutation.mutate({
       blogId: Number(blogId),
       text: formData.get("text")!.toString().trim(),
@@ -56,7 +52,10 @@ export default function CommentList({ blogId }: { blogId: string }) {
           Add Comment
         </button>
         <Popup open={popup} onClose={() => setPopup(false)}>
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col content-center items-center"
+          >
             <label className="mb-2 flex flex-col p-2">
               Comment
               <input
@@ -64,13 +63,19 @@ export default function CommentList({ blogId }: { blogId: string }) {
                 name="text"
                 id="text"
                 className="rounded-xl bg-slate-600 py-1 px-2"
+                required
               />
             </label>
             <label className="mb-2 flex flex-col p-2">
               Author
-              <AuthorDropdown className="rounded-xl bg-slate-600 py-2 px-2" />
+              <AuthorDropdown />
             </label>
-            <button type="submit">Post Comment</button>
+            <button
+              type="submit"
+              className="mt-8 w-max rounded-full bg-slate-800 px-5 py-2 text-slate-400 hover:bg-slate-700 hover:text-slate-100"
+            >
+              Post Comment
+            </button>
           </form>
         </Popup>
       </div>

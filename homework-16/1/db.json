@@ -51,11 +51,11 @@
       "id": 5
     },
     {
-      "image": "https://picsum.photos/id/234/500/350",
+      "image": "https://picsum.photos/id/334/500/350",
       "content": {
         "title": "Blog #334",
         "excerpt": "Hi",
-        "text": "omg"
+        "text": "this is my blog number 343434"
       },
       "authorId": 4,
       "id": 6
@@ -115,6 +115,24 @@
       "text": "byibjhcvbjisuijknjisdfhdfhs",
       "authorId": 3,
       "id": 8
+    },
+    {
+      "blogId": 3,
+      "text": "qweqeq",
+      "authorId": 1,
+      "id": 9
+    },
+    {
+      "blogId": 3,
+      "text": "help",
+      "authorId": 1,
+      "id": 10
+    },
+    {
+      "blogId": 6,
+      "text": "yeaj soo cool",
+      "authorId": 4,
+      "id": 11
     }
   ],
   "users": [

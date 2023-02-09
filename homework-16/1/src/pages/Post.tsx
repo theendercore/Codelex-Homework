@@ -84,46 +84,55 @@ export default function Post() {
           onSubmit={handleEditPost}
           className="flex flex-col items-center justify-center"
         >
-          <label className="pb-2 text-slate-800">
-            Title{" "}
+          <label className="mb-2 flex flex-col p-2">
+            Title
             <input
               type="text"
               name="title"
               id="title"
+              className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={data.content.title}
               required
             />
           </label>
-          <label className="pb-2 text-slate-800">
-            Header{" "}
+          <label className="mb-2 flex flex-col p-2">
+            Header
             <input
               type="text"
               name="excerpt"
               id="excerpt"
+              className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={data.content.excerpt}
               required
             />
           </label>
-          <label className="pb-2 text-slate-800">
-            Text{" "}
+          <label className="mb-2 flex flex-col p-2">
+            Text
             <input
               type="text"
               name="text"
               id="text"
+              className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={data.content.text}
               required
             />
           </label>
-          <label className="pb-2 text-slate-800">
+          <label className="mb-2 flex flex-col p-2">
             Image
             <input
               type="url"
               name="image"
               id="image"
+              className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={data.image}
             />
           </label>
-          <button type="submit">Edit Post</button>
+          <button
+            type="submit"
+            className="mt-8 w-max rounded-full bg-slate-800 px-5 py-2 text-slate-400 hover:bg-slate-700 hover:text-slate-100"
+          >
+            Edit Post
+          </button>
         </form>
       </Popup>
       <CommentList blogId={id!} />

@@ -74,28 +74,58 @@ function App() {
       <Popup open={popupOpen} onClose={() => setPopupOpen(false)}>
         <form
           onSubmit={handleAddNewPost}
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col content-center items-center text-slate-200"
         >
-          <label className="pb-2 text-slate-800">
-            Title <input type="text" name="title" id="title" required />
+          <label className="mb-2 flex flex-col p-2">
+            Title{" "}
+            <input
+              type="text"
+              name="title"
+              id="title"
+              className="rounded-xl bg-slate-600 py-1 px-2"
+              required
+            />
           </label>
-          <label className="pb-2 text-slate-800">
-            Header <input type="text" name="excerpt" id="excerpt" required />
+          <label className="mb-2 flex flex-col p-2">
+            Header{" "}
+            <input
+              type="text"
+              name="excerpt"
+              id="excerpt"
+              className="rounded-xl bg-slate-600 py-1 px-2"
+              required
+            />
           </label>
-          <label className="pb-2 text-slate-800">
-            Text <input type="text" name="text" id="text" required />
+          <label className="mb-2 flex flex-col p-2">
+            Text{" "}
+            <input
+              type="text"
+              name="text"
+              id="text"
+              className="rounded-xl bg-slate-600 py-1 px-2"
+              required
+            />
           </label>
-          <label className="pb-2 text-slate-800">
+          <label className="mb-2 flex flex-col p-2">
             Image
             <input
               type="url"
               name="image"
               id="image"
+              className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={"https://picsum.photos/id/234/500/350"}
             />
           </label>
-          <AuthorDropdown className="pb-2 text-slate-800" />
-          <button type="submit">Add Post</button>
+          <label className="mb-2 flex flex-col p-2">
+            Author
+            <AuthorDropdown className="pb-2 text-slate-800" />
+          </label>
+          <button
+            type="submit"
+            className="mt-8 w-max rounded-full bg-slate-800 px-5 py-2 text-slate-400 hover:bg-slate-700 hover:text-slate-100"
+          >
+            Add Post
+          </button>
         </form>
       </Popup>
 
