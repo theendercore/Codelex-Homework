@@ -11,9 +11,12 @@ export default function Post() {
   const queryClient = useQueryClient();
   const [popup, setPopup] = useState(false);
   const { id } = useParams();
+
+  if (id === undefined) return <h1>"Error!"</h1>;
+
   const { isLoading, isError, error, data } = useQuery<BlogPost, Error>({
     queryKey: ["post", id],
-    queryFn: ({ signal }) => getBlogPost(id!, signal),
+    queryFn: ({ signal }) => getBlogPost(id, signal),
   });
 
   const mutation = useMutation<
@@ -139,7 +142,7 @@ export default function Post() {
           </button>
         </form>
       </Popup>
-      <CommentList blogId={id!} />
+      <CommentList blogId={id} />
     </div>
   );
 }

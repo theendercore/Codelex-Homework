@@ -54,7 +54,7 @@
       "image": "https://picsum.photos/id/334/500/350",
       "content": {
         "title": "Blog #334",
-        "excerpt": "Hi",
+        "excerpt": "Hiasdasd",
         "text": "this is my blog number 343434"
       },
       "authorId": 4,
@@ -183,6 +183,12 @@
       "text": "hello is this working?",
       "authorId": 2,
       "id": 16
+    },
+    {
+      "blogId": 6,
+      "text": "wow",
+      "authorId": 1,
+      "id": 17
     }
   ],
   "users": [
