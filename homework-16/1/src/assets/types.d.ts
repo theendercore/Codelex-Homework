@@ -1,11 +1,11 @@
 type BlogPost = {
   id: number;
-  image: string;
   content: BlogContent;
   authorId: number;
 };
 
 type BlogContent = {
+  image: string;
   title: string;
   excerpt: string;
   text: string;
