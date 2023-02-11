@@ -28,6 +28,7 @@ export default function Post() {
       title?: string;
       excerpt?: string;
       text?: string;
+
     }
   >({
     mutationFn: (editedPost) => editBlogPost(editedPost),
@@ -61,7 +62,7 @@ export default function Post() {
     setPopup(false);
   }
 
-  
+
   return (
     <div className="Post container relative mx-auto mb-5">
       <button

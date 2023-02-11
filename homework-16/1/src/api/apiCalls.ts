@@ -51,7 +51,7 @@ export async function editBlogPost(
   },
   signal?: AbortSignal
 ) {
-  const { data } = await axios.patch<BlogPost>(
+  const { data } = await axios.put<BlogPost>(
     `${API_URL}/posts/${post.id}`,
     post,
     {

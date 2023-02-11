@@ -28,3 +28,11 @@ export const BlogPostSchema = z.object({
   image: z.string().url({ message: "Invalid URL" }).max(255),
   author_id: z.number().int().positive(),
 });
+
+export const BlogPostEditSchema = z.object({
+  id: z.number().int().positive(),
+  title: z.string().max(255),
+  excerpt: z.string().max(20_000),
+  text: z.string().max(1_000_000),
+  image: z.string().url({ message: "Invalid URL" }).max(255),
+});
