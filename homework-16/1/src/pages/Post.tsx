@@ -24,7 +24,11 @@ export default function Post() {
     Error,
     {
       id: number;
-      content?: BlogContent;
+
+      image?: string;
+      title?: string;
+      excerpt?: string;
+      text?: string;
     }
   >({
     mutationFn: (editedPost) => editBlogPost(editedPost),
@@ -50,16 +54,16 @@ export default function Post() {
     let formData = new FormData(e.currentTarget);
     mutation.mutate({
       id: Number(id),
-      content: {
-        image: formData.get("image")!.toString().trim(),
-        title: formData.get("title")!.toString().trim(),
-        excerpt: formData.get("excerpt")!.toString().trim(),
-        text: formData.get("text")!.toString().trim(),
-      },
+      image: formData.get("image")!.toString().trim(),
+      title: formData.get("title")!.toString().trim(),
+      excerpt: formData.get("excerpt")!.toString().trim(),
+      text: formData.get("text")!.toString().trim(),
     });
     setPopup(false);
   }
 
+  console.log(data);
+  
   return (
     <div className="Post container relative mx-auto mb-5">
       <button
@@ -69,17 +73,15 @@ export default function Post() {
         Edit Blog
       </button>
       <img
-        src={data.content.image}
+        src={data.image}
         alt="fancy img"
         className="h-96 w-full rounded-3xl"
       />
       <div className="Content m-5 mt-0 flex flex-col rounded-b-3xl bg-slate-900">
-        <h2 className="m-8 text-6xl font-extrabold">{data.content.title}</h2>
+        <h2 className="m-8 text-6xl font-extrabold">{data.title}</h2>
         <div className="text-block mx-20">
-          <h3 className="mb-3 ml-1 text-3xl font-bold">
-            {data.content.excerpt}
-          </h3>
-          <p className="text-xl ">{data.content.text}</p>
+          <h3 className="mb-3 ml-1 text-3xl font-bold">{data.excerpt}</h3>
+          <p className="text-xl ">{data.text}</p>
         </div>
         <div className="Footer m-5 my-10 flex w-max flex-row items-center rounded-xl bg-slate-700 px-5">
           <Author authorId={data.authorId} className="py-2" />
@@ -97,7 +99,7 @@ export default function Post() {
               name="title"
               id="title"
               className="rounded-xl bg-slate-600 py-1 px-2"
-              defaultValue={data.content.title}
+              defaultValue={data.title}
               required
             />
           </label>
@@ -108,7 +110,7 @@ export default function Post() {
               name="excerpt"
               id="excerpt"
               className="rounded-xl bg-slate-600 py-1 px-2"
-              defaultValue={data.content.excerpt}
+              defaultValue={data.excerpt}
               required
             />
           </label>
@@ -119,7 +121,7 @@ export default function Post() {
               name="text"
               id="text"
               className="rounded-xl bg-slate-600 py-1 px-2"
-              defaultValue={data.content.text}
+              defaultValue={data.text}
               required
             />
           </label>
@@ -130,7 +132,7 @@ export default function Post() {
               name="image"
               id="image"
               className="rounded-xl bg-slate-600 py-1 px-2"
-              defaultValue={data.content.image}
+              defaultValue={data.image}
             />
           </label>
           <button
