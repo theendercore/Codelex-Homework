@@ -24,7 +24,6 @@ export default function Post() {
     Error,
     {
       id: number;
-      image?: string;
       content?: BlogContent;
     }
   >({
@@ -51,8 +50,8 @@ export default function Post() {
     let formData = new FormData(e.currentTarget);
     mutation.mutate({
       id: Number(id),
-      image: formData.get("image")!.toString().trim(),
       content: {
+        image: formData.get("image")!.toString().trim(),
         title: formData.get("title")!.toString().trim(),
         excerpt: formData.get("excerpt")!.toString().trim(),
         text: formData.get("text")!.toString().trim(),
@@ -70,7 +69,7 @@ export default function Post() {
         Edit Blog
       </button>
       <img
-        src={data.image}
+        src={data.content.image}
         alt="fancy img"
         className="h-96 w-full rounded-3xl"
       />
@@ -131,7 +130,7 @@ export default function Post() {
               name="image"
               id="image"
               className="rounded-xl bg-slate-600 py-1 px-2"
-              defaultValue={data.image}
+              defaultValue={data.content.image}
             />
           </label>
           <button
