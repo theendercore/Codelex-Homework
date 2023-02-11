@@ -34,12 +34,10 @@ function App() {
     });
     mutation.mutate({
       image: formData.get("image")!.toString().trim(),
-      content: {
-        title: formData.get("title")!.toString().trim(),
-        excerpt: formData.get("excerpt")!.toString().trim(),
-        text: formData.get("text")!.toString().trim(),
-      },
-      authorId: Number(formData.get("authorId")!.toString().trim()),
+      title: formData.get("title")!.toString().trim(),
+      excerpt: formData.get("excerpt")!.toString().trim(),
+      text: formData.get("text")!.toString().trim(),
+      author_id: Number(formData.get("authorId")!.toString().trim()),
     });
     setPopupOpen(false);
   }
