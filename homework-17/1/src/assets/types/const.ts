@@ -8,7 +8,6 @@ export const UserSchema = z.object({
 });
 
 export const BlogContentSchema = z.object({
-  id: z.number().int().positive(),
   title: z.string().max(255),
   excerpt: z.string().max(20_000),
   text: z.string().max(1_000_000),
@@ -16,14 +15,12 @@ export const BlogContentSchema = z.object({
 });
 
 export const BlogCommentSchema = z.object({
-  id: z.number().int().positive(),
   blog_id: z.number().int().positive(),
   author_id: z.number().int().positive(),
   text: z.string().max(50_000),
 });
 
 export const BlogPostSchema = z.object({
-  id: z.number().int().positive(),
   content: BlogContentSchema,
   author_id: z.number().int().positive(),
 });

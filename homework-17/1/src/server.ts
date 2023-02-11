@@ -5,7 +5,9 @@ import cors from "cors";
 import mysql from "mysql2";
 import "dotenv/config";
 import log from "./assets/log";
-import { string } from "zod";
+import { BlogComment } from "./assets/types/types";
+import { BlogCommentSchema } from "./assets/types/const";
+import { ZodError } from "zod";
 const db_password = process.env.PASSWORD || "pain";
 
 const app = express();
@@ -105,14 +107,7 @@ app.get("/comments", (req: Request, res: Response) => {
 
   if (blogId) {
     dbCon.query(
-      `SELECT
-
-      id,
-      blog_id AS blogId,
-      author_id AS authorId,
-      text
-
-      FROM blog_comments WHERE blog_id=${blogId}`,
+      `SELECT * FROM blog_comments WHERE blog_id=${blogId}`,
       (err, result, fields) => {
         if (err) throw err;
         if (result.toString().length <= 0) res.sendStatus(404);
@@ -128,7 +123,20 @@ app.get("/comments", (req: Request, res: Response) => {
 });
 
 app.post("/comments", (req: Request, res: Response) => {
-  
+  let x = req.body;
+  try {
+    let { blog_id, author_id, text } = BlogCommentSchema.parse(x);
+    dbCon.query(
+      `INSERT INTO blog_comments (blog_id, author_id, text) VALUES (${blog_id}, ${author_id}, '${text}');`,
+      (err, result, fields) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
+  } catch (e: any) {
+    log("Probably not valid data:", e);
+    res.sendStatus(403);
+  }
 });
 
 app.listen(3004, () => {
