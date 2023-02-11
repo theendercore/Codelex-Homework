@@ -62,7 +62,6 @@ export default function Post() {
     setPopup(false);
   }
 
-  console.log(data);
   
   return (
     <div className="Post container relative mx-auto mb-5">

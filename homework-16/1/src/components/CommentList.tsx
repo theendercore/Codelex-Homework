@@ -28,7 +28,7 @@ export default function CommentList({ blogId }: { blogId: string }) {
   if (isLoading || mutation.isLoading)
     return <h3 className="text-center text-6xl">Loading...</h3>;
 
-  if (isError || mutation.isError)
+  if (isError)
     return (
       <h3 className="text-center text-6xl">Error {JSON.stringify(error)}</h3>
     );
