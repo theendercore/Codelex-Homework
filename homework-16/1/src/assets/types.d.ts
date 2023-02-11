@@ -4,7 +4,7 @@ type BlogPost = {
   title: string;
   excerpt: string;
   text: string;
-  authorId: number;
+  author_id: number;
 };
 
 type BlogComment = {
