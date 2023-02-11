@@ -1,5 +1,13 @@
 import { z } from "zod";
-import { User } from "./const";
+import {
+  BlogCommentSchema,
+  BlogContentSchema,
+  BlogPostSchema,
+  UserSchema,
+} from "./const";
 
 // extract the inferred type
-export type User = z.infer<typeof User>;
+type User = z.infer<typeof UserSchema>;
+type BlogContent = z.infer<typeof BlogContentSchema>;
+type BlogPost = z.infer<typeof BlogPostSchema>;
+type BlogComment = z.infer<typeof BlogCommentSchema>;
