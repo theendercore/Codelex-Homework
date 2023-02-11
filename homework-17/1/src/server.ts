@@ -5,8 +5,12 @@ import cors from "cors";
 import mysql from "mysql2";
 import "dotenv/config";
 import log from "./assets/log";
-import { BlogComment } from "./assets/types/types";
-import { BlogCommentSchema } from "./assets/types/const";
+import { BlogPost } from "./assets/types/types";
+import {
+  BlogCommentSchema,
+  BlogContentsSchema,
+  BlogPostSchema,
+} from "./assets/types/const";
 import { ZodError } from "zod";
 const db_password = process.env.PASSWORD || "pain";
 
@@ -48,9 +52,9 @@ app.get("/users/:id", (req: Request, res: Response) => {
     dbCon.query(`SELECT * FROM users WHERE id=${id}`, (err, result, fields) => {
       if (err) throw err;
       if (result.toString().length <= 0) res.sendStatus(404);
-      else res.send(result);
+      else res.json(result);
     });
-  } else res.send({ error_code: 404 });
+  } else res.sendStatus(404);
 });
 
 app.get("/posts", (req: Request, res: Response) => {
@@ -110,8 +114,8 @@ app.get("/comments", (req: Request, res: Response) => {
       `SELECT * FROM blog_comments WHERE blog_id=${blogId}`,
       (err, result, fields) => {
         if (err) throw err;
-        if (result.toString().length <= 0) res.sendStatus(404);
-        res.send(result);
+        if (result.toString().length <= 0) res.send([]);
+        else res.send(result);
       }
     );
   } else {
@@ -137,6 +141,37 @@ app.post("/comments", (req: Request, res: Response) => {
     log("Probably not valid data:", e);
     res.sendStatus(403);
   }
+});
+
+app.post("/posts", (req: Request, res: Response) => {
+  try {
+    let { title, excerpt, text, image, author_id } = BlogPostSchema.parse(
+      req.body
+    );
+    dbCon.query<mysql.ResultSetHeader>(
+      `INSERT INTO blog_contents (title, excerpt, text, image)
+                 VALUES ('${title}','${excerpt}','${text}','${image}');`,
+      (err, result, fields) => {
+        if (err) throw err;
+        dbCon.query(
+          `INSERT INTO blog_posts (content_id, author_id)
+              VALUES (${result.insertId}, ${author_id});`,
+          (err, result, fields) => {
+            if (err) throw err;
+            res.send(result);
+          }
+        );
+      }
+    );
+  } catch (e: any) {
+    log("Probably not valid data:", e);
+    res.sendStatus(403);
+  }
+});
+
+app.put("/posts/:id", (req: Request, res: Response) => {
+  log(req.body);
+  res.sendStatus(404);
 });
 
 app.listen(3004, () => {

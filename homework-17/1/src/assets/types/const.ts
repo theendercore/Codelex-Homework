@@ -7,20 +7,24 @@ export const UserSchema = z.object({
   icon: z.string().url({ message: "Invalid URL" }).max(255),
 });
 
-export const BlogContentSchema = z.object({
-  title: z.string().max(255),
-  excerpt: z.string().max(20_000),
-  text: z.string().max(1_000_000),
-  image: z.string().url({ message: "Invalid URL" }).max(255),
-});
-
 export const BlogCommentSchema = z.object({
   blog_id: z.number().int().positive(),
   author_id: z.number().int().positive(),
   text: z.string().max(50_000),
 });
 
+export const BlogContentsSchema = z.object({
+  id: z.number().int().positive(),
+  title: z.string().max(255),
+  excerpt: z.string().max(20_000),
+  text: z.string().max(1_000_000),
+  image: z.string().url({ message: "Invalid URL" }).max(255),
+});
+
 export const BlogPostSchema = z.object({
-  content: BlogContentSchema,
+  title: z.string().max(255),
+  excerpt: z.string().max(20_000),
+  text: z.string().max(1_000_000),
+  image: z.string().url({ message: "Invalid URL" }).max(255),
   author_id: z.number().int().positive(),
 });
