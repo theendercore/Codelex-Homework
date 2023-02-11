@@ -9,8 +9,8 @@ type BlogPost = {
 
 type BlogComment = {
   id: number;
-  blogId: number;
-  authorId: number;
+  blog_id: number;
+  author_id: number;
   text: string;
 };
 

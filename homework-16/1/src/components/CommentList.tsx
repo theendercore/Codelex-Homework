@@ -36,9 +36,9 @@ export default function CommentList({ blogId }: { blogId: string }) {
     e.preventDefault();
     let formData = new FormData(e.currentTarget);
     mutation.mutate({
-      blogId: Number(blogId),
+      blog_id: Number(blogId),
       text: formData.get("text")!.toString().trim(),
-      authorId: Number(formData.get("authorId")!.toString()),
+      author_id: Number(formData.get("authorId")!.toString()),
     });
     setPopup(false);
   }
