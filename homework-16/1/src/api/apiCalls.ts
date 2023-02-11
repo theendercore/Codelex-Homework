@@ -3,10 +3,10 @@ import axios from "axios";
 const API_URL = "http://localhost:3004";
 
 export async function getBlogPost(id: string | number, signal?: AbortSignal) {
-  const { data } = await axios.get<BlogPost[]>(`${API_URL}/posts/${id}`, {
+  const { data } = await axios.get<BlogPost>(`${API_URL}/posts/${id}`, {
     signal,
   });
-  return data[0];
+  return data;
 }
 
 export async function getBlogPosts(signal?: AbortSignal) {
@@ -17,10 +17,10 @@ export async function getBlogPosts(signal?: AbortSignal) {
 }
 
 export async function getUser(id: number | string, signal?: AbortSignal) {
-  const { data } = await axios.get<User[]>(`${API_URL}/users/${id}`, {
+  const { data } = await axios.get<User>(`${API_URL}/users/${id}`, {
     signal,
   });
-  return data[0];
+  return data;
 }
 
 export async function getUsers(signal?: AbortSignal) {
@@ -44,7 +44,10 @@ export async function editBlogPost(
   post: {
     id: number;
     image?: string;
-    content?: BlogContent;
+    title?: string;
+    excerpt?: string;
+    text?: string;
+    author_id?: number;
   },
   signal?: AbortSignal
 ) {

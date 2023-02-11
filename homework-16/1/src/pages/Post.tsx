@@ -24,7 +24,6 @@ export default function Post() {
     Error,
     {
       id: number;
-
       image?: string;
       title?: string;
       excerpt?: string;
@@ -44,7 +43,7 @@ export default function Post() {
   if (isLoading || mutation.isLoading)
     return <h1 className="text-center text-6xl">Loading...</h1>;
 
-  if (isError || mutation.isError)
+  if (isError)
     return (
       <h1 className="text-center text-6xl">Error {JSON.stringify(error)}</h1>
     );
@@ -83,7 +82,7 @@ export default function Post() {
           <p className="text-xl ">{data.text}</p>
         </div>
         <div className="Footer m-5 my-10 flex w-max flex-row items-center rounded-xl bg-slate-700 px-5">
-          <Author authorId={data.authorId} className="py-2" />
+          <Author authorId={data.author_id} className="py-2" />
         </div>
       </div>
       <Popup open={popup} onClose={() => setPopup(false)}>
