@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { getBlogPosts } from "../api/apiCalls";
-import PostPreview from "../components/PostPreview";
+import PostPreview from "../components/PostPreview/PostPreview";
 
 export default function Posts() {
   const { isLoading, isError, error, data } = useQuery<BlogPost[], Error>(

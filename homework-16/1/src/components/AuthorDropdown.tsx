@@ -21,8 +21,8 @@ export default function AuthorDropdown({ className }: AuthorDropdownProps) {
 
   return (
     <select
-      name="authorId"
-      id="authorId"
+      name="author_id"
+      id="author_id"
       className={"rounded-xl bg-slate-600 py-2 px-2 " + className}
       defaultValue="1"
     >

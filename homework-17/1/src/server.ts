@@ -2,8 +2,10 @@ import express from "express";
 import { Request, Response } from "express";
 import bodyparser from "body-parser";
 import cors from "cors";
+import multer from "multer";
 import mysql from "mysql2";
 import "dotenv/config";
+import fs from "fs/promises";
 import log from "./assets/log";
 import {
   BlogCommentSchema,
@@ -15,8 +17,13 @@ const db_password = process.env.PASSWORD || "pain";
 
 const app = express();
 
+const storage = multer.memoryStorage();
+
+const upload = multer({ storage });
+
 app.use(bodyparser.json());
 app.use(cors({ origin: "*" }));
+app.use("/static", express.static("public"));
 
 let dbCon = mysql.createConnection({
   host: "localhost",
@@ -139,31 +146,44 @@ app.post("/comments", (req: Request, res: Response) => {
   }
 });
 
-app.post("/posts", (req: Request, res: Response) => {
-  try {
-    let { title, excerpt, text, image, author_id } = BlogPostSchema.parse(
-      req.body
-    );
-    dbCon.query<mysql.ResultSetHeader>(
-      `INSERT INTO blog_contents (title, excerpt, text, image)
+app.post(
+  "/posts",
+  upload.single("image"),
+  async (req: Request, res: Response) => {
+    let imgUrl = "";
+    if (req.file) {
+      let y = `public/img/${crypto.randomUUID()}.png`;
+      await fs.writeFile(y, req.file?.buffer);
+      imgUrl = `http://localhost:3004/${y}`.replace("public", "static");
+    } else {
+      imgUrl = "https://picsum.photos/id/2/500/350";
+    }
+    req.body["image"] = imgUrl;
+    try {
+      let { title, excerpt, text, image, author_id } = BlogPostSchema.parse(
+        req.body
+      );
+      dbCon.query<mysql.ResultSetHeader>(
+        `INSERT INTO blog_contents (title, excerpt, text, image)
                  VALUES ('${title}','${excerpt}','${text}','${image}');`,
-      (err, result, fields) => {
-        if (err) throw err;
-        dbCon.query(
-          `INSERT INTO blog_posts (content_id, author_id)
+        (err, result, fields) => {
+          if (err) throw err;
+          dbCon.query(
+            `INSERT INTO blog_posts (content_id, author_id)
               VALUES (${result.insertId}, ${author_id});`,
-          (err, result, fields) => {
-            if (err) throw err;
-            res.send(result);
-          }
-        );
-      }
-    );
-  } catch (e: any) {
-    log("Probably not valid data:", e);
-    res.sendStatus(403);
+            (err, result, fields) => {
+              if (err) throw err;
+              res.send(result);
+            }
+          );
+        }
+      );
+    } catch (e: any) {
+      log("Probably not valid data:", e);
+      res.sendStatus(403);
+    }
   }
-});
+);
 
 app.put("/posts/:id", (req: Request, res: Response) => {
   try {

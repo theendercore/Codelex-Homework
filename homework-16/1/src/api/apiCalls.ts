@@ -73,3 +73,9 @@ export async function postNewPost(post: Omit<BlogPost, "id">) {
   const { data } = await axios.post<BlogPost>(`${API_URL}/posts`, post);
   return data;
 }
+
+export async function postNewPostFormData(post: FormData) {
+  const { data } = await axios.post<BlogPost>(`${API_URL}/posts`, post);
+  return data;
+}
+

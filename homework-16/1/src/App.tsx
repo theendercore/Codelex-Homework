@@ -7,7 +7,7 @@ import Post from "./pages/Post";
 import Posts from "./pages/Posts";
 import AuthorDropdown from "./components/AuthorDropdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postNewPost } from "./api/apiCalls";
+import { postNewPost, postNewPostFormData } from "./api/apiCalls";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -15,8 +15,8 @@ function App() {
   const queryClient = useQueryClient();
   const [popupOpen, setPopupOpen] = useState(false);
 
-  const mutation = useMutation<BlogPost, Error, Omit<BlogPost, "id">>({
-    mutationFn: (newPost) => postNewPost(newPost),
+  const mutation = useMutation<BlogPost, Error, FormData>({
+    mutationFn: (newPost) => postNewPostFormData(newPost),
     onError: (error) => {
       toast.error(error.message);
     },
@@ -26,19 +26,37 @@ function App() {
     },
   });
 
+  /* 
+  useMutation<BlogPost, Error, Omit<BlogPost, "id">>({
+     mutationFn: (newPost) => postNewPost(newPost),
+     onError: (error) => {
+       toast.error(error.message);
+     },
+     onSuccess: () => {
+       queryClient.invalidateQueries(["posts"]);
+       toast.success("Blog Post Added!");
+     },
+   });
+   */
+
   function handleAddNewPost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     let formData = new FormData(e.currentTarget);
+
     formData.forEach((value, key) => {
       console.log(key, value);
     });
-    mutation.mutate({
-      image: formData.get("image")!.toString().trim(),
-      title: formData.get("title")!.toString().trim(),
-      excerpt: formData.get("excerpt")!.toString().trim(),
-      text: formData.get("text")!.toString().trim(),
-      author_id: Number(formData.get("authorId")!.toString().trim()),
-    });
+
+    mutation.mutate(formData);
+
+    // mutation.mutate({
+    //   image: formData.get("image")!.toString().trim(),
+    //   title: formData.get("title")!.toString().trim(),
+    //   excerpt: formData.get("excerpt")!.toString().trim(),
+    //   text: formData.get("text")!.toString().trim(),
+    //   author_id: Number(formData.get("authorId")!.toString().trim()),
+    // });
     setPopupOpen(false);
   }
 
@@ -79,9 +97,10 @@ function App() {
         <form
           onSubmit={handleAddNewPost}
           className="flex flex-col content-center items-center text-slate-200"
+          encType="multipart/form-data"
         >
           <label className="mb-2 flex flex-col p-2">
-            Title{" "}
+            Title
             <input
               type="text"
               name="title"
@@ -91,7 +110,7 @@ function App() {
             />
           </label>
           <label className="mb-2 flex flex-col p-2">
-            Header{" "}
+            Header
             <input
               type="text"
               name="excerpt"
@@ -101,7 +120,7 @@ function App() {
             />
           </label>
           <label className="mb-2 flex flex-col p-2">
-            Text{" "}
+            Text
             <input
               type="text"
               name="text"
@@ -113,12 +132,18 @@ function App() {
           <label className="mb-2 flex flex-col p-2">
             Image
             <input
+              type="file"
+              name="image"
+              id="image"
+              className="rounded-xl bg-slate-600 py-2 px-4"
+            />
+            {/* <input
               type="url"
               name="image"
               id="image"
               className="rounded-xl bg-slate-600 py-1 px-2"
               defaultValue={"https://picsum.photos/id/234/500/350"}
-            />
+            /> */}
           </label>
           <label className="mb-2 flex flex-col p-2">
             Author
