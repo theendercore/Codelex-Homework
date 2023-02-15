@@ -5,12 +5,12 @@ import rootRoute from '../Root'
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: IndexRout,
+  component: IndexRoute,
 })
 
- function IndexRout() {
+ function IndexRoute() {
   return (
-    <div>IndexRout</div>
+    <div className="flex items-center justify-center m-auto p-10 h-screen">Home page</div>
   )
 }
 

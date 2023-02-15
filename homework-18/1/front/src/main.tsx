@@ -2,11 +2,14 @@ import { ReactRouter, RouterProvider } from "@tanstack/react-router";
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./main.css";
-import indexRoute from "./pages/IndexRout";
 import rootRoute from "./Root";
+import gameRoute from "./pages/GameRoute";
+import scoreRoute from './pages/ScoreRoute';
+import indexRoute from "./pages/IndexRoute";
+import errorRoute from './pages/ErrorRoute';
 
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const routeTree = rootRoute.addChildren([indexRoute, gameRoute, scoreRoute, errorRoute])
 
 const router = new ReactRouter({ routeTree })
 
