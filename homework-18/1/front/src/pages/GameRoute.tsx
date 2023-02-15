@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import rootRoute from "../Root";
 import { moves, move, state } from "../assets/const";
 import StartGame from "../components/StartGame";
+import GameAnimate from "../components/GameAnimate";
 
 const gameRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -20,6 +21,9 @@ function GameRoute() {
     setAiMove(moves[Math.floor(Math.random() * moves.length)]);
     setGameState("move");
   }
+  function end (e: React.MouseEvent<HTMLButtonElement, MouseEvent>){
+    setGameState("end")
+  }
 
   return (
     <div className="GameRoute m-auto h-screen p-10">
@@ -29,13 +33,13 @@ function GameRoute() {
           {
             start: (
               <StartGame
-                move={playerMove}
+                playerMove={playerMove}
                 setMove={setPlayerMove}
                 startGame={start}
               />
             ),
-            move: <h2>bar</h2>,
-            end: <h2>baz</h2>,
+            move: <GameAnimate playerMove={playerMove} aiMove={aiMove} animTime={10} endGame={end} />,
+            end: <h2>its over</h2>,
           }[gameState]
         }
       </div>
