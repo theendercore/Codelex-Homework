@@ -20,7 +20,10 @@ app.use(cors({ origin: "*" }));
 
 app.get("/", (req: Request, res: Response) => {
   res.send(`Available end points :
+  <br/> <h3>GET</h3> 
   <br/> - <a href="./todos">/todos</a>
+  <br/> <h3>POST</h3> 
+  <br/> - <a href="./todo">/todo</a>
   `);
 });
 
@@ -30,8 +33,8 @@ app.get("/todos", async (req: Request, res: Response) => {
 
 app.post("/todo", async (req: Request, res: Response) => {
   try {
-    TodoModel.create(todoZodSchema.parse(req.body));
-    res.status(201);
+    let returnData = await TodoModel.create(todoZodSchema.parse(req.body));
+    res.status(201).send(returnData);
   } catch (err) {
     console.log(err);
     res.status(500).send("Something went wrong");
