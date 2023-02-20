@@ -9,21 +9,14 @@ import { useQuery } from "@tanstack/react-query";
 function App() {
   const [tasksState, setTasksState] = useState<TodoType[]>([]);
 
-  // const { data, isError, error } = useQuery<TodoType[], Error>({
-  //   queryKey: ["tasks"],
-  //   queryFn: getTasks,
-  // });
+  const { data, isError, error } = useQuery<TodoType[], Error>({
+    queryKey: ["tasks"],
+    queryFn: getTasks,
+  });
 
   useEffect(() => {
-    getTasks()
-      .then((data) => {
-        console.log(data);
-        setTasksState(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (data) setTasksState(data);
+  }, [data]);
 
   return (
     <TaskContext.Provider
@@ -32,7 +25,7 @@ function App() {
         setTasks: setTasksState,
       }}
     >
-      <div className="App container m-auto ">
+      <div className="App container m-auto flex justify-center">
         <TodoList />
       </div>
     </TaskContext.Provider>
