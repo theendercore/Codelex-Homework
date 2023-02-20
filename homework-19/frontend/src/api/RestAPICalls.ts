@@ -7,6 +7,13 @@ export async function getTasks() {
 }
 
 export async function addTask(task: TaskType) {
-  let { data } = await axios.post("http://localhost:3004/todo", task);
+  let { data } = await axios.post<TodoType>("http://localhost:3004/todo", task);
   return data;
 }
+
+
+export async function deleteTask(id: string) {
+  let { data } = await axios.delete<TodoType>(`http://localhost:3004/todo/${id}`)
+  return data;
+}
+

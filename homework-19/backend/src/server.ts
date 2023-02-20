@@ -41,6 +41,16 @@ app.post("/todo", async (req: Request, res: Response) => {
   }
 });
 
+app.delete("/todo/:id", async (req: Request, res: Response) => {
+  TodoModel.deleteOne({ _id: req.params.id })
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
 app.listen(3004, () => {
   console.log("Application started on port 3004!");
 });
