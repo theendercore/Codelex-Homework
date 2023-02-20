@@ -1,15 +1,41 @@
 import express from "express";
 import { Request, Response } from "express";
 import bodyparser from "body-parser";
+import mongoose from "mongoose";
 import cors from "cors";
+import "dotenv/config";
+import { TodoModel } from "./assets/model/todo";
+import { todoZodSchema } from "./assets/ts/zod.types";
 
 const app = express();
 
+async function main() {
+  mongoose.set("strictQuery", true);
+  await mongoose.connect(process.env.DB_URI).catch((err) => console.log(err));
+}
+
+main();
 app.use(bodyparser.json());
 app.use(cors({ origin: "*" }));
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Application works!");
+  res.send(`Available end points :
+  <br/> - <a href="./todos">/todos</a>
+  `);
+});
+
+app.get("/todos", async (req: Request, res: Response) => {
+  res.send(await TodoModel.find());
+});
+
+app.post("/todo", async (req: Request, res: Response) => {
+  try {
+    TodoModel.create(todoZodSchema.parse(req.body));
+    res.status(201);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
 });
 
 app.listen(3004, () => {
