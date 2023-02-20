@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { TodoType } from "../../assets/ts/types";
 type TodoProps = {
   task: TodoType;
@@ -6,18 +6,35 @@ type TodoProps = {
 };
 
 export default function Todo({ task, removeTask }: TodoProps) {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <div className="ToDo flex w-full border-b border-black px-2">
-      <input type="checkbox" name="isDone" id="isDone" className="p-2" />
+      <input
+        type="checkbox"
+        name="isDone"
+        id="isDone"
+        className="h-[30px] w-[30px] self-center rounded border-0 bg-yellow-300 p-2 text-yellow-300 focus:ring-white"
+        checked={isChecked}
+        onChange={() => setIsChecked(!isChecked)}
+      />
       <div className="flex w-full flex-col p-2 pb-0">
-        <h3 className="text-xl">{task.title}</h3>
-        <span className="pl-3 text-lg italic">{task.content}</span>
+        <h3
+          className={"text-xl font-bold" + (isChecked ? " line-through" : "")}
+        >
+          {task.title}
+        </h3>
+        <span
+          className={"pl-3 text-lg italic" + (isChecked ? " line-through" : "")}
+        >
+          {task.content}
+        </span>
         <span className="self-end text-sm">{`${new Date(
           task.date
         ).toDateString()}`}</span>
       </div>
       <button
-        className="h-max self-center rounded-xl bg-red-400 p-2"
+        className="h-max self-center rounded-xl bg-red-400 p-2 hover:bg-red-500"
         onClick={() => {
           removeTask(task._id);
         }}

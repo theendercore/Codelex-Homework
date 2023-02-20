@@ -25,7 +25,7 @@ export default function TodoList() {
   }
 
   return (
-    <div className="ToDo w-max-[600px] m-8 flex flex-col items-center rounded bg-yellow-200 py-8 px-5 shadow-xl">
+    <div className="ToDo m-8 flex w-1/2 flex-col items-center rounded bg-yellow-200 py-8 px-5 shadow-xl">
       <h1 className="pb-10 text-6xl font-bold">To Do App</h1>
       <AddTasksFrom />
       <div className="tasks w-full">
