@@ -25,14 +25,10 @@ export default function TodoList() {
   }
 
   return (
-    <div className="ToDo m-8 flex w-1/2 flex-col items-center rounded bg-yellow-200 py-8 px-5 shadow-xl">
-      <h1 className="pb-10 text-6xl font-bold">To Do App</h1>
-      <AddTasksFrom />
-      <div className="tasks w-full">
-        {tasks.map((task) => (
-          <Todo key={task._id} task={task} removeTask={removeTask} />
-        ))}
-      </div>
+    <div className="TodoList w-full">
+      {tasks.map((task) => (
+        <Todo key={task._id} task={task} removeTask={removeTask} />
+      ))}
     </div>
   );
 }

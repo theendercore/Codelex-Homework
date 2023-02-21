@@ -20,12 +20,17 @@ export default function Todo({ task, removeTask }: TodoProps) {
       />
       <div className="flex w-full flex-col p-2 pb-0">
         <h3
-          className={"text-xl font-bold" + (isChecked ? " line-through" : "")}
+          className={
+            "text-xl font-bold" + (isChecked ? " italic line-through" : "")
+          }
         >
           {task.title}
         </h3>
         <span
-          className={"pl-3 text-lg italic" + (isChecked ? " line-through" : "")}
+          className={
+            "pl-3 text-lg italic text-gray-600" +
+            (isChecked ? " line-through" : "")
+          }
         >
           {task.content}
         </span>
@@ -34,7 +39,7 @@ export default function Todo({ task, removeTask }: TodoProps) {
         ).toDateString()}`}</span>
       </div>
       <button
-        className="h-max self-center rounded-xl bg-red-400 p-2 hover:bg-red-500"
+        className="h-max self-center rounded-xl bg-red-400 p-2 hover:animate-wiggle focus:animate-wiggle"
         onClick={() => {
           removeTask(task._id);
         }}

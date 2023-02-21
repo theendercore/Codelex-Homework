@@ -5,6 +5,7 @@ import { TodoType } from "./assets/ts/types";
 import axios from "axios";
 import { getTasks } from "./api/RestAPICalls";
 import { useQuery } from "@tanstack/react-query";
+import AddTasksFrom from "./components/AddTasksFrom";
 
 function App() {
   const [tasksState, setTasksState] = useState<TodoType[]>([]);
@@ -26,7 +27,11 @@ function App() {
       }}
     >
       <div className="App container m-auto flex justify-center">
-        <TodoList />
+        <div className="ToDo m-8 flex w-1/2 flex-col items-center rounded bg-yellow-200 py-8 px-5 shadow-xl">
+          <h1 className="pb-5 text-6xl font-bold">To Do App</h1>
+          <AddTasksFrom />
+          <TodoList />
+        </div>
       </div>
     </TaskContext.Provider>
   );
