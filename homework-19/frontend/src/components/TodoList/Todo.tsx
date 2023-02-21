@@ -3,11 +3,10 @@ import { TodoType } from "../../assets/ts/types";
 type TodoProps = {
   task: TodoType;
   removeTask: (id: string) => void;
+  updateTask: (id: string, isDone: boolean) => void;
 };
 
-export default function Todo({ task, removeTask }: TodoProps) {
-  const [isChecked, setIsChecked] = useState(false);
-
+export default function Todo({ task, removeTask, updateTask }: TodoProps) {
   return (
     <div className="ToDo flex w-full border-b border-black px-2">
       <input
@@ -15,13 +14,13 @@ export default function Todo({ task, removeTask }: TodoProps) {
         name="isDone"
         id="isDone"
         className="h-[30px] w-[30px] self-center rounded border-0 bg-yellow-300 p-2 text-yellow-300 focus:ring-white"
-        checked={isChecked}
-        onChange={() => setIsChecked(!isChecked)}
+        checked={task.isDone}
+        onChange={() => updateTask(task._id, !task.isDone)}
       />
       <div className="flex w-full flex-col p-2 pb-0">
         <h3
           className={
-            "text-xl font-bold" + (isChecked ? " italic line-through" : "")
+            "text-xl font-bold" + (task.isDone ? " italic line-through" : "")
           }
         >
           {task.title}
@@ -29,7 +28,7 @@ export default function Todo({ task, removeTask }: TodoProps) {
         <span
           className={
             "pl-3 text-lg italic text-gray-600" +
-            (isChecked ? " line-through" : "")
+            (task.isDone ? " line-through" : "")
           }
         >
           {task.content}

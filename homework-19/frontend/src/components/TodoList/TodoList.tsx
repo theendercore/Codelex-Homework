@@ -1,18 +1,25 @@
 import { useTaskContext } from "../../context/TaskContext";
 import Todo from "./Todo";
-import AddTasksFrom from "../AddTasksFrom";
-import { useMutation } from "@tanstack/react-query";
-import { deleteTask } from "../../api/RestAPICalls";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteTask, updateIsDoneTask } from "../../api/RestAPICalls";
 import { TaskType } from "../../assets/ts/types";
 
 export default function TodoList() {
   const { tasks, setTasks } = useTaskContext();
+  const queryClient = useQueryClient()
 
   const delTask = useMutation<TaskType, Error, string>({
-    mutationFn: (taskId) => deleteTask(taskId),
-    onError: (error) => {
-      console.log(error);
-    },
+    mutationFn: deleteTask,
+    onError: console.log,
+  });
+
+  const updateTask = useMutation<
+    TaskType,
+    Error,
+    { id: string; state: boolean }
+  >({
+    mutationFn: updateIsDoneTask,
+    onError: console.log,
   });
 
   function removeTask(id: string) {
@@ -24,10 +31,26 @@ export default function TodoList() {
     });
   }
 
+  function updateIsDone(id: string, state: boolean) {
+    updateTask.mutate(
+      { id: id, state: state },
+      {
+        onSuccess: ()=>{
+          queryClient.invalidateQueries({ queryKey: ['tasks'] })
+        },
+      }
+    );
+  }
+
   return (
     <div className="TodoList w-full">
       {tasks.map((task) => (
-        <Todo key={task._id} task={task} removeTask={removeTask} />
+        <Todo
+          key={task._id}
+          task={task}
+          removeTask={removeTask}
+          updateTask={updateIsDone}
+        />
       ))}
     </div>
   );

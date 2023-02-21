@@ -11,9 +11,18 @@ export async function addTask(task: TaskType) {
   return data;
 }
 
-
 export async function deleteTask(id: string) {
-  let { data } = await axios.delete<TodoType>(`http://localhost:3004/todo/${id}`)
+  let { data } = await axios.delete<TodoType>(
+    `http://localhost:3004/todo/${id}`
+  );
   return data;
 }
-
+export async function updateIsDoneTask({ id, state }: { id: string; state: boolean }) {
+  let { data } = await axios.patch<TodoType>(
+    `http://localhost:3004/todo/${id}`,
+    {
+      isDone: state,
+    }
+  );
+  return data;
+}

@@ -11,9 +11,10 @@ const app = express();
 
 async function main() {
   mongoose.set("strictQuery", true);
-  await mongoose.connect(process.env.DB_URI)
-  .then(()=>console.log("mongo ON"))
-  .catch((err) => console.log(err));
+  await mongoose
+    .connect(process.env.DB_URI)
+    .then(() => console.log("mongo ON"))
+    .catch((err) => console.log(err));
 }
 
 main();
@@ -53,6 +54,15 @@ app.delete("/todo/:id", async (req: Request, res: Response) => {
     });
 });
 
+app.patch("/todo/:id", async (req: Request, res: Response) => {
+  TodoModel.updateOne({ _id: req.params.id }, {$set:{isDone: req.body.isDone}})
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
 app.listen(3004, () => {
   console.log("Application started on port 3004!");
 });
