@@ -1,9 +1,9 @@
+import { Router, RouterProvider } from '@tanstack/react-router';
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-import { Router } from '@tanstack/react-router';
-import { RouterProvider } from '@tanstack/react-router';
+import './main.css'
+import indexRoute from './pages/Index';
+import rootRoute from './Root';
 
 const routeTree = rootRoute.addChildren([indexRoute])
 
