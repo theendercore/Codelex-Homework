@@ -18,3 +18,5 @@
 - [x] - Homeworks 16
 - [x] - Homeworks 17
 - [ ] - Homeworks 18
+- [x] - Homeworks 19
+- [ ] - Homeworks 20 
