@@ -8,7 +8,7 @@ function Root() {
   return (
     <div className="Root">
       <div className="m-auto flex items-center justify-center gap-10 p-10 shadow-2xl">
-        <Link to="/" className="bold text-6xl">
+        <Link to="/" className="font-bold text-6xl">
           LOGO
         </Link>
       </div>

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { decrement, increment, selectCount } from "./counterSlice";
 
 export default function Counter() {
