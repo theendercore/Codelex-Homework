@@ -15,7 +15,7 @@
 - [x] - Homeworks 13 | Sign up Form with validation and jest & HW-10 remade in React
 - [x] - Homeworks 14 | General React exercises 
 - [x] - Homeworks 15 | Rick and Morty Character site with React Router
-- [x] - Homeworks 16 | A Blog basic blog with React Router (originally with json-server, but now HW-17 backend)
+- [x] - Homeworks 16 | A Blog basic blog with React Router (see readme)
 - [x] - Homeworks 17 | Custom BackEnd with Express.js and MySQL for the previous Blog
 - [ ] - Homeworks 18 | Rock, Paper Scissors Game with i18n
 - [x] - Homeworks 19 | Todo App with React Context
