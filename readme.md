@@ -18,5 +18,7 @@
 - [x] - Homeworks 16 | A Blog basic blog with React Router (see readme)
 - [x] - Homeworks 17 | Custom BackEnd with Express.js and MySQL for the previous Blog
 - [ ] - Homeworks 18 | Rock, Paper Scissors Game with i18n
-- [x] - Homeworks 19 | Todo App with React Context
-- [ ] - Homeworks 20 
+- [x] - Homeworks 19 | Todo App with React Context & MongoDB BackEnd
+- [ ] - Homeworks 20 | Animal Filter App with Redux & MongoDB BackEnd
+- [ ] - Homeworks 21 | ~Optional~
+- [ ] - Homeworks 22 | 
