@@ -1,22 +1,22 @@
 # Homework for Codelex
 
-- [ ] - Homeworks 0 
-- [x] - Homeworks 1
-- [x] - Homeworks 2
-- [x] - Homeworks 3
-- [x] - Homeworks 4
-- [x] - Homeworks 6
-- [x] - Homeworks 7
-- [x] - Homeworks 8
-- [x] - Homeworks 9
-- [x] - Homeworks 10
-- [ ] - Homeworks 11
-- [x] - Homeworks 12
-- [x] - Homeworks 13
-- [x] - Homeworks 14
-- [x] - Homeworks 15
-- [x] - Homeworks 16
-- [x] - Homeworks 17
-- [ ] - Homeworks 18
-- [x] - Homeworks 19
+- [ ] - Homeworks 0  | Basic Landing page 
+- [ ] - Homeworks 1  | Basic landing page with Sass
+- [x] - Homeworks 2  | Many different forms & A Basic site with Bootstrap
+- [x] - Homeworks 3  | Dynamic site layout & A Basic site with dynamic layout
+- [x] - Homeworks 4  | 69 General TypeScript functions with a custom terminal (for aesthetics)
+- [x] - Homeworks 6  | Exercises with Types (no site)
+- [x] - Homeworks 7  | HTML interaction exercises 
+- [x] - Homeworks 8  | Memory game site with TypeScript
+- [x] - Homeworks 9  | Rick and Morty Character site,s using a REST API
+- [x] - Homeworks 10 | Full REST API (card display site) 
+- [ ] - Homeworks 11 | Country List site with filtering and sorting
+- [x] - Homeworks 12 | React Todo App & Carousels made with TypeScript classes
+- [x] - Homeworks 13 | Sign up Form with validation and jest & HW-10 remade in React
+- [x] - Homeworks 14 | General React exercises 
+- [x] - Homeworks 15 | Rick and Morty Character site with React Router
+- [x] - Homeworks 16 | A Blog basic blog with React Router (originally with json-server, but now HW-17 backend)
+- [x] - Homeworks 17 | Custom BackEnd with Express.js and MySQL for the previous Blog
+- [ ] - Homeworks 18 | Rock, Paper Scissors Game with i18n
+- [x] - Homeworks 19 | Todo App with React Context
 - [ ] - Homeworks 20 

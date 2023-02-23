@@ -2,6 +2,7 @@ import { Route } from "@tanstack/react-router";
 import React from "react";
 import AnimalDisplay from "../components/AnimalDisplay/AnimalDisplay";
 import rootRoute from "../Root";
+import AddAnimalForm from "../components/AddAnimalForm";
 
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -13,8 +14,9 @@ function IndexRoute() {
   let val = null;
   return (
     <div className="m-auto flex flex-col items-center justify-center p-10">
+      <AddAnimalForm />
       {val ? (
-        <AnimalDisplay />
+        <AnimalDisplay /> 
       ) : (
         <>
           <h2 className="my-5 text-3xl">No Animals Added Yet!</h2>

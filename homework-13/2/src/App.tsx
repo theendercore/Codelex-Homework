@@ -11,9 +11,9 @@ function App() {
   const [editing, setEditing] = useState<boolean>(false);
   const [editableCard, setEditableCard] = useState<iCard>({
     id: -1,
-    title: "oh no",
-    text: "oh no",
-    url: "oh no",
+    title: "",
+    text: "",
+    url: "",
   });
 
   //Load cards upon page load
