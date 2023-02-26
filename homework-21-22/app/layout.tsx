@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="bg-slate-900 container m-auto py-10 flex items-center justify-center"
+      className="bg-slate-900 container m-auto py-10 flex items-center justify-center text-slate-300"
     >
       <body>{children}</body>
     </html>
