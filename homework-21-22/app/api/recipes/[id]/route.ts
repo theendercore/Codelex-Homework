@@ -1,24 +1,21 @@
+import { getRecipe } from "@/lib/mongoose/recipes";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  request: NextApiRequest,
-  params: { id: string }
-): Promise<Response> {
+type IdParams = { params: { id: string } };
 
-  return NextResponse.json({
-    title: "yes",
-    descriptions: "words",
-    ingredients: [
-      {
-        _id: "wowmgic",
-        name: "pickles",
-      },
-      {
-        _id: "ansdjnd",
-        name: "tomato",
-      },
-    ],
-    image: "https://picsum.photos/id/3/300",
-  });
+export async function GET(request: NextApiRequest, { params }: IdParams) {
+  try {
+    const { recipe, error } = await getRecipe(params.id);
+    if (recipe === undefined) throw new Error(`Could not get Recipe: ${error}`);
+
+    return NextResponse.json(recipe);
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json({
+      message: "there was a problem retrieving a recipe",
+      error,
+    });
+  }
 }

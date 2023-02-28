@@ -1,13 +1,22 @@
 import { IdLessRecipe } from "../util/types";
-import RecipeSchema from "./models/recipe";
 import RecipeModel from "./models/recipe";
 import { dbConnect } from "./index";
 
 export async function getRecipes() {
   try {
     dbConnect();
-    let recipes = await RecipeSchema.find().catch(console.error);
+    let recipes = await RecipeModel.find();
     return { recipes };
+  } catch (error) {
+    return { error };
+  }
+}
+
+export async function getRecipe(id: string) {
+  try {
+    dbConnect();
+    let recipe = await RecipeModel.findById(id);
+    return { recipe };
   } catch (error) {
     return { error };
   }

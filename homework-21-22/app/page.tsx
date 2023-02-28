@@ -4,7 +4,9 @@ import Link from "next/link";
 import Recipe from "./components/Recipe";
 
 async function getRecipe() {
-  let {data} = await axios.get<RecipeType[]>("http://localhost:3000/api/recipes");
+  let { data } = await axios.get<RecipeType[]>(
+    "http://localhost:3000/api/recipes"
+  );
   return data;
 }
 
@@ -17,10 +19,10 @@ export default async function Home() {
         Add Recipe
       </Link>
       <div>
-        {JSON.stringify(recipes)}
-        {/* {[...recipes].map((recipe) => (
-          <Recipe key={recipe.id} recipe={recipe} />
-        ))} */}
+        {/* {JSON.stringify(recipes)} */}
+        {recipes.map((recipe) => (
+          <Recipe key={recipe._id} recipe={recipe} />
+        ))}
       </div>
     </main>
   );

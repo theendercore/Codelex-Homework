@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     if (recipes === undefined)
       throw new Error(`Could not get Recipes: ${error}`);
 
-    return NextResponse.json({ ...recipes });
+    return NextResponse.json(recipes);
   } catch (error) {
     console.error(error);
 
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const { recipe, error } = await addRecipe(IdLessRecipeSchema.parse(recIn));
     if (recipe === undefined) throw new Error(`Could not add Recipe: ${error}`);
 
-    return NextResponse.json({ recipe });
+    return NextResponse.json(recipe);
   } catch (error) {
     console.error(error);
 

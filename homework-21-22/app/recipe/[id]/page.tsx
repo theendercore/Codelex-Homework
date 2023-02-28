@@ -1,25 +1,26 @@
 import { RecipeType } from "@/lib/util/types";
-import Image from 'next/image';
+import Image from "next/image";
 import Ingredient from "./components/Ingredient";
 import IngredientsList from "./components/IngredientsList";
+import axios from "axios";
 
-type PageProps = {
+type PageParams = {
   params: { id: string };
 };
-function getRecipe(id: string) {
-  return fetch("http://localhost:3000/api/recipes/" + id).then((res) =>
-    res.json()
-  ) as Promise<RecipeType>;
+async function getRecipe(id: string) {
+  let { data } = await axios.get<RecipeType>(
+    `http://localhost:3000/api/recipes/${id}`
+  );
+  return data;
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: PageParams) {
   let recipe: RecipeType = await getRecipe(params.id);
   return (
     <main>
       <h1 className="text-6xl text-slate-200">{recipe.title}</h1>
-      <p className="text-slate-300 text-xl">{recipe.descriptions}</p>
+      <p className="text-slate-300 text-xl">{recipe.description}</p>
       <span className="text-slate-300 text-2xl ">
-        <IngredientsList ingredients={recipe.ingredients}/>
       </span>
       <Image src={recipe.image} alt="food" width="300" height="300" />
     </main>

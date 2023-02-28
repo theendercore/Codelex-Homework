@@ -7,7 +7,7 @@ type RecipeProps = {
 
 export default function Recipe({ recipe }: RecipeProps) {
   return (
-    <Link href={"/recipe/" + recipe.id}>
+    <Link href={"/recipe/" + recipe._id}>
       <Image src={recipe.image} alt={recipe.title} width="300" height="300" />
       <span>{recipe.title}</span>
     </Link>
