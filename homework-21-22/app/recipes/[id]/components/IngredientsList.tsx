@@ -1,4 +1,4 @@
-import { IngredientType } from "@/util/types";
+import { IngredientType } from "@/lib/util/types";
 import Ingredient from "./Ingredient";
 
 type IngredientsListProps = {

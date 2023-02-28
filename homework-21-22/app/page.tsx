@@ -1,22 +1,25 @@
-import { RecipeType } from "@/util/types";
+import { RecipeType } from "@/lib/util/types";
 import Link from "next/link";
 import Recipe from "./components/Recipe";
 
-function getRecipe() {
-  return fetch("http://localhost:3000/api/recipes").then((res) =>
-    res.json()
-  ) as Promise<RecipeType[]>;
+async function getRecipe(): Promise<RecipeType[]> {
+  let res = await fetch("http://localhost:3000/api/recipes", {
+    cache: "no-cache",
+  });
+  return res.json();
 }
 
 export default async function Home() {
   let recipes: RecipeType[] = await getRecipe();
   return (
     <main>
-      <h1 className="text-slate-200 text-6xl">oh on</h1>
-      <Link href={"/recipes/3"}>Page</Link>
+      <h1 className="text-slate-200 text-6xl">Book</h1>
+      <Link href={"recipes/add"} className="bg-slate-600 rounded-xl p-4">
+        Add Recipe
+      </Link>
       <div>
         {recipes.map((recipe) => (
-          <Recipe key={recipe.id} recipe={recipe}/>
+          <Recipe key={recipe.id} recipe={recipe} />
         ))}
       </div>
     </main>

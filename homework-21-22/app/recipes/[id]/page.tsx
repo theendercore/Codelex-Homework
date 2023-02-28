@@ -1,4 +1,4 @@
-import { RecipeType } from "@/util/types";
+import { RecipeType } from "@/lib/util/types";
 import Image from 'next/image';
 import Ingredient from "./components/Ingredient";
 import IngredientsList from "./components/IngredientsList";
