@@ -10,6 +10,6 @@ export type RecipeType = {
 export type IdLessRecipe = Omit<RecipeType, "id">;
 
 export type IngredientType = {
-  id: string;
+  _id: string;
   name: string;
 };
