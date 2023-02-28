@@ -1,12 +1,11 @@
 import { RecipeType } from "@/lib/util/types";
 import Image from "next/image";
-import Ingredient from "./components/Ingredient";
-import IngredientsList from "./components/IngredientsList";
 import axios from "axios";
 
 type PageParams = {
   params: { id: string };
 };
+
 async function getRecipe(id: string) {
   let { data } = await axios.get<RecipeType>(
     `http://localhost:3000/api/recipes/${id}`
