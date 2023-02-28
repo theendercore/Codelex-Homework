@@ -1,15 +1,14 @@
-export type RecipeType = {
-  id: string;
-  title: string;
-  descriptions: string;
-  ingredients: IngredientType[];
-  category: String[];
-  image: string;
-};
+import { z } from "zod";
 
-export type IdLessRecipe = Omit<RecipeType, "id">;
+export const RecipeTypeSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  ingredients: z.array(z.string()),
+  categories: z.array(z.string()),
+  image: z.string().url(),
+});
+export type RecipeType = z.infer<typeof RecipeTypeSchema>;
 
-export type IngredientType = {
-  _id: string;
-  name: string;
-};
+export const IdLessRecipeSchema = RecipeTypeSchema.omit({ id: true });
+export type IdLessRecipe = z.infer<typeof IdLessRecipeSchema>;

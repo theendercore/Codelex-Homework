@@ -1,41 +1,24 @@
-import { RecipeType } from '../util/types';
+import { IdLessRecipe } from "../util/types";
+import RecipeSchema from "./models/recipe";
+import RecipeModel from "./models/recipe";
+import { dbConnect } from "./index";
+
 export async function getRecipes() {
   try {
-    return {
-      recipes: [
-        {
-          id: "1",
-          title: "yes",
-          descriptions: "words",
-          ingredients: [
-            {
-              _id: "wowmgic",
-              name: "pickles",
-            },
-            {
-              _id: "ansdjnd",
-              name: "tomato",
-            },
-          ],
-          category: ["food", "food2"],
-          image: "https://picsum.photos/id/3/300",
-        },
-        {
-          id: "2",
-          title: "no not at alType",
-          descriptions: "nnoonno",
-          ingredients: [
-            {
-              _id: "asdasd",
-              name: "pickles",
-            },
-          ],
-          category: ["food", "food2"],
-          image: "https://picsum.photos/id/4/300",
-        },
-      ] as RecipeType[],
-    };
+    dbConnect();
+    let recipes = await RecipeSchema.find().catch(console.error);
+    return { recipes };
   } catch (error) {
-    return { error: error, message: "error ocurred" };
+    return { error };
+  }
+}
+
+export async function addRecipe(recipeIn: IdLessRecipe) {
+  try {
+    dbConnect();
+    let recipe = await RecipeModel.create(recipeIn);
+    return { recipe };
+  } catch (error) {
+    return { error };
   }
 }
