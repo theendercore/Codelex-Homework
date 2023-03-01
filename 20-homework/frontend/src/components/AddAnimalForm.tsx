@@ -13,6 +13,7 @@ export default function AddAnimalForm() {
         <input type="text" name="img-src" id="img-src" />
       </label>
       
+      
     </form>
   );
 }
