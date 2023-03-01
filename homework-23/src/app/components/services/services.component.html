@@ -1,0 +1,12 @@
+<div class="services">
+  <button
+    *ngFor="let service of services; let i = index"
+    class="service my-2 w-full flex gap-2 justify-between px-5 py-4
+  {{ service.selected ? 'bg-[#82BA60]' : 'bg-[#DF4E7A]' }}"
+    (click)="toggleSelected(i)"
+  >
+    <span>{{ service.name }}</span>
+    <span class="self">${{ service.cost }}.00</span>
+  </button>
+<div class="total my-2 w-full flex gap-2 justify-between px-5 py-4 border-t border-white"> <span>Total:</span> <span>${{sum}}.00</span></div>
+</div>
