@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../app/types";
-import { AnimalData } from "./types";
+import { RootState } from "../../app/types";
+import { AnimalData } from "../types";
 
 const initialState: AnimalData[] = [];
 

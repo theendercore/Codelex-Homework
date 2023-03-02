@@ -1,7 +1,5 @@
-import React from "react";
-import { selectAnimals } from "../../app/AnimalListSlice";
+import { selectAnimals } from "../../app/slices/AnimalListSlice";
 import { useAppSelector } from "../../app/hooks";
-import { AnimalData } from "../../app/types";
 import AnimalCard from "./AnimalCard";
 
 

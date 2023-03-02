@@ -1,16 +1,13 @@
 import { Route } from "@tanstack/react-router";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AnimalDisplay from "../components/AnimalDisplay/AnimalDisplay";
 import rootRoute from "../Root";
 import AddAnimalForm from "../components/AddAnimalForm";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import {
-  addMultiple,
-  loadFromStorage,
-  selectAnimals,
-} from "../app/AnimalListSlice";
+import { loadFromStorage, selectAnimals } from "../app/slices/AnimalListSlice";
 import useLocalStorage from "use-local-storage";
-import { AnimalData } from "../app/types";
+import { StorageType } from '../app/types';
+import { selectSpecies } from "../app/slices/SpeciesSlice";
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/",
@@ -19,23 +16,24 @@ const indexRoute = new Route({
 
 function IndexRoute() {
   const animals = useAppSelector(selectAnimals);
+  const species = useAppSelector(selectSpecies);
   const dispatch = useAppDispatch();
-  const [localData, setLocalData] = useLocalStorage<AnimalData[]>(
-    "AnimalsData",
-    []
+  const [localData, setLocalData] = useLocalStorage<StorageType>(
+    "AnimalAppData",
+    {animals: [], species: []}
   );
 
   useEffect(() => {
-    if (animals.length <= 0 && localData.length > 0) {
-      dispatch(loadFromStorage(localData));
+    if (animals.length <= 0 && localData.animals.length > 0) {
+      dispatch(loadFromStorage(localData.animals));
     }
   }, []);
 
   useEffect(() => {
-    if (animals.length > 0) {
-      setLocalData(animals);
+    if (animals.length > 0 || species.length > 0) {
+      setLocalData({animals: animals, species: species}); 
     }
-  }, [animals]);
+  }, [animals, species]);
 
   return (
     <div className="m-auto flex flex-col items-center justify-center p-10">

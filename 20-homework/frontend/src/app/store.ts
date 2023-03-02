@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { counterSlice } from "../components/Counter/counterSlice";
-import { AnimalListSlice } from "./AnimalListSlice";
+import  AnimalListSlice  from "./slices/AnimalListSlice";
+import  SpeciesSlice  from "./slices/SpeciesSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer,
-    animalsList: AnimalListSlice.reducer,
-  }
+    animalsList: AnimalListSlice,
+    species: SpeciesSlice,
+  },
 });
-
-

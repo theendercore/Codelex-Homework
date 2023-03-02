@@ -8,7 +8,17 @@ export type AnimalData = {
   id: string;
   name: string;
   image: string;
-  species: string;
+  speciesId: string;
+};
+
+export type SpeciesData = {
+  id: string;
+  name: string;
+};
+
+export type StorageType = {
+  animals: AnimalData[];
+  species: SpeciesData[];
 };
 
 export type RootState = ReturnType<typeof store.getState>;

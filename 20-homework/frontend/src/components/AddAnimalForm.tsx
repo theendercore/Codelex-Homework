@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addOne, selectAnimals } from "../app/AnimalListSlice";
+import { addOne, selectAnimals } from "../app/slices/AnimalListSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { AnimalData } from "../app/types";
 
