@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { addOne, selectAnimals } from "../app/slices/AnimalListSlice";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { AnimalData } from "../app/types";
+import { useState } from "react";
+import { addOne, selectAnimals } from "../../app/slices/AnimalListSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { AnimalData } from "../../app/types";
+import SpeciesSelector from './SpeciesSelector';
 
 export default function AddAnimalForm() {
   const [animal, setAnimal] = useState<AnimalData>({
     id: crypto.randomUUID(),
     name: "",
     image: "",
-    species: "",
+    speciesId: "",
   });
   const dispatch = useAppDispatch();
   const animals = useAppSelector(selectAnimals);
@@ -47,21 +48,11 @@ export default function AddAnimalForm() {
           onChange={(e) => {
             setAnimal({ ...animal, image: e.target.value });
           }}
+          defaultValue="https://picsum.photos/id/3/200"
           required
         />
       </label>
-      <label className="my-2">
-        <span>Species</span>
-        <input
-          type="text"
-          className="mx-2"
-          value={animal.species}
-          onChange={(e) => {
-            setAnimal({ ...animal, species: e.target.value });
-          }}
-          required
-        />
-      </label>
+    <SpeciesSelector/>
       <button className="w-max self-center rounded bg-slate-400 p-2 hover:bg-slate-700">
         ADD
       </button>

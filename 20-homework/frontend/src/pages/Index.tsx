@@ -2,7 +2,7 @@ import { Route } from "@tanstack/react-router";
 import { useEffect } from "react";
 import AnimalDisplay from "../components/AnimalDisplay/AnimalDisplay";
 import rootRoute from "../Root";
-import AddAnimalForm from "../components/AddAnimalForm";
+import AddAnimalForm from "../components/AddAnimalForm/AddAnimalForm";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { loadFromStorage, selectAnimals } from "../app/slices/AnimalListSlice";
 import useLocalStorage from "use-local-storage";
