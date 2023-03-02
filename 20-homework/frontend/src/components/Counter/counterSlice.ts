@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CounterState, RootState } from "../app/types";
+import { CounterState, RootState } from "../../app/types";
+
 
 
 

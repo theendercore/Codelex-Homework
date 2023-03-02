@@ -3,6 +3,8 @@ import React from "react";
 import AnimalDisplay from "../components/AnimalDisplay/AnimalDisplay";
 import rootRoute from "../Root";
 import AddAnimalForm from "../components/AddAnimalForm";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { selectAnimals } from "../app/AnimalListSlice";
 
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -11,12 +13,14 @@ const indexRoute = new Route({
 });
 
 function IndexRoute() {
-  let val = null;
+  const animals = useAppSelector(selectAnimals);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="m-auto flex flex-col items-center justify-center p-10">
       <AddAnimalForm />
-      {val ? (
-        <AnimalDisplay /> 
+      {animals.length > 0 ? (
+        <AnimalDisplay />
       ) : (
         <>
           <h2 className="my-5 text-3xl">No Animals Added Yet!</h2>
