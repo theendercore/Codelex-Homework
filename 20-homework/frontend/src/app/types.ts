@@ -5,7 +5,7 @@ export interface CounterState {
 }
 
 export type AnimalData = {
-  id:number;
+  id: string;
   name: string;
   image: string;
   species: string;

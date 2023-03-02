@@ -1,11 +1,16 @@
 import { Route } from "@tanstack/react-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AnimalDisplay from "../components/AnimalDisplay/AnimalDisplay";
 import rootRoute from "../Root";
 import AddAnimalForm from "../components/AddAnimalForm";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectAnimals } from "../app/AnimalListSlice";
-
+import {
+  addMultiple,
+  loadFromStorage,
+  selectAnimals,
+} from "../app/AnimalListSlice";
+import useLocalStorage from "use-local-storage";
+import { AnimalData } from "../app/types";
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/",
@@ -15,6 +20,22 @@ const indexRoute = new Route({
 function IndexRoute() {
   const animals = useAppSelector(selectAnimals);
   const dispatch = useAppDispatch();
+  const [localData, setLocalData] = useLocalStorage<AnimalData[]>(
+    "AnimalsData",
+    []
+  );
+
+  useEffect(() => {
+    if (animals.length <= 0 && localData.length > 0) {
+      dispatch(loadFromStorage(localData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (animals.length > 0) {
+      setLocalData(animals);
+    }
+  }, [animals]);
 
   return (
     <div className="m-auto flex flex-col items-center justify-center p-10">
