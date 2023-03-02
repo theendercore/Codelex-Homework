@@ -6,7 +6,7 @@ import { Service } from 'src/app/models/Service';
   templateUrl: './services.component.html',
 })
 export class ServicesComponent {
-  sum = 0;
+  total = 0;
   services: Service[] = [
     {
       name: 'Web Development',
@@ -30,17 +30,13 @@ export class ServicesComponent {
     },
   ];
 
-  toggleSelected(id: number) {
-    this.services.map((v, i) => {
-      if (i === id) {
-        if (v.selected) {
-          this.sum -= v.cost;
-        } else {
-          this.sum += v.cost;
-        }
-        v.selected = !v.selected;
-      }
-      return v;
-    });
+  totalCalculator(service: Service) {
+    this.total += service.cost * (service.selected ? -1 : 1);
+  }
+
+  selectHandler(index: number) {
+    let v = this.services[index];
+    this.totalCalculator(v);
+    v.selected = !v.selected;
   }
 }
