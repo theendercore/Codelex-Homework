@@ -2,6 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Hind Siliguri";
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
@@ -16,6 +21,25 @@ body {
   padding-right: 15px;
 }
 
+.nav-bar {
+  margin-top: 2rem;
+  margin-bottom: 8.4rem;
+}
+
+.header-nav {
+  color: black;
+  display: flex;
+  gap: 2rem;
+}
+
+.header-cta .btn {
+  color: orange;
+  padding: 0.4rem.4rem;
+  border: 1px solid orange;
+  border-radius: 10px;
+  background: white;
+}
+
 .flex-spaced-center {
   display: flex;
   justify-content: space-between;
@@ -25,6 +49,10 @@ body {
 .header-nav nav {
   display: flex;
   justify-content: space-between;
+}
+
+.text-block {
+  padding: 0.5rem;
 }
 
 .promo-header {
@@ -55,18 +83,19 @@ body {
 
 .title {
   color: #292830;
-  font-size: 64px;
-  line-height: 70px;
+  font-size: 4rem;
+  line-height: 6rem;
+  font-weight: bolder;
 }
 
 .text {
+  font-size: 1.2rem;
   color: #bdbdbd;
 }
 
 .segment {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 2rem;
 }
 
 .row {
@@ -84,4 +113,27 @@ body {
 
 .btn--white {
   background-color: whitesmoke;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.demo-btn {
+  padding: 1rem;
+  padding-right: 2.5rem;
+  padding-left: 1.5rem;
+  border-radius: 10px;
+  margin-right: 0.8rem;
+  color: white;
+  position: relative;
+}
+.demo-btn svg {
+  position: absolute;
+  top: 1.18rem;
+}
+
+.page-start {
+  padding-bottom: 7rem;
 }
