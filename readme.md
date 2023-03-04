@@ -22,3 +22,5 @@
 - [ ] - Homeworks 20 | Animal Filter App with Redux & MongoDB BackEnd
 - [-] - Homeworks 21-22 | A Recipe book app with Next.js
 - [x] - Homeworks 23 | A Services Price List App with Angular
+- [ ] - Homeworks 24 |  with Angular
+- [ ] - Homeworks 25 |  with Angular

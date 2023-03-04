@@ -18,7 +18,12 @@ export const AnimalListSlice = createSlice({
       return [...action.payload];
     },
     remove: (state, action: PayloadAction<string>) => {
-      state = state.filter((item) => item.id !== action.payload);
+      return state.filter((item) => item.id !== action.payload);
+    },
+    edit: (state, action: PayloadAction<AnimalData>) => {
+      let newState = state.filter((item) => item.id !== action.payload.id);
+      newState.push(action.payload);
+      return newState;
     },
   },
 });
