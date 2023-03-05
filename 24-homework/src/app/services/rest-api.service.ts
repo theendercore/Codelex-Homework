@@ -9,10 +9,12 @@ import { Animal, AnimalConstruct, AnimalType } from '../models/Animal';
 export class RestApiService {
   constructor(private httpClient: HttpClient) {}
   baseUrl = 'http://localhost:3000/animals';
+  private filter: AnimalType | null = null;
 
-  getAll(type: AnimalType | null) {
-    if (type === null) return this.httpClient.get<Animal[]>(this.baseUrl);
-    return this.httpClient.get<Animal[]>(`${this.baseUrl}?type=${type}`);
+  getAll() {
+    let x = '';
+    if (this.filter !== null) x = `?type=${this.filter}`;
+    return this.httpClient.get<Animal[]>(`${this.baseUrl}${x}`);
   }
 
   addOne(animal: AnimalConstruct) {
@@ -21,5 +23,8 @@ export class RestApiService {
 
   deleteOne(id: number | string) {
     return this.httpClient.delete<Animal>(`${this.baseUrl}/${id}`);
+  }
+  setFilter(value: AnimalType | null) {
+    this.filter = value;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import { Animal, AnimalTypeList } from '../../models/Animal';
 
@@ -6,26 +6,12 @@ import { Animal, AnimalTypeList } from '../../models/Animal';
   selector: 'app-animal-list',
   templateUrl: './animal-list.component.html',
 })
-export class AnimalListComponent implements OnInit {
+export class AnimalListComponent {
+  @Input() animalList!: Animal[];
+  @Output() removeAnimal = new EventEmitter<string>();
   constructor(private restAPI: RestApiService) {}
 
-  animalList: Animal[] = [];
-
-  ngOnInit(): void {
-    this.restAPI.getAll(null).subscribe({
-      next: (data) => {
-        this.animalList = data;
-        // console.log("update state");
-      },
-      error: (e) => console.error(e),
-    });
-  }
-  onClick(id: string | number) {
-    this.restAPI.deleteOne(id).subscribe({
-      next: (data) => {
-        this.animalList = this.animalList.filter((a) => a.id !== id);
-      },
-      error: (e) => console.error(e),
-    });
+  deleteAnimal(id: string) {
+      this.removeAnimal.emit(id)
   }
 }
