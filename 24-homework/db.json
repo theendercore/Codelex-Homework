@@ -24,6 +24,11 @@
       "name": "Lion",
       "type": "Carnivore",
       "id": 10
+    },
+    {
+      "name": "adsd",
+      "type": "Carnivore",
+      "id": 11
     }
   ]
 }
