@@ -26,8 +26,8 @@
       "id": 10
     },
     {
-      "name": "Baboon",
-      "type": "Omnivore",
+      "name": "Leopard",
+      "type": "Carnivore",
       "id": 11
     },
     {
@@ -46,8 +46,8 @@
       "id": 14
     },
     {
-      "name": "Leopard",
-      "type": "Carnivore",
+      "name": "Baboon",
+      "type": "Omnivore",
       "id": 15
     }
   ]

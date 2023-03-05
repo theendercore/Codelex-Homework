@@ -11,12 +11,7 @@ export class AppComponent {
   constructor(private restAPI: RestApiService) {}
 
   ngOnInit(): void {
-    this.restAPI.getAll().subscribe({
-      next: (data) => {
-        this.animals = data;
-      },
-      error: (e) => console.error(e),
-    });
+    this.refetchAnimals();
   }
 
   removeAnimal(id: string | number) {
