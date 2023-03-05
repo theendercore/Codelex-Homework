@@ -3,8 +3,22 @@
     *ngFor="let animal of animalList"
     class="rounded bg-neutral-300 p-2 px-3 flex gap-10 w-full justify-between items-center"
   >
-    <span class="rounded bg-gray-500 p-2 text-blue-50 font-bold">{{ animal.type }}</span>
+    <span
+      class="rounded bg-gray-500 p-2  font-bold {{
+        animal.type === 'Carnivore'
+          ? 'text-red-100'
+          : animal.type === 'Herbivore'
+          ? 'text-green-100'
+          : 'text-blue-50'
+      }}"
+      >{{ animal.type }}</span
+    >
     <span class="text-xl text-gray-800">{{ animal.name }}</span>
-    <button class="text-3xl text-red-400 hover:text-red-600 pr-2" (click)="deleteAnimal(animal.id)">x</button>
+    <button
+      class="text-3xl text-red-400 hover:text-red-600 pr-2"
+      (click)="deleteAnimal(animal.id)"
+    >
+      x
+    </button>
   </div>
 </div>

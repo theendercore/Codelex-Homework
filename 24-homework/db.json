@@ -24,6 +24,31 @@
       "name": "Lion",
       "type": "Carnivore",
       "id": 10
+    },
+    {
+      "name": "Baboon",
+      "type": "Omnivore",
+      "id": 11
+    },
+    {
+      "name": "Ostriche",
+      "type": "Omnivore",
+      "id": 12
+    },
+    {
+      "name": "Warthog",
+      "type": "Omnivore",
+      "id": 13
+    },
+    {
+      "name": "Hyena",
+      "type": "Carnivore",
+      "id": 14
+    },
+    {
+      "name": "Leopard",
+      "type": "Carnivore",
+      "id": 15
     }
   ]
 }
