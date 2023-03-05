@@ -9,6 +9,7 @@ import { Hero } from 'src/app/models/hero';
 })
 export class FormComponent {
   @ViewChild('formName') formN!: NgForm;
+
   onSubmit() {
     console.log(this.formN.form.valid);
   }

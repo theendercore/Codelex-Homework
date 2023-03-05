@@ -1,9 +1,29 @@
 {
-  "posts": [
+  "animals": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Lion",
+      "type": "Carnivore",
+      "id": 5
+    },
+    {
+      "name": "Jaguar",
+      "type": "Carnivore",
+      "id": 6
+    },
+    {
+      "name": "Gazelle",
+      "type": "Herbivore",
+      "id": 7
+    },
+    {
+      "name": "Giraffe",
+      "type": "Herbivore",
+      "id": 8
+    },
+    {
+      "name": "Jackal",
+      "type": "Omnivore",
+      "id": 9
     }
   ]
 }

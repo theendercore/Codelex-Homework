@@ -1,5 +1,5 @@
 export class AnimalConstruct {
-  constructor(public name: string, public type: AnimalType) {}
+  constructor(public name: string, public type: AnimalType | null) {}
 }
 
 export class Animal extends AnimalConstruct {
@@ -9,8 +9,8 @@ export class Animal extends AnimalConstruct {
 }
 
 export const AnimalTypeList = [
-  'Carnivores',
-  'Herbivores',
-  'Omnivores',
+  'Carnivore',
+  'Herbivore',
+  'Omnivore',
 ] as const;
 export type AnimalType = typeof AnimalTypeList[number];
