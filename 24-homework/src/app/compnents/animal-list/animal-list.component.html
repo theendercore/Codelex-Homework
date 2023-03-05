@@ -1,1 +1,10 @@
-<p>animal-list works!</p>
+<div class="container flex flex-col gap-3 p-4 bg-neutral-400 rounded">
+  <div
+    *ngFor="let animal of animalList"
+    class="rounded bg-neutral-300 p-2 px-3 flex gap-10 w-full justify-between items-center"
+  >
+    <span class="rounded bg-gray-500 p-2 text-blue-50 font-bold">{{ animal.type }}</span>
+    <span class="text-xl text-gray-800">{{ animal.name }}</span>
+    <button class="text-3xl text-red-400 hover:text-red-600 pr-2" (click)="onClick(animal.id)">x</button>
+  </div>
+</div>

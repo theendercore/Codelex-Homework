@@ -1,11 +1,6 @@
 {
   "animals": [
     {
-      "name": "Lion",
-      "type": "Carnivore",
-      "id": 5
-    },
-    {
       "name": "Jaguar",
       "type": "Carnivore",
       "id": 6
@@ -24,6 +19,11 @@
       "name": "Jackal",
       "type": "Omnivore",
       "id": 9
+    },
+    {
+      "name": "Lion",
+      "type": "Carnivore",
+      "id": 10
     }
   ]
 }

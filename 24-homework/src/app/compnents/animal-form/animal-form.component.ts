@@ -15,7 +15,6 @@ export class AnimalFormComponent {
   animal = new AnimalConstruct('', null);
 
   onSubmit(form: FormGroup) {
-    // console.log(form.value);
     this.restAPI.addOne(form.value).subscribe({
       next: (data) => {
         console.log(data);
