@@ -1,22 +1,34 @@
 import { createAction, props } from '@ngrx/store';
-import { Movie } from 'src/app/models/Movies';
+import { ConstructedMovie, Movie, StatusType } from 'src/app/models/Movies';
 
-export const add = createAction(
-  '[Movies App] Add',
-  props<{ movie: Movie }>()
+//Database Actions
+export const load = createAction(
+  '[Movies App] Load',
+  props<{ filter: StatusType | 'All' }>()
 );
 
 export const remove = createAction(
-  '[Movies App] Remove',
+  '[Movies App] remove',
+  props<{ id: number | string }>()
+);
+
+export const add = createAction(
+  '[Movies App] add',
+  props<{ movie: ConstructedMovie }>()
+);
+
+//Local Actions //! DO NOT CALL THIS DIRECTLY
+export const addMovie = createAction(
+  '[Movies App] Add Movie',
+  props<{ movie: Movie }>()
+);
+
+export const removeMovie = createAction(
+  '[Movies App] Remove Movie',
   props<{ id: number | string }>()
 );
 
 export const setMovies = createAction(
-  '[Movies App] Set',
+  '[Movies App] Set Movie',
   props<{ movies: Movie[] }>()
 );
-
-export const load = createAction(
-  '[Movies App] Load'
-);
-

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { StatusType, StatusTypeList } from 'src/app/models/Movies';
+import { Store } from '@ngrx/store';
+import { Movie, StatusType, StatusTypeList } from 'src/app/models/Movies';
+import { load } from 'src/app/store/movies.actions';
 
 @Component({
   selector: 'app-movie-filter-switch',
@@ -7,15 +9,13 @@ import { StatusType, StatusTypeList } from 'src/app/models/Movies';
 })
 export class MovieFilterSwitchComponent {
   private statusTypes: Array<StatusType | 'All'> = ['All', ...StatusTypeList];
-  state: StatusType | 'All' = 'All';
-  // @Output() updateSwitch = new EventEmitter<void>();
+  status: StatusType | 'All' = 'All';
 
-  // constructor(private restAPI: RestApiService) {}
+  constructor(private store: Store<{ movies: Movie[] }>) {}
 
   onClick() {
     this.statusTypes.push(this.statusTypes.shift() || 'All');
-    this.state = this.statusTypes[0];
-    // this.restAPI.setFilter(this.state === 'All' ? null : this.state);
-    // this.updateSwitch.emit();
+    this.status = this.statusTypes[0];
+    this.store.dispatch(load({ filter: this.status }));
   }
 }

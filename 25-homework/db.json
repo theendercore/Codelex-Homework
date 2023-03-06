@@ -58,6 +58,18 @@
       "img": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a50fed6-5f37-42b3-aba5-b48c99a0aa08/d9onu9w-67373402-f58c-42ee-810f-06c008eda692.jpg/v1/fill/w_1280,h_1139,q_75,strp/star_wars_rebellion_box_art_by_wraithdt_d9onu9w-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTEzOSIsInBhdGgiOiJcL2ZcLzJhNTBmZWQ2LTVmMzctNDJiMy1hYmE1LWI0OGM5OWEwYWEwOFwvZDlvbnU5dy02NzM3MzQwMi1mNThjLTQyZWUtODEwZi0wNmMwMDhlZGE2OTIuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BZmT7JpzYQZpfRHST73TZxhXYK5CRjssuC9KIehNdo0",
       "rating": 5,
       "id": 1
+    },
+    {
+      "name": "The Godfather",
+      "img": "https://www.shioktoys.com/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/g/o/godfather_web-6_thumbnail.jpg",
+      "status": "Going to Watch",
+      "id": 4
+    },
+    {
+      "name": "sdf",
+      "img": "asd",
+      "status": "Not Watching",
+      "id": 5
     }
   ]
 }

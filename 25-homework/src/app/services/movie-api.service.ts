@@ -8,11 +8,10 @@ import { ConstructedMovie, Movie, StatusType } from 'src/app/models/Movies';
 export class MovieApiService {
   constructor(private httpClient: HttpClient) {}
   baseUrl = 'http://localhost:3000/movies';
-  private filter: StatusType | null = null;
 
-  getAll() {
+  getAll(filter: StatusType | "All") {
     let x = '';
-    if (this.filter !== null) x = `?type=${this.filter}`;
+    if (filter !== "All") x = `?status=${filter}`;
     return this.httpClient.get<Movie[]>(`${this.baseUrl}${x}`);
   }
 
@@ -21,9 +20,7 @@ export class MovieApiService {
   }
 
   deleteOne(id: number | string) {
+    console.log(id)
     return this.httpClient.delete<Movie>(`${this.baseUrl}/${id}`);
-  }
-  setFilter(value: StatusType | null) {
-    this.filter = value;
   }
 }

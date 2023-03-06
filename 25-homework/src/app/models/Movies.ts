@@ -26,5 +26,6 @@ export const StatusTypeList = [
   'Watched',
   'Going to Watch',
   'Not Watching',
+  'Watching',
 ] as const;
 export type StatusType = typeof StatusTypeList[number];
