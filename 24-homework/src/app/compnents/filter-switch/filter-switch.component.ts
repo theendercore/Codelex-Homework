@@ -9,14 +9,13 @@ import { AnimalType, AnimalTypeList } from '../../models/Animal';
 export class FilterSwitchComponent {
   private animalTypes: Array<AnimalType | 'All'> = ['All', ...AnimalTypeList];
   state: AnimalType | 'All' = "All";
-    @Output() updateSwitch = new EventEmitter<void>();
+    @Output() updateSwitch = new EventEmitter<AnimalType | 'All'>();
 
   constructor(private restAPI: RestApiService) {}
 
   onClick() {
     this.animalTypes.push(this.animalTypes.shift() || 'All');
     this.state = this.animalTypes[0];
-    this.restAPI.setFilter(this.state === 'All' ? null : this.state);
-    this.updateSwitch.emit();
+    this.updateSwitch.emit( this.state);
   }
 }

@@ -9,9 +9,8 @@ export class MovieApiService {
   constructor(private httpClient: HttpClient) {}
   baseUrl = 'http://localhost:3000/movies';
 
-  getAll(filter: StatusType | "All") {
-    let x = '';
-    if (filter !== "All") x = `?status=${filter}`;
+  getAll(filter: StatusType | 'All') {
+    let x = filter !== 'All' ? `?status=${filter}` : '';
     return this.httpClient.get<Movie[]>(`${this.baseUrl}${x}`);
   }
 
@@ -20,7 +19,7 @@ export class MovieApiService {
   }
 
   deleteOne(id: number | string) {
-    console.log(id)
+    console.log(id);
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private restAPI: RestApiService) {}
 
   ngOnInit(): void {
-    this.refetchAnimals();
+    this.refetchAnimals('All');
   }
 
   removeAnimal(id: string | number) {
@@ -32,8 +32,8 @@ export class AppComponent {
     });
   }
 
-  refetchAnimals() {
-    this.restAPI.getAll().subscribe({
+  refetchAnimals(filter: AnimalType | 'All') {
+    this.restAPI.getAll(filter).subscribe({
       next: (data) => {
         this.animals = data;
       },

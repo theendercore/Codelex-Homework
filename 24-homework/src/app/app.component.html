@@ -1,6 +1,6 @@
 <div class="container flex flex-col justify-center m-auto p-20 py-10 gap-3 text-lg">
   <h1 class="text-6xl self-center text-slate-700 font-bold">Animal App</h1>
-  <app-filter-switch (updateSwitch)="refetchAnimals()" class="self-end"></app-filter-switch>
+  <app-filter-switch (updateSwitch)="refetchAnimals($event)" class="self-end"></app-filter-switch>
   <app-animal-form (addAnimal)="addAnimal($event)" class="self-center"></app-animal-form>
   <app-animal-list [animalList]="animals" (removeAnimal)="removeAnimal($event)" class="lg:w-8/12 self-center"></app-animal-list>
 </div>

@@ -8,11 +8,9 @@ import { Animal, AnimalConstruct, AnimalType } from '../models/Animal';
 export class AnimalApiService {
   constructor(private httpClient: HttpClient) {}
   baseUrl = 'http://localhost:3000/animals';
-  private filter: AnimalType | null = null;
 
-  getAll() {
-    let x = '';
-    if (this.filter !== null) x = `?type=${this.filter}`;
+  getAll(filter: AnimalType | "All") {
+    let x = filter !== "All" ? `?type=${filter}` : '';
     return this.httpClient.get<Animal[]>(`${this.baseUrl}${x}`);
   }
 
@@ -22,8 +20,5 @@ export class AnimalApiService {
 
   deleteOne(id: number | string) {
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
-  }
-  setFilter(value: AnimalType | null) {
-    this.filter = value;
   }
 }

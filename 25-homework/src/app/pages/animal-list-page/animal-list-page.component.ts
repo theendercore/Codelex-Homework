@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Animal, AnimalConstruct } from 'src/app/models/Animal';
+import { Animal, AnimalConstruct, AnimalType } from 'src/app/models/Animal';
 import { AnimalApiService } from 'src/app/services/animal-api.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class AnimalListPageComponent {
   constructor(private animalAPI: AnimalApiService) {}
 
   ngOnInit(): void {
-    this.refetchAnimals();
+    this.refetchAnimals("All");
   }
 
   removeAnimal(id: string | number) {
@@ -32,8 +32,8 @@ export class AnimalListPageComponent {
     });
   }
 
-  refetchAnimals() {
-    this.animalAPI.getAll().subscribe({
+  refetchAnimals(filter: AnimalType | "All") {
+    this.animalAPI.getAll(filter).subscribe({
       next: (data) => {
         this.animals = data;
       },

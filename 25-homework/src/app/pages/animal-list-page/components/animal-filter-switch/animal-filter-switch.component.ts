@@ -4,19 +4,18 @@ import { AnimalApiService } from 'src/app/services/animal-api.service';
 
 @Component({
   selector: 'app-filter-switch',
-  templateUrl: './filter-switch.component.html',
+  templateUrl: './animal-filter-switch.component.html',
 })
-export class FilterSwitchComponent {
+export class AnimalFilterSwitchComponent {
   private animalTypes: Array<AnimalType | 'All'> = ['All', ...AnimalTypeList];
   state: AnimalType | 'All' = 'All';
-  @Output() updateSwitch = new EventEmitter<void>();
+  @Output() updateSwitch = new EventEmitter<AnimalType | 'All'>();
 
   constructor(private animalAPI: AnimalApiService) {}
 
   onClick() {
     this.animalTypes.push(this.animalTypes.shift() || 'All');
     this.state = this.animalTypes[0];
-    this.animalAPI.setFilter(this.state === 'All' ? null : this.state);
-    this.updateSwitch.emit();
+    this.updateSwitch.emit(this.state);
   }
 }
