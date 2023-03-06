@@ -13,13 +13,17 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { AnimalFormComponent } from './pages/animal-list-page/components/animal-form/animal-form.component';
 import { FilterSwitchComponent } from './pages/animal-list-page/components/filter-switch/filter-switch.component';
 import { AnimalListComponent } from './pages/animal-list-page/components/animal-list/animal-list.component';
+import { MovieFilterSwitchComponent } from './pages/movie-list-page/components/filter-switch/movie-filter-switch.component';
+import { MovieListComponent } from './pages/movie-list-page/components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalFormComponent,
     FilterSwitchComponent,
+    MovieFilterSwitchComponent,
     AnimalListComponent,
+    MovieListComponent,
     AnimalListPageComponent,
     MovieListPageComponent,
     HomePageComponent,
