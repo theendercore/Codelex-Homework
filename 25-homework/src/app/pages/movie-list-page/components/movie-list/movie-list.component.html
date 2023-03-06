@@ -3,23 +3,42 @@
 >
   <div
     *ngFor="let movie of movieList$ | async"
-    class="rounded bg-neutral-300 flex flex-col w-[200px] rounded-t-xl overflow-hidden relative"
+    class="rounded bg-neutral-300 flex flex-col w-[200px] rounded-t-xl overflow-hidden relative shadow-md"
   >
-    <img src="{{ movie.img }}" alt="{{ movie.name }} poster" />
+    <img
+      src="{{ movie.img }}"
+      alt="{{ movie.name }} Poster"
+      class="max-h-[200px] min-h-[200px]"
+    />
     <div class="text-box p-4 flex flex-col justify-center items-center">
       <span>{{ movie.name }}</span>
-      <span
-        ><Span>{{ movie.status }}</Span></span
+      <Span
+        class="shadow-inner bg-slate-600 px-2 rounded-md {{
+          movie.status == 'Watched'
+            ? 'text-yellow-200'
+            : movie.status == 'Going to Watch'
+            ? 'text-green-200'
+            : movie.status == 'Not Watching'
+            ? 'text-red-200'
+            : 'text-blue-200'
+        }}"
+        >{{ movie.status }}</Span
       >
-      <span *ngIf="movie.rating !== null">
-        <span class="text-yellow-600">{{ "#".repeat(movie.rating) }}</span>
-        <span>{{ "#".repeat(5 - movie.rating) }}</span>
+      <span *ngIf="movie.rating !== null && movie.rating !== undefined">
+        <div class="stars flex">
+          <span class="text-yellow-600">{{ "★".repeat(movie.rating) }}</span>
+          <span>{{ "☆".repeat(5 - movie.rating) }}</span>
+        </div>
       </span>
       <button
-        class="absolute text-2xl text-red-400 hover:text-red-600 bottom-0 right-2"
+        class="absolute text-2xl bottom-2 right-2 w-4 fill-red-400 hover:fill-red-600"
         (click)="deleteMovie(movie.id)"
       >
-        x
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path
+            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+          />
+        </svg>
       </button>
     </div>
   </div>
