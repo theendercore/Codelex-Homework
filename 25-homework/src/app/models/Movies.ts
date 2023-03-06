@@ -13,7 +13,7 @@ export class Movie extends ConstructedMovie {
     type: StatusType,
     img: string,
     rating: RatingType,
-    public id: string
+    public id: string | number
   ) {
     super(name, type, img, rating);
   }
