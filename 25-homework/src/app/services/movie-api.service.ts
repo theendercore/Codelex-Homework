@@ -21,6 +21,6 @@ export class MovieApiService {
 
   deleteOne(id: number | string) {
     console.log(id)
-    return this.httpClient.delete<Movie>(`${this.baseUrl}/${id}`);
+    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

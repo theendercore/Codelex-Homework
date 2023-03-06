@@ -22,7 +22,7 @@ export class RestApiService {
   }
 
   deleteOne(id: number | string) {
-    return this.httpClient.delete<Animal>(`${this.baseUrl}/${id}`);
+    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
   setFilter(value: AnimalType | null) {
     this.filter = value;
