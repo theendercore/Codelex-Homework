@@ -23,4 +23,4 @@
 - [-] - Homeworks 21-22 | A Recipe book App with Next.js
 - [x] - Homeworks 23 | A Services Price List App with Angular
 - [x] - Homeworks 24 | Animal List App with Angular
-- [ ] - Homeworks 25 | Extension of hw-24, Movie List App with Angular & NgRx
+- [x] - Homeworks 25 | Extension of hw-24, Movie List App with Angular & NgRx
