@@ -1,0 +1,54 @@
+{
+  "animals": [
+    {
+      "name": "Jaguar",
+      "type": "Carnivore",
+      "id": 6
+    },
+    {
+      "name": "Gazelle",
+      "type": "Herbivore",
+      "id": 7
+    },
+    {
+      "name": "Giraffe",
+      "type": "Herbivore",
+      "id": 8
+    },
+    {
+      "name": "Jackal",
+      "type": "Omnivore",
+      "id": 9
+    },
+    {
+      "name": "Lion",
+      "type": "Carnivore",
+      "id": 10
+    },
+    {
+      "name": "Leopard",
+      "type": "Carnivore",
+      "id": 11
+    },
+    {
+      "name": "Ostriche",
+      "type": "Omnivore",
+      "id": 12
+    },
+    {
+      "name": "Warthog",
+      "type": "Omnivore",
+      "id": 13
+    },
+    {
+      "name": "Hyena",
+      "type": "Carnivore",
+      "id": 14
+    },
+    {
+      "name": "Baboon",
+      "type": "Omnivore",
+      "id": 15
+    }
+  ]
+}

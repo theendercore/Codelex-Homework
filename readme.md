@@ -20,7 +20,7 @@
 - [ ] - Homeworks 18 | Rock, Paper Scissors Game with i18n
 - [x] - Homeworks 19 | Todo App with React Context & MongoDB BackEnd
 - [ ] - Homeworks 20 | Animal Filter App with Redux & MongoDB BackEnd
-- [-] - Homeworks 21-22 | A Recipe book app with Next.js
+- [-] - Homeworks 21-22 | A Recipe book App with Next.js
 - [x] - Homeworks 23 | A Services Price List App with Angular
-- [ ] - Homeworks 24 |  with Angular
-- [ ] - Homeworks 25 |  with Angular
+- [x] - Homeworks 24 | Animal List App with Angular
+- [ ] - Homeworks 25 | Extension of hw-24, Movie List App with Angular & NgRx
