@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RestApiService } from 'src/app/services/rest-api.service';
-import { Animal, AnimalTypeList } from '../../models/Animal';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Animal } from 'src/app/models/Animal';
 
 @Component({
   selector: 'app-animal-list',
@@ -11,6 +10,6 @@ export class AnimalListComponent {
   @Output() removeAnimal = new EventEmitter<string>();
 
   deleteAnimal(id: string) {
-      this.removeAnimal.emit(id)
+    this.removeAnimal.emit(id);
   }
 }

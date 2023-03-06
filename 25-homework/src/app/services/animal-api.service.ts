@@ -6,7 +6,7 @@ import { Animal, AnimalConstruct, AnimalType } from '../models/Animal';
 @Injectable({
   providedIn: 'root',
 })
-export class RestApiService {
+export class AnimalApiService {
   constructor(private httpClient: HttpClient) {}
   baseUrl = 'http://localhost:3000/animals';
   private filter: AnimalType | null = null;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Animal, AnimalConstruct } from 'src/app/models/Animal';
-import { RestApiService } from 'src/app/services/rest-api.service';
+import { AnimalApiService } from 'src/app/services/animal-api.service';
 
 @Component({
   selector: 'app-animal-list-page',
@@ -8,14 +8,14 @@ import { RestApiService } from 'src/app/services/rest-api.service';
 })
 export class AnimalListPageComponent {
  animals: Animal[] = [];
-  constructor(private restAPI: RestApiService) {}
+  constructor(private animalAPI: AnimalApiService) {}
 
   ngOnInit(): void {
     this.refetchAnimals();
   }
 
   removeAnimal(id: string | number) {
-    this.restAPI.deleteOne(id).subscribe({
+    this.animalAPI.deleteOne(id).subscribe({
       next: (data) => {
         this.animals = this.animals.filter((a) => a.id !== id);
       },
@@ -24,7 +24,7 @@ export class AnimalListPageComponent {
   }
 
   addAnimal(animal: AnimalConstruct) {
-    this.restAPI.addOne(animal).subscribe({
+    this.animalAPI.addOne(animal).subscribe({
       next: (data) => {
         this.animals.push(data);
       },
@@ -33,7 +33,7 @@ export class AnimalListPageComponent {
   }
 
   refetchAnimals() {
-    this.restAPI.getAll().subscribe({
+    this.animalAPI.getAll().subscribe({
       next: (data) => {
         this.animals = data;
       },

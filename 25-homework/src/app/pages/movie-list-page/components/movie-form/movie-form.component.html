@@ -1,0 +1,45 @@
+<form
+  #addAnimalForm="ngForm"
+  class="flex flex-row bg-slate-400 p-4 rounded gap-2"
+  (submit)="onSubmit(addAnimalForm.form)"
+>
+  <div class="form-group">
+    <input
+      type="text"
+      id="name"
+      required
+      [(ngModel)]="animal.name"
+      name="name"
+      placeholder="Add new animal..."
+      #name="ngModel"
+      class="px-2 py-1 rounded"
+    />
+  </div>
+  <div class="form-group">
+    <select
+      class="form-control p-2 rounded"
+      id="type"
+      required
+      [(ngModel)]="animal.type"
+      name="type"
+      #type="ngModel"
+
+    >
+    <option [ngValue]="null" disabled >Type</option>
+      <option *ngFor="let type of typeList; index as i" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+  </div>
+  <button
+    type="submit"
+    class="px-2 bg-slate-200 rounded {{
+      addAnimalForm.form.valid
+        ? 'hover:bg-slate-300'
+        : 'bg-slate-500 cursor-not-allowed'
+    }}"
+    [disabled]="!addAnimalForm.form.valid"
+  >
+    Add
+  </button>
+</form>
