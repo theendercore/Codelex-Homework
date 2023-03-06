@@ -1,44 +1,73 @@
 <form
-  #addAnimalForm="ngForm"
-  class="flex flex-row bg-slate-400 p-4 rounded gap-2"
-  (submit)="onSubmit(addAnimalForm.form)"
+  #addMovieForm="ngForm"
+  class="flex flex-col bg-slate-400 p-4 rounded gap-2"
+  (submit)="onSubmit(addMovieForm.form)"
 >
-  <div class="form-group">
+  <div class="name-input">
     <input
       type="text"
       id="name"
       required
-      [(ngModel)]="animal.name"
+      [(ngModel)]="movie.name"
       name="name"
-      placeholder="Add new animal..."
+      placeholder="Add new movie..."
       #name="ngModel"
       class="px-2 py-1 rounded"
     />
   </div>
-  <div class="form-group">
-    <select
-      class="form-control p-2 rounded"
-      id="type"
+  <div class="img-input">
+    <input
+      type="text"
+      id="img"
       required
-      [(ngModel)]="animal.type"
-      name="type"
-      #type="ngModel"
+      [(ngModel)]="movie.img"
+      name="img"
+      placeholder="Movie image..."
+      #img="ngModel"
+      class="px-2 py-1 rounded"
+    />
+  </div>
 
+  <div class="status-select">
+    <select
+      class="form-control p-2 rounded w-full text-center"
+      id="status"
+      required
+      [(ngModel)]="movie.status"
+      name="status"
+      #status="ngModel"
     >
-    <option [ngValue]="null" disabled >Type</option>
-      <option *ngFor="let type of typeList; index as i" [value]="type">
-        {{ type }}
+      <option [ngValue]="null" disabled>Status</option>
+      <option *ngFor="let status of statusList; index as i" [value]="status">
+        {{ status }}
       </option>
     </select>
   </div>
+
+  <div class="rating-select" *ngIf="movie.status === 'Watched'">
+    <select
+      class="form-control p-2 rounded w-full text-center"
+      id="rating"
+      required
+      [(ngModel)]="movie.rating"
+      name="rating"
+      #rating="ngModel"
+    >
+      <option [ngValue]="null" disabled>Rating</option>
+      <option *ngFor="let rating of ratingList; index as i" [value]="rating">
+        {{ rating }}
+      </option>
+    </select>
+  </div>
+
   <button
     type="submit"
     class="px-2 bg-slate-200 rounded {{
-      addAnimalForm.form.valid
+      addMovieForm.form.valid
         ? 'hover:bg-slate-300'
         : 'bg-slate-500 cursor-not-allowed'
     }}"
-    [disabled]="!addAnimalForm.form.valid"
+    [disabled]="!addMovieForm.form.valid"
   >
     Add
   </button>

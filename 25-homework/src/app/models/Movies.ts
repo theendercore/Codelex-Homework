@@ -19,7 +19,8 @@ export class Movie extends ConstructedMovie {
   }
 }
 
-export type RatingType = 1 | 2 | 3 | 4 | 5 | null;
+export const RatingTypeList = [1, 2, 3, 4, 5, null] as const;
+export type RatingType = typeof RatingTypeList[number];
 
 export const StatusTypeList = [
   'Watched',

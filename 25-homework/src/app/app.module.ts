@@ -15,11 +15,13 @@ import { FilterSwitchComponent } from './pages/animal-list-page/components/filte
 import { AnimalListComponent } from './pages/animal-list-page/components/animal-list/animal-list.component';
 import { MovieFilterSwitchComponent } from './pages/movie-list-page/components/filter-switch/movie-filter-switch.component';
 import { MovieListComponent } from './pages/movie-list-page/components/movie-list/movie-list.component';
+import { MovieFormComponent } from './pages/movie-list-page/components/movie-form/movie-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalFormComponent,
+    MovieFormComponent,
     FilterSwitchComponent,
     MovieFilterSwitchComponent,
     AnimalListComponent,

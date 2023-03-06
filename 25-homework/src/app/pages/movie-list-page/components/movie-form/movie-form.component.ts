@@ -1,18 +1,25 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AnimalConstruct, AnimalTypeList } from 'src/app/models/Animal';
+import {
+  StatusTypeList,
+  ConstructedMovie,
+  RatingTypeList,
+} from 'src/app/models/Movies';
 
 @Component({
-  selector: 'app-animal-form',
+  selector: 'app-movie-form',
   templateUrl: './movie-form.component.html',
 })
 export class MovieFormComponent {
-  @Output() addAnimal = new EventEmitter<AnimalConstruct>();
-  typeList = [...AnimalTypeList];
-  animal = new AnimalConstruct('', null);
+  // @Output() addAnimal = new EventEmitter<AnimalConstruct>();
+  statusList = [...StatusTypeList];
+  ratingList = [...RatingTypeList].filter((e) => e !== null);
+
+  movie = new ConstructedMovie('', null, '', null);
 
   onSubmit(form: FormGroup) {
-    this.addAnimal.emit(form.value);
+    console.debug(form.value);
+    // this.addAnimal.emit(form.value);
     form.reset();
   }
 }
