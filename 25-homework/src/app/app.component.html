@@ -1,6 +1,31 @@
-<div class="container flex flex-col justify-center m-auto p-20 py-10 gap-3 text-lg">
-  <h1 class="text-6xl self-center text-slate-700 font-bold">Animal App</h1>
-  <app-filter-switch (updateSwitch)="refetchAnimals()" class="self-end"></app-filter-switch>
-  <app-animal-form (addAnimal)="addAnimal($event)" class="self-center"></app-animal-form>
-  <app-animal-list [animalList]="animals" (removeAnimal)="removeAnimal($event)" class="lg:w-8/12 self-center"></app-animal-list>
+<nav class="pb-6">
+  <ul class="flex gap-2 justify-evenly bg-gray-300 py-6 shadow-inner text-slate-800 text-lg">
+    <li>
+      <a
+        class="bg-slate-400 px-4 py-2 rounded hover:bg-gray-500 hover:shadow-inner hover:text-gray-200"
+        routerLink="/"
+        routerLinkActive="active"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="bg-slate-400 px-4 py-2 rounded hover:bg-gray-500 hover:shadow-inner hover:text-gray-200"
+        routerLink="/movies"
+        routerLinkActive="active"
+        >Movies App</a
+      >
+    </li>
+    <li>
+      <a
+        class="bg-slate-400 px-4 py-2 rounded hover:bg-gray-500 hover:shadow-inner hover:text-gray-200"
+        routerLink="/animals"
+        >Animals App</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<div class="container m-auto px-20 pb-10 text-lg">
+  <router-outlet> </router-outlet>
 </div>
