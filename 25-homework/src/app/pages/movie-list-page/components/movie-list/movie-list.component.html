@@ -2,7 +2,7 @@
   class="container flex flex-wrap gap-3 p-4 bg-neutral-400 rounded justify-center"
 >
   <div
-    *ngFor="let movie of movieList"
+    *ngFor="let movie of movieList$ | async"
     class="rounded bg-neutral-300 flex flex-col w-[200px] rounded-t-xl overflow-hidden relative"
   >
     <img src="{{ movie.img }}" alt="{{ movie.name }} poster" />

@@ -1,41 +1,29 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/Movies';
-import { StatusTypeList } from '../../../../models/Movies';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { load, remove } from 'src/app/store/movies.actions';
+import { MovieApiService } from 'src/app/services/movie-api.service';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
 })
 export class MovieListComponent {
-  movieList: Movie[] = [];
+  movieList$: Observable<Movie[]> = this.store.select('movies');
 
-  constructor() {
-    this.movieList = [
-      {
-        id: 1,
-        name: 'Star Wars',
-        status: StatusTypeList[0],
-        img: 'https://picsum.photos/200',
-        rating: 1,
-      },{
-        id: 2,
-        name: 'Star Wars 2',
-        status: StatusTypeList[0],
-        img: 'https://picsum.photos/200',
-        rating: 4,
-      },{
-        id: 3,
-        name: 'Star Wars 3',
-        status: StatusTypeList[1],
-        img: 'https://picsum.photos/200',
-        rating: null,
-      }
-    ];
+  constructor(
+    private store: Store<{ movies: Movie[] }>
+
+  ) {}
+
+  ngOnInit() {
+    console.log('hello');
+    this.store.dispatch(load());
+    this.store.select('movies').subscribe((movie) => console.log(movie));
   }
 
-  // @Output() removeAnimal = new EventEmitter<string>();
-
   deleteMovie(id: string | number) {
-    //     this.removeAnimal.emit(id)
+    this.store.dispatch(remove({ id }));
   }
 }

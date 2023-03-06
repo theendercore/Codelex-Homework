@@ -16,6 +16,10 @@ import { AnimalListComponent } from './pages/animal-list-page/components/animal-
 import { MovieFilterSwitchComponent } from './pages/movie-list-page/components/filter-switch/movie-filter-switch.component';
 import { MovieListComponent } from './pages/movie-list-page/components/movie-list/movie-list.component';
 import { MovieFormComponent } from './pages/movie-list-page/components/movie-form/movie-form.component';
+import { StoreModule } from '@ngrx/store';
+import { moviesReducer } from './store/movies.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { MovieEffects } from './store/movies.effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,14 @@ import { MovieFormComponent } from './pages/movie-list-page/components/movie-for
     HomePageComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    StoreModule.forRoot({ movies: moviesReducer }),
+    EffectsModule.forRoot([MovieEffects]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
