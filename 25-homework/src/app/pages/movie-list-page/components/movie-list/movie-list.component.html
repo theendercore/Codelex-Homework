@@ -10,10 +10,10 @@
       alt="{{ movie.name }} Poster"
       class="max-h-[200px] min-h-[200px]"
     />
-    <div class="text-box p-4 flex flex-col justify-center items-center">
+    <div class="text-box p-4 flex flex-col justify-center items-center text-xl">
       <span>{{ movie.name }}</span>
       <Span
-        class="shadow-inner bg-slate-600 px-2 rounded-md {{
+        class="shadow-inner bg-slate-600 px-2 rounded-md text-base {{
           movie.status == 'Watched'
             ? 'text-yellow-200'
             : movie.status == 'Going to Watch'
@@ -27,7 +27,7 @@
       <span *ngIf="movie.rating !== null && movie.rating !== undefined">
         <div class="stars flex">
           <span class="text-yellow-600">{{ "★".repeat(movie.rating) }}</span>
-          <span>{{ "☆".repeat(5 - movie.rating) }}</span>
+          <span class="text-gray-500">{{ "★".repeat(5 - movie.rating) }}</span>
         </div>
       </span>
       <button

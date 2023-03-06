@@ -64,6 +64,45 @@
       "img": "https://www.shioktoys.com/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/g/o/godfather_web-6_thumbnail.jpg",
       "status": "Going to Watch",
       "id": 4
+    },
+    {
+      "name": "Forrest Gump",
+      "img": "https://static1.colliderimages.com/wordpress/wp-content/uploads/2019/06/forrest-gump-bench.jpg",
+      "status": "Not Watching",
+      "id": 6
+    },
+    {
+      "name": "2001: A Space Odyssey",
+      "img": "https://farm2.staticflickr.com/1477/26463434731_1636e3fe9b_b.jpg",
+      "status": "Going to Watch",
+      "id": 7
+    },
+    {
+      "name": "Silence of The Lambs",
+      "img": "https://2.bp.blogspot.com/-wI4kv4PHG0M/UoKwINQyEhI/AAAAAAAAA_s/YIaebLn7G38/s1600/094-The+Silence+of+The+Lambs+-+Poster.jpg",
+      "status": "Watching",
+      "id": 8
+    },
+    {
+      "name": "Annihilation",
+      "img": "https://i0.wp.com/vehlinggo.com/wp-content/uploads/2018/02/annihilation-soundtrack-review-inline.jpg?ssl=1",
+      "status": "Watched",
+      "rating": "4",
+      "id": 9
+    },
+    {
+      "name": "The Endless",
+      "img": "https://i.pinimg.com/originals/a5/4e/db/a54edbc2ec97a4fd055235626dc46a36.jpg",
+      "status": "Watched",
+      "rating": "3",
+      "id": 10
+    },
+    {
+      "name": "The Void",
+      "img": "https://f4.bcbits.com/img/a0236671307_10.jpg",
+      "status": "Watched",
+      "rating": "2",
+      "id": 11
     }
   ]
 }
