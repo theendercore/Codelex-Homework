@@ -1,40 +1,50 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import JokeCard from "../components/JokeCard.vue"
+import Loading from "../components/Loading.vue"
 export default defineComponent({
   data() {
     return {
-      Jokes: [
-        {
-          category: "Programming",
-          type: "single",
-          joke: "very funny i laugh",
-          flags: {},
-          id: 43,
-          safe: true,
-          lang: "en"
-        },
-        {
-          category: "Programming",
-          type: "single",
-          joke: "Supper hihi",
-          flags: {},
-          id: 1,
-          safe: true,
-          lang: "en"
-        }
-      ] as Joke[]
+      Jokes: [] as Joke[],
+      loading: false,
+      error: ""
     }
   },
-  components: { JokeCard }
+  async created() {
+    await this.fetchData()
+  },
+  methods: {
+    async fetchData() {
+      this.error = ""
+      this.loading = true
+      await fetch("https://v2.jokeapi.dev/joke/Programming?type=single&amount=10")
+        .then(async (res: Response) => {
+          this.loading = false
+          let data = await res.json()
+          if (data as JokeResponse) {
+            let jokeRes = data as JokeResponse
+            if (!jokeRes.error) this.Jokes = jokeRes.jokes
+            else this.error = `Error ${JSON.stringify(jokeRes)}`
+          }
+        })
+        .catch((err: unknown) => {
+          this.loading = false
+          if (err instanceof Error) this.error = (err as Error).toString()
+        })
+    }
+  },
+  components: { JokeCard, Loading }
 })
 </script>
 
 <template>
-  <div>fetch all the jokes</div>
-  <div class="box flex flex-row flex-wrap gap-4">
-    <div v-for="joke in Jokes" class="shadow-xl">
-      <JokeCard v-if="joke.type === 'single'" :id="joke.id" class="shadow-inner">
+  <div class="box flex flex-row flex-wrap justify-center gap-4">
+    <div v-if="loading" class="loading"><Loading /></div>
+
+    <div v-if="error" class="error">{{ error }}</div>
+
+    <div v-if="Jokes" v-for="joke in Jokes">
+      <JokeCard v-if="joke.type === 'single'" :id="joke.id" class="shadow-xl">
         <template #joke> {{ joke.joke }} </template>
       </JokeCard>
     </div>

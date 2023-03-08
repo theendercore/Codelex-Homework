@@ -11,7 +11,10 @@ export default defineComponent({
   <nav
     class="m-auto flex w-max justify-evenly gap-20 rounded-b-xl bg-gray-400 p-5 text-xl text-slate-700"
   >
-    <RouterLink class="rounded bg-slate-300 px-4 hover:bg-slate-600 hover:text-gray-300 hover:shadow-inner" to="/">
+    <RouterLink
+      class="rounded bg-slate-300 px-4 hover:bg-slate-600 hover:text-gray-300 hover:shadow-inner"
+      to="/"
+    >
       Home
     </RouterLink>
     <RouterLink
