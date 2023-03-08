@@ -2,7 +2,7 @@
   <div class="box justify-content flex flex-col items-center">
     <h1 class="mt-32 text-7xl font-bold text-slate-500">Vue and the Things it can Do!</h1>
     <span class="mt-2 rounded-full bg-neutral-100 px-20 py-1 text-gray-400"
-      >A site by me to learn what is to do vue</span
+      >A site by me to learn what it is, to do Vue</span
     >
   </div>
 </template>
