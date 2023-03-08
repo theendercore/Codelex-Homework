@@ -1,7 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue"
-import JokeCard from "../components/JokeCard.vue"
-import Loading from "../components/Loading.vue"
+import JokeCard from "@/components/JokeCard.vue"
+import Loading from "@/components/Loading.vue"
+import Title from "@/components/Title.vue"
+
 export default defineComponent({
   data() {
     return {
@@ -33,17 +35,19 @@ export default defineComponent({
         })
     }
   },
-  components: { JokeCard, Loading }
+  components: { JokeCard, Loading, Title }
 })
 </script>
 
 <template>
+  <span>Jokes</span>
   <div class="box flex flex-row flex-wrap justify-center gap-4">
+    <!-- <Title> <template #title>Jokes</template></Title> -->
     <div v-if="loading" class="loading"><Loading /></div>
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="Jokes" v-for="joke in Jokes">
+    <div v-if="Jokes.length > 0" v-for="joke in Jokes">
       <JokeCard v-if="joke.type === 'single'" :id="joke.id" class="shadow-xl">
         <template #joke> {{ joke.joke }} </template>
       </JokeCard>

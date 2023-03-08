@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent } from "vue"
-
 export default defineComponent({
   name: "JokeCard",
   components: {},
@@ -13,8 +12,10 @@ export default defineComponent({
     }
   },
   methods: {
-    toggle() {
+    toggleLiked() {
+      console.log("e")
       this.liked = !this.liked
+      console.log("ran")
     }
   }
 })
@@ -30,7 +31,9 @@ export default defineComponent({
     </div>
 
     <button
-      class="absolute left-2 bottom-2 rounded  py-1 px-2{{ liked? 'bg-green-200' : 'bg-red-200' }}"
+      class="absolute left-2 bottom-2 rounded py-1 px-2"
+      :class="{ 'bg-green-200': !liked, 'bg-red-200': liked }"
+      @click="toggleLiked"
     >
       {{ liked ? "Remove from" : "Add to" }} Favorite
     </button>
