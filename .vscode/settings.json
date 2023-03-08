@@ -12,7 +12,8 @@
         "reduxjs",
         "teksts",
         "toastify",
-        "todos"
+        "todos",
+        "twopart"
     ],
     "cSpell.language": "en,lorem"
 }
