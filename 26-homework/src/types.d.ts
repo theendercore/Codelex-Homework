@@ -30,3 +30,5 @@ interface Flags {
   sexist: boolean
   explicit: boolean
 }
+
+export type PostResponse = { response: "Success" | "Failure" }

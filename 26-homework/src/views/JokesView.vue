@@ -1,13 +1,13 @@
 <script lang="ts">
 import { defineComponent } from "vue"
-import JokeCard from "@/components/JokeCard.vue"
 import Loading from "@/components/Loading.vue"
-import Title from "@/components/Title.vue"
+import JokeList from "@/components/JokeList.vue"
+import type { Joke, JokeResponse } from "@/types"
 
 export default defineComponent({
   data() {
     return {
-      Jokes: [] as Joke[],
+      Jokes: Array<Joke>(),
       loading: false,
       error: ""
     }
@@ -25,7 +25,7 @@ export default defineComponent({
           let data = await res.json()
           if (data as JokeResponse) {
             let jokeRes = data as JokeResponse
-            if (!jokeRes.error) this.Jokes = jokeRes.jokes
+            if (!jokeRes.error && jokeRes !== undefined) this.Jokes = jokeRes.jokes
             else this.error = `Error ${JSON.stringify(jokeRes)}`
           }
         })
@@ -35,22 +35,17 @@ export default defineComponent({
         })
     }
   },
-  components: { JokeCard, Loading, Title }
+  components: { JokeList, Loading }
 })
 </script>
 
 <template>
   <span>Jokes</span>
   <div class="box flex flex-row flex-wrap justify-center gap-4">
-    <!-- <Title> <template #title>Jokes</template></Title> -->
     <div v-if="loading" class="loading"><Loading /></div>
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="Jokes.length > 0" v-for="joke in Jokes">
-      <JokeCard v-if="joke.type === 'single'" :id="joke.id" class="shadow-xl">
-        <template #joke> {{ joke.joke }} </template>
-      </JokeCard>
-    </div>
+    <JokeList :jokes="Jokes" />
   </div>
 </template>
