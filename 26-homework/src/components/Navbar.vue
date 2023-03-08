@@ -1,18 +1,24 @@
+<script lang="ts">
+import { defineComponent } from "vue"
+import { RouterLink } from "vue-router"
+export default defineComponent({
+  name: "Navbar",
+  components: {}
+})
+</script>
+
 <template>
   <nav
-    class="m-auto p-5 bg-gray-400 rounded-b-xl w-max gap-20 flex justify-evenly text-xl text-slate-700"
+    class="m-auto flex w-max justify-evenly gap-20 rounded-b-xl bg-gray-400 p-5 text-xl text-slate-700"
   >
-    <a
-      class="px-4 bg-slate-300 hover:bg-slate-600 hover:text-gray-300 rounded"
-      href="/"
-    >
+    <RouterLink class="rounded bg-slate-300 px-4 hover:bg-slate-600 hover:text-gray-300" to="/">
       Home
-    </a>
-    <a
-      class="px-4 bg-slate-300 hover:bg-slate-600 hover:text-gray-300 rounded"
-      href="/Jokes"
+    </RouterLink>
+    <RouterLink
+      class="rounded bg-slate-300 px-4 hover:bg-slate-600 hover:text-gray-300"
+      to="/jokes"
     >
       Jokes
-    </a>
+    </RouterLink>
   </nav>
 </template>
