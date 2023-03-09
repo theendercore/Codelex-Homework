@@ -1,10 +1,14 @@
-import z from "zod";
-import mongoose from 'mongoose';
+import z, { number } from "zod";
+import mongoose from "mongoose";
 
 export const Joke = z.object({
-  jokeId: z.number().positive().int()
+  jokeId: z.number().nonnegative().int()
+  
 });
 
-const jokeSchema = new mongoose.Schema(Joke);
+const jokeSchema = new mongoose.Schema({
+  jokeId: Number
+});
 
-export const JokeModel = mongoose.model("Joke", jokeSchema);
+const JokeModel = mongoose.model("Joke", jokeSchema);
+export default JokeModel;

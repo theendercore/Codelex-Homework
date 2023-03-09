@@ -32,3 +32,5 @@ interface Flags {
 }
 
 export type PostResponse = { response: "Success" | "Failure" }
+
+export type JokeId = { jokeId:  number}

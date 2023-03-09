@@ -22,10 +22,10 @@ export default defineComponent({
 
       this.liked = !this.liked
 
-      console.log(this.liked ? "liked" : "unliked")
-      console.log(this.liked ? "post" : "del", id)
+      // console.log(this.liked ? "liked" : "unliked")
+      // console.log(this.liked ? "post" : "del", id)
 
-      fetch("real-server", {
+      fetch("http://localhost:3004/jokes/favorite", {
         method: this.liked ? "POST" : "DELETE",
         body: JSON.stringify({ jokeId: id }),
         headers: {
@@ -48,7 +48,9 @@ export default defineComponent({
   <div
     class="joke relative flex w-[400px] flex-col items-center rounded bg-slate-300 p-4 shadow-inner"
   >
-    <span class="bold self-start pb-2 text-lg text-neutral-800">Joke Nr. {{ id && id + 1 }}</span>
+    <span class="bold self-start pb-2 text-lg text-neutral-800"
+      >Joke Nr. {{ id !== undefined && id + 1 }}</span
+    >
     <div class="text pb-10 text-lg italic text-gray-700">
       <slot name="joke"></slot>
     </div>
