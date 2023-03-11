@@ -15,7 +15,7 @@ export default defineComponent({
 
 <template>
   <div v-if="jokes !== undefined" v-for="joke in jokes">
-    <JokeCard :id="joke.id" :like-in="setTrue" class="shadow-xl">
+    <JokeCard :id="joke.id" :like-in="setTrue">
       <template #joke> {{ joke.joke }} </template>
     </JokeCard>
   </div>

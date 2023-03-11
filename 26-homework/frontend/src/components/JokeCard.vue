@@ -5,40 +5,34 @@ export default defineComponent({
   name: "JokeCard",
   components: {},
   props: {
-    id: Number,
-    likeIn: Boolean
+    id: {
+      type: Number,
+      required: true
+    },
+    defaultLike: Boolean
   },
   created() {
-    if (this.likeIn !== undefined) this.liked = this.likeIn
+    if (this.defaultLike !== undefined) this.likeState = this.defaultLike
   },
   data() {
     return {
-      liked: false
+      likeState: false
     }
   },
   methods: {
-    toggleLiked(id: Number | undefined) {
-      if (id === undefined) return
-
-      this.liked = !this.liked
-
-      // console.log(this.liked ? "liked" : "unliked")
-      // console.log(this.liked ? "post" : "del", id)
-
+    toggleLikeState() {
+      this.likeState = !this.likeState
+      return this.likeState
+    },
+    toggleLiked(jokeId: number, likeToggle: () => boolean) {
+      let like = likeToggle()
       fetch("http://localhost:3004/jokes/favorite", {
-        method: this.liked ? "POST" : "DELETE",
-        body: JSON.stringify({ jokeId: id }),
+        method: like ? "POST" : "DELETE",
+        body: JSON.stringify({ jokeId }),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
         }
-      })
-        .then((response) => response.json())
-        .then(({ response }: PostResponse) => {
-          if (response === "Failure") {
-            this.liked = !this.liked
-            console.warn("This is a failure")
-          }
-        })
+      }).catch(() => likeToggle())
     }
   }
 })
@@ -46,21 +40,19 @@ export default defineComponent({
 
 <template>
   <div
-    class="joke relative flex w-[400px] flex-col items-center rounded bg-slate-300 p-4 shadow-inner"
+    class="joke relative flex w-[400px] flex-col items-center rounded bg-slate-300 p-4 shadow-xl"
   >
-    <span class="bold self-start pb-2 text-lg text-neutral-800"
-      >Joke Nr. {{ id !== undefined && id + 1 }}</span
-    >
+    <span class="bold self-start pb-2 text-lg text-neutral-800">Joke Nr. {{ id + 1 }}</span>
     <div class="text pb-10 text-lg italic text-gray-700">
       <slot name="joke"></slot>
     </div>
 
     <button
       class="absolute left-2 bottom-2 rounded py-1 px-2"
-      :class="{ 'bg-green-200': !liked, 'bg-red-200': liked }"
-      @click="toggleLiked(id)"
+      :class="{ 'bg-green-200': !likeState, 'bg-red-200': likeState }"
+      @click="toggleLiked(id, toggleLikeState)"
     >
-      {{ liked ? "Remove from" : "Add to" }} Favorite
+      {{ likeState ? "Remove " : "Add " }} Favorite
     </button>
   </div>
 </template>

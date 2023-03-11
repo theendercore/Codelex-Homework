@@ -34,6 +34,7 @@ app.post("/jokes/favorite", async (req, res) => {
 
     if (possibleObj.length > 0) {
       console.log("Already exists : ", possibleObj);
+      res.status(400);
       return res.json({ response: "Failure" });
     }
 
@@ -42,10 +43,12 @@ app.post("/jokes/favorite", async (req, res) => {
   } catch (e) {
     if (e instanceof ZodError) {
       console.log("Zod Error! Failed to Parse incoming Data. ", e);
-      res.json({ response: "Failure" });
+      res.status(400);
+      throw e;
     } else {
       console.log("how did this happen? ", e);
-      res.json({ response: "Failure" });
+      res.status(500);
+      throw e;
     }
   }
 });
